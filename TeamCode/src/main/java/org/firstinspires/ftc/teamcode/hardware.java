@@ -20,10 +20,11 @@ public class hardware {
         this.myopmode = myopmode;
     }
 
-    public void init(@NonNull HardwareMap hwMp){
+    public void init(@NonNull HardwareMap hwMp) {
 
-
-
-
+    LeftFront = hwMp.get(DcMotor.class,"FrontL");
+    RightFront = hwMp.get(DcMotor.class,"FrontR");
+    LeftBack = hwMp.get(DcMotor.class,"BackL");
+    RightBack = hwMp.get(DcMotor.class,"BackR");
     }
 }
