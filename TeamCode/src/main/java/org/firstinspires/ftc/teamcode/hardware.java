@@ -1,0 +1,29 @@
+package org.firstinspires.ftc.teamcode;
+
+import androidx.annotation.NonNull;
+
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.HardwareMap;
+
+
+
+public class hardware {
+
+    private LinearOpMode myopmode;
+    public DcMotor LeftFront;
+    public DcMotor RightFront;
+    public DcMotor LeftBack;
+    public DcMotor RightBack;
+
+    public hardware(LinearOpMode myopmode) {
+        this.myopmode = myopmode;
+    }
+
+    public void init(@NonNull HardwareMap hwMp){
+
+
+
+
+    }
+}
