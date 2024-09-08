@@ -10,15 +10,11 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class hardware {
 
-    private LinearOpMode myopmode;
+    private Teleop myopmode;
     public DcMotor LeftFront;
     public DcMotor RightFront;
     public DcMotor LeftBack;
     public DcMotor RightBack;
-
-    public hardware(LinearOpMode myopmode) {
-        this.myopmode = myopmode;
-    }
 
     public void init(@NonNull HardwareMap hwMp) {
 
@@ -26,5 +22,6 @@ public class hardware {
     RightFront = hwMp.get(DcMotor.class,"FrontR");
     LeftBack = hwMp.get(DcMotor.class,"BackL");
     RightBack = hwMp.get(DcMotor.class,"BackR");
+
     }
 }
