@@ -57,6 +57,7 @@ double Rest = 0;
             robot.RightBack.setPower(FrontSpeed);
         } else if (gamepad1.dpad_right == false) {
             robot.LeftFront.setPower(Rest);
+
             robot.LeftBack.setPower(Rest);
             robot.RightFront.setPower(Rest);
             robot.RightBack.setPower(Rest);
