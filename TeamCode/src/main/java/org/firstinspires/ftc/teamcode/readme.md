@@ -14,13 +14,17 @@ Sample opmodes exist in the FtcRobotController module.
 To locate these samples, find the FtcRobotController module in the "Project/Android" tab.
 
 Expand the following tree elements:
- FtcRobotController / java / org.firstinspires.ftc.robotcontroller / external / samples
+ FtcRobotController/java/org.firstinspires.ftc.robotcontroller/external/samples
 
-A range of different samples classes can be seen in this folder.
-The class names follow a naming convention which indicates the purpose of each class.
-The full description of this convention is found in the samples/sample_convention.md file.
+### Naming of Samples
 
-A brief synopsis of the naming convention is given here:
+To gain a better understanding of how the samples are organized, and how to interpret the
+naming system, it will help to understand the conventions that were used during their creation.
+
+These conventions are described (in detail) in the sample_conventions.md file in this folder.
+
+To summarize: A range of different samples classes will reside in the java/external/samples.
+The class names will follow a naming convention which indicates the purpose of each class.
 The prefix of the name will be one of the following:
 
 * Basic:    This is a minimally functional OpMode used to illustrate the skeleton/structure
