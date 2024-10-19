@@ -11,11 +11,14 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
+import org.firstinspires.ftc.teamcode.hardwareclasses.FrontSlide;
+
 import java.util.ArrayList;
 import java.util.List;
 @TeleOp
 public class RRTeleop extends OpMode {
 
+    FrontSlide frontSlide;
     private FtcDashboard dash = FtcDashboard.getInstance();
     private List<Action> runningActions = new ArrayList<>();
     private hardware robot;
@@ -28,6 +31,8 @@ public class RRTeleop extends OpMode {
     public void init() {
         robot = new hardware();
         robot.init(hardwareMap);
+        frontSlide = new FrontSlide(robot.Arm);
+
     }
 
     @Override
@@ -37,14 +42,16 @@ public class RRTeleop extends OpMode {
         // updated based on gamepads
         if (gamepad1.a) {
             runningActions.add(new SequentialAction(
-                    new SleepAction(0.8),
-                    new InstantAction(() -> robot.Lift.setPower(1)),
-                    new SleepAction(0.8),
-                    new InstantAction(() -> robot.Lift.setPower(0)),
-                    new SleepAction(0.8),
-                    new InstantAction(() -> robot.Lift.setPower(-1)),
-                    new SleepAction(0.8),
-                    new InstantAction(() -> robot.Lift.setPower(0))
+                    frontSlide.slideOut(22),
+                    new InstantAction(() -> robot.Wrist2.setPosition(135)),
+                    new InstantAction(() -> robot.Wrist1.setPosition(135)),
+                    new InstantAction(() -> robot.Claw.setPosition(135)),
+                    new SleepAction(0.25),
+                    new InstantAction(() -> robot.Claw.setPosition(260)),
+                    new InstantAction(() -> robot.Wrist2.setPosition(20)),
+                    frontSlide.slideIn(22),
+                    new InstantAction(() -> robot.Claw.setPosition(180)),
+                    frontSlide.slideOut(2)
             ));
         }
 

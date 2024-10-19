@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-
+import com.qualcomm.robotcore.hardware.Servo;
 
 
 public class hardware {
@@ -17,6 +17,10 @@ public class hardware {
     public DcMotor LeftBack;
     public DcMotor RightBack;
     public DcMotor Lift;
+    public DcMotor Arm;
+    public Servo Claw;
+    public Servo Wrist1;
+    public Servo Wrist2;
 
     public void init(@NonNull HardwareMap hwMp) {
 
