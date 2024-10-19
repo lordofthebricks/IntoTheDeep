@@ -16,6 +16,7 @@ public class hardware {
     public DcMotor RightFront;
     public DcMotor LeftBack;
     public DcMotor RightBack;
+    public DcMotor Lift;
 
     public void init(@NonNull HardwareMap hwMp) {
 
@@ -23,7 +24,7 @@ public class hardware {
     RightFront = hwMp.get(DcMotor.class,"FrontR");
     LeftBack = hwMp.get(DcMotor.class,"BackL");
     RightBack = hwMp.get(DcMotor.class,"BackR");
-
+    Lift = hwMp.get(DcMotor.class,"Lift");
 
     LeftFront.setDirection(DcMotorSimple.Direction.REVERSE);
     LeftBack.setDirection(DcMotorSimple.Direction.REVERSE);

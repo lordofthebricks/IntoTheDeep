@@ -24,14 +24,11 @@ public class MeepMeepTesting {
                 .setColorScheme(new ColorSchemeBlueDark())
                 .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 15)
                 .followTrajectorySequence(drive ->
-                        //directly below is 1.a
-                        drive.trajectorySequenceBuilder(new Pose2d(12, 60, 0))
+                        drive.trajectorySequenceBuilder(new Pose2d(0, 0, 0))
                                 .forward(30)
-                                //.turn(Math.toRadians(90))
+                                .turn(Math.toRadians(90))
 
-                                .splineTo(new Vector2d(50,66), 45)
-                                .turn(Math.toRadians(180))
-                                .splineTo(new Vector2d(-50,66),110)
+                                .splineTo(new Vector2d(45,23), 0)
                                 .build()
                 );
 
@@ -53,9 +50,12 @@ public class MeepMeepTesting {
 //                                .build()
 //                );
 
+        Image img = null;
+        try { img = ImageIO.read(new File("/home/victor/Documents/programming/robotics/FtcRobotController-IntoTheDeep/MeepMeepTesting/src/main/java/com/example/meepmeeptesting/MeepMeepIntoTheDeep.png")); }
+        catch (IOException e) {}
 
 
-        meepMeep.setBackground(MeepMeep.Background.FIELD_FREIGHTFRENZY_OFFICIAL)
+        meepMeep.setBackground(img)
                 .setDarkMode(true)
                 .setBackgroundAlpha(0.95f)
 
