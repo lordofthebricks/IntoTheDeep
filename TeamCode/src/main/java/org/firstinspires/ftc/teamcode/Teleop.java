@@ -5,6 +5,7 @@ import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,7 @@ double Rest = 0;
     public void init() {
 
     robot = new hardware();
-
+    robot.init(hardwareMap);
 }
 
     @Override
@@ -106,6 +107,5 @@ double Rest = 0;
         dash.sendTelemetryPacket(packet);
     }
 }
-
 
 
