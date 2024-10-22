@@ -19,6 +19,7 @@ import java.util.List;
 public class RRTeleop extends OpMode {
 
     FrontSlide frontSlide;
+    Lift lift;
     private FtcDashboard dash = FtcDashboard.getInstance();
     private List<Action> runningActions = new ArrayList<>();
     private hardware robot;
@@ -32,7 +33,7 @@ public class RRTeleop extends OpMode {
         robot = new hardware();
         robot.init(hardwareMap);
         frontSlide = new FrontSlide(robot.Arm);
-
+        lift = new Lift(robot.Lift);
     }
 
     @Override
@@ -42,7 +43,7 @@ public class RRTeleop extends OpMode {
         // updated based on gamepads
         if (gamepad1.a) {
             runningActions.add(new SequentialAction(
-                    frontSlide.slideOut(22),
+                    frontSlide.slideOut(20),
                     new InstantAction(() -> robot.Wrist2.setPosition(135)),
                     new InstantAction(() -> robot.Wrist1.setPosition(135)),
                     new InstantAction(() -> robot.Claw.setPosition(135)),
@@ -52,6 +53,18 @@ public class RRTeleop extends OpMode {
                     frontSlide.slideIn(22),
                     new InstantAction(() -> robot.Claw.setPosition(180)),
                     frontSlide.slideOut(2)
+
+            ));
+        }
+
+        if (gamepad1.b) {
+            runningActions.add(new SequentialAction(
+                    lift.upLift(48),
+                    new InstantAction(() -> robot.Bucket.setPosition(135)),
+                    new SleepAction(0.5),
+                    new InstantAction(() -> robot.Bucket.setPosition(0)),
+                    new SleepAction(0.5),
+                    lift.downLift(48)
             ));
         }
 
