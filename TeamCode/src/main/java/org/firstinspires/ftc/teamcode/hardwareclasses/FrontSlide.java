@@ -49,7 +49,7 @@ public class FrontSlide {
         private double inches;
 
         public SlideIn(double inches){
-            slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             this.inches = inches;
         }
 
