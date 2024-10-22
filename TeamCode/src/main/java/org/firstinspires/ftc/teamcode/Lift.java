@@ -75,10 +75,10 @@ public class Lift {
     }
 
 
-    public Action slideOut(double inches) {
+    public Action upLift(double inches) {
         return new UpLift(inches);
     }
-    public Action slideIn(double inches) {
+    public Action downLift(double inches) {
         return new Downlift(inches);
     }
 
