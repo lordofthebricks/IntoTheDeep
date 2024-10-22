@@ -26,7 +26,7 @@ public class hardwareRoadRunner {
         RightFront = hwMp.get(DcMotor.class,"FrontR");
         LeftBack = hwMp.get(DcMotor.class,"BackL");
         RightBack = hwMp.get(DcMotor.class,"BackR");
-        Lift.
+
 
         LeftFront.setDirection(DcMotorSimple.Direction.REVERSE);
         LeftBack.setDirection(DcMotorSimple.Direction.REVERSE);
