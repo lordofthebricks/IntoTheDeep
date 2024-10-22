@@ -29,6 +29,11 @@ public class hardware {
     LeftBack = hwMp.get(DcMotor.class,"BackL");
     RightBack = hwMp.get(DcMotor.class,"BackR");
     Lift = hwMp.get(DcMotor.class,"Lift");
+    Arm = hwMp.get(DcMotor.class, "Arm");
+    Claw = hwMp.get(Servo.class, "Claw");
+    Wrist1 = hwMp.get(Servo.class, "Wrist1");
+    Wrist2 = hwMp.get(Servo.class, "Wrist2");
+
 
     LeftFront.setDirection(DcMotorSimple.Direction.REVERSE);
     LeftBack.setDirection(DcMotorSimple.Direction.REVERSE);
