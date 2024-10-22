@@ -27,6 +27,8 @@ public class RRTeleop extends OpMode {
     double BackSpeed = -0.8;
     double MaxSpeed = 1;
     double Rest = 0;
+    final double MAX_SPEED = 0.8;
+
 
     @Override
     public void init() {
@@ -80,36 +82,26 @@ public class RRTeleop extends OpMode {
 
         dash.sendTelemetryPacket(packet);
 
-        if (gamepad1.left_stick_y == 1) {
-            robot.LeftFront.setPower(FrontSpeed);
-            robot.LeftBack.setPower(FrontSpeed);
-        } else if (gamepad1.left_stick_y == 0) {
+        if (gamepad1.left_stick_y >= 0.2) {
+            robot.LeftFront.setPower(gamepad1.left_stick_y * MAX_SPEED);
+            robot.LeftBack.setPower(gamepad1.left_stick_y * MAX_SPEED);
+        } else if (gamepad1.left_stick_y <= -0.2) {
+            robot.LeftFront.setPower(gamepad1.left_stick_y * MAX_SPEED);
+            robot.LeftBack.setPower(gamepad1.left_stick_y * MAX_SPEED);
+        } else {
             robot.LeftFront.setPower(Rest);
             robot.LeftBack.setPower(Rest);
         }
-
-        if (gamepad1.left_stick_y == -1) {
-            robot.LeftFront.setPower(BackSpeed);
-            robot.LeftBack.setPower(BackSpeed);
-        } else if (gamepad1.left_stick_y == 0) {
-            robot.LeftFront.setPower(Rest);
-            robot.LeftBack.setPower(Rest);
-        }
-
-        if (gamepad1.right_stick_y == 1) {
-            robot.RightFront.setPower(FrontSpeed);
-            robot.RightBack.setPower(FrontSpeed);
-        } else if (gamepad1.right_stick_y == 0) {
-            robot.RightFront.setPower(Rest);
+        //
+        if (gamepad1.right_stick_y >= 0.2) {
+            robot.LeftFront.setPower(gamepad1.right_stick_y * MAX_SPEED);
+            robot.LeftBack.setPower(gamepad1.right_stick_y * MAX_SPEED);
+        } else if (gamepad1.right_stick_y <= -0.2) {
+            robot.LeftFront.setPower(gamepad1.right_stick_y * MAX_SPEED);
+            robot.LeftBack.setPower(gamepad1.right_stick_y * MAX_SPEED);
+        } else {
             robot.RightBack.setPower(Rest);
-        }
-
-        if (gamepad1.right_stick_y == -1) {
-            robot.RightFront.setPower(BackSpeed);
-            robot.RightBack.setPower(BackSpeed);
-        } else if (gamepad1.right_stick_y == 0) {
             robot.RightFront.setPower(Rest);
-            robot.RightBack.setPower(Rest);
         }
 
         if (gamepad1.dpad_left == true) {

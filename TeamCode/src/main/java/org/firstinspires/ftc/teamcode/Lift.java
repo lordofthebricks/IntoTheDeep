@@ -25,7 +25,7 @@ public class Lift {
         private double inches;
 
         public UpLift(double inches){
-            lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             this.inches = inches;
         }
 
@@ -35,6 +35,7 @@ public class Lift {
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
             if (!initialized){
                 lift.setTargetPosition((int) (inches * InchesPerTick));
+                lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 lift.setPower(0.4);
                 initialized = true;
             }
@@ -42,6 +43,7 @@ public class Lift {
             if (lift.getCurrentPosition() < lift.getTargetPosition()){
                 return true;
             }
+            lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             lift.setPower(0);
             return false;
         }
@@ -52,7 +54,7 @@ public class Lift {
         private double inches;
 
         public Downlift(double inches){
-            lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             this.inches = inches;
         }
 
@@ -62,6 +64,7 @@ public class Lift {
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
             if (!initialized){
                 lift.setTargetPosition( -((int) (inches * InchesPerTick)));
+                lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 lift.setPower(0.4);
                 initialized = true;
             }
@@ -69,6 +72,7 @@ public class Lift {
             if (lift.getCurrentPosition() > lift.getTargetPosition()){
                 return true;
             }
+            lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             lift.setPower(0);
             return false;
         }
