@@ -52,6 +52,13 @@ public class RRTeleop extends OpMode {
                     frontSlide.slideIn(22),
                     new InstantAction(() -> robot.Claw.setPosition(180)),
                     frontSlide.slideOut(2)
+
+            ));
+        }
+
+        if (gamepad1.b) {
+            runningActions.add(new SequentialAction(
+
             ));
         }
 
