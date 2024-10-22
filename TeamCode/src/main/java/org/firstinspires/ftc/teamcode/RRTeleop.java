@@ -42,7 +42,7 @@ public class RRTeleop extends OpMode {
         // updated based on gamepads
         if (gamepad1.a) {
             runningActions.add(new SequentialAction(
-                    frontSlide.slideOut(22),
+                    frontSlide.slideOut(20),
                     new InstantAction(() -> robot.Wrist2.setPosition(135)),
                     new InstantAction(() -> robot.Wrist1.setPosition(135)),
                     new InstantAction(() -> robot.Claw.setPosition(135)),
