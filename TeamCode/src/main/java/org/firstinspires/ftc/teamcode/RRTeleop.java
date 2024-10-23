@@ -34,7 +34,7 @@ public class RRTeleop extends OpMode {
     public void init() {
         robot = new hardware();
         robot.init(hardwareMap);
-        frontSlide = new FrontSlide(robot.Arm);
+        frontSlide = new FrontSlide(hardwareMap);
         lift = new Lift(robot.Lift);
     }
 
@@ -45,7 +45,8 @@ public class RRTeleop extends OpMode {
         // updated based on gamepads
         if (gamepad1.a) {
             runningActions.add(new SequentialAction(
-                    frontSlide.slideOut(20),
+                    frontSlide.slideOut(22),
+                    new SleepAction(1000),
                     new InstantAction(() -> robot.Wrist2.setPosition(135)),
                     new InstantAction(() -> robot.Wrist1.setPosition(135)),
                     new InstantAction(() -> robot.Claw.setPosition(135)),
@@ -94,11 +95,11 @@ public class RRTeleop extends OpMode {
         }
         //
         if (gamepad1.right_stick_y >= 0.2) {
-            robot.LeftFront.setPower(gamepad1.right_stick_y * MAX_SPEED);
-            robot.LeftBack.setPower(gamepad1.right_stick_y * MAX_SPEED);
+            robot.RightFront.setPower(gamepad1.right_stick_y * MAX_SPEED);
+            robot.RightBack.setPower(gamepad1.right_stick_y * MAX_SPEED);
         } else if (gamepad1.right_stick_y <= -0.2) {
-            robot.LeftFront.setPower(gamepad1.right_stick_y * MAX_SPEED);
-            robot.LeftBack.setPower(gamepad1.right_stick_y * MAX_SPEED);
+            robot.RightFront.setPower(gamepad1.right_stick_y * MAX_SPEED);
+            robot.RightBack.setPower(gamepad1.right_stick_y * MAX_SPEED);
         } else {
             robot.RightBack.setPower(Rest);
             robot.RightFront.setPower(Rest);

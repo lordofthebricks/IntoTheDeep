@@ -34,7 +34,7 @@ public class Lift {
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
             if (!initialized){
-                lift.setTargetPosition((int) (inches * InchesPerTick));
+                lift.setTargetPosition((int)  (lift.getCurrentPosition() + (inches * InchesPerTick)));
                 lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 lift.setPower(0.4);
                 initialized = true;
@@ -63,7 +63,7 @@ public class Lift {
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
             if (!initialized){
-                lift.setTargetPosition( -((int) (inches * InchesPerTick)));
+                lift.setTargetPosition((int)  (lift.getCurrentPosition() - (inches * InchesPerTick)));
                 lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 lift.setPower(0.4);
                 initialized = true;

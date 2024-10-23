@@ -17,7 +17,7 @@ public class hardware {
     public DcMotor LeftBack;
     public DcMotor RightBack;
     public DcMotor Lift;
-    public DcMotor Arm;
+//    public DcMotor Arm;
     public Servo Bucket;
     public Servo Claw;
     public Servo Wrist1;
@@ -31,17 +31,20 @@ public class hardware {
     LeftBack = hwMp.get(DcMotor.class,"BackL");
     RightBack = hwMp.get(DcMotor.class,"BackR");
     Lift = hwMp.get(DcMotor.class,"Lift");
-    Arm = hwMp.get(DcMotor.class, "Arm");
+//    Arm = hwMp.get(DcMotor.class, "Arm");
     Bucket = hwMp.get(Servo.class, "Bucket");
     Claw = hwMp.get(Servo.class, "Claw");
     Wrist1 = hwMp.get(Servo.class, "Wrist1");
     Wrist2 = hwMp.get(Servo.class, "Wrist2");
 
-    Arm.setDirection(DcMotorSimple.Direction.REVERSE);
+//    Arm.setDirection(DcMotorSimple.Direction.REVERSE);
     Lift.setDirection(DcMotorSimple.Direction.REVERSE);
 
     LeftFront.setDirection(DcMotorSimple.Direction.REVERSE);
-    LeftBack.setDirection(DcMotorSimple.Direction.REVERSE);
+//    LeftBack.setDirection(DcMotorSimple.Direction.REVERSE);
+    RightBack.setDirection(DcMotorSimple.Direction.REVERSE);
+    RightFront.setDirection(DcMotorSimple.Direction.REVERSE);
+
 
     }
 }

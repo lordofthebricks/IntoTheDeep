@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class FrontSlide {
     DcMotor slide;
@@ -13,36 +14,36 @@ public class FrontSlide {
     double MotorTicksPerRotation = 537.7;
     double InchesPerTick = 4.722441 / 537.7;
 
-    public FrontSlide(DcMotor slide){
-        this.slide = slide;
+    public FrontSlide(HardwareMap hwMp) {
+        hwMp.get(DcMotor.class, "Arm");
     }
 
     public class SlideOut implements Action {
         private boolean initialized = false;
         private double inches;
 
-        public SlideOut(double inches){
+        public SlideOut(double inches) {
             slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             this.inches = inches;
         }
 
 
-
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
-            if (!initialized){
-                slide.setTargetPosition((int) (inches * InchesPerTick));
+            if (!initialized) {
+                slide.setTargetPosition((int) (slide.getCurrentPosition() + (inches * InchesPerTick)));
                 slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 slide.setPower(0.4);
                 initialized = true;
             }
 
-            if (slide.getCurrentPosition() < slide.getTargetPosition()){
+            if (slide.getCurrentPosition() < slide.getTargetPosition()) {
                 return true;
+            } else {
+                slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                slide.setPower(0);
+                return false;
             }
-            slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            slide.setPower(0);
-            return false;
         }
     }
 
@@ -50,37 +51,41 @@ public class FrontSlide {
         private boolean initialized = false;
         private double inches;
 
-        public SlideIn(double inches){
+        public SlideIn(double inches) {
             slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             this.inches = inches;
         }
 
 
-
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
-            if (!initialized){
-                slide.setTargetPosition( -((int) (inches * InchesPerTick)));
+            if (!initialized) {
+                slide.setTargetPosition((int) (slide.getCurrentPosition() - (inches * InchesPerTick)));
                 slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 slide.setPower(0.4);
                 initialized = true;
             }
 
-            if (slide.getCurrentPosition() > slide.getTargetPosition()){
+            if (slide.getCurrentPosition() > slide.getTargetPosition()) {
                 return true;
-            }
-            slide.setPower(0);
-            slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            return false;
-        }
-    }
+            } else {
+                slide.setPower(0);
+                slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                return false;
 
+            }
+        }
+
+
+
+
+    }
 
     public Action slideOut(double inches) {
         return new SlideOut(inches);
     }
+
     public Action slideIn(double inches) {
         return new SlideIn(inches);
     }
-
 }
