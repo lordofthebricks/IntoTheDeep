@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class FrontSlide {
@@ -12,10 +13,11 @@ public class FrontSlide {
 
     double WheelInchesPerRotation = 4.72441;
     double MotorTicksPerRotation = 537.7;
-    double InchesPerTick = 4.722441 / 537.7;
+    double InchesPerTick = MotorTicksPerRotation / WheelInchesPerRotation;
 
     public FrontSlide(HardwareMap hwMp) {
-        hwMp.get(DcMotor.class, "Arm");
+        slide = hwMp.get(DcMotor.class, "Arm");
+//        slide.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
     public class SlideOut implements Action {
@@ -31,8 +33,10 @@ public class FrontSlide {
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
             if (!initialized) {
-                slide.setTargetPosition((int) (slide.getCurrentPosition() + (inches * InchesPerTick)));
+                int targetInches = (int) (slide.getCurrentPosition() + (inches * InchesPerTick));
+                slide.setTargetPosition(targetInches);
                 slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                slide.setTargetPosition(targetInches);
                 slide.setPower(0.4);
                 initialized = true;
             }
