@@ -23,11 +23,11 @@ public class RRTeleop extends OpMode {
     private FtcDashboard dash = FtcDashboard.getInstance();
     private List<Action> runningActions = new ArrayList<>();
     private hardware robot;
-    double FrontSpeed = 0.8;
-    double BackSpeed = -0.8;
+    double FrontSpeed = -0.8;
+    double BackSpeed = 0.8;
     double MaxSpeed = 1;
     double Rest = 0;
-    final double MAX_SPEED = 0.8;
+    final double MAX_SPEED = 1;
 
 
     @Override

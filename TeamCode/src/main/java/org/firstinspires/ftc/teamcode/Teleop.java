@@ -15,7 +15,7 @@ public class Teleop extends OpMode {
 
 private hardware robot;
 
-final double MAX_SPEED = 1;
+final double MAX_SPEED = 0.8;
 final double STRAFE_SPEED = 0.6;
 
 double Rest = 0;
