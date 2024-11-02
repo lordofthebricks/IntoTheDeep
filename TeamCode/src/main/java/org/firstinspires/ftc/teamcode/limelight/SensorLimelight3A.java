@@ -101,32 +101,7 @@ public class SensorLimelight3A extends LinearOpMode {
             telemetry.addData("Pipeline", "Index: %d, Type: %s",
                     status.getPipelineIndex(), status.getPipelineType());
 
-            List<LLResultTypes.DetectorResult> results = limelight.getLatestResult().getDetectorResults();
-            for (LLResultTypes.DetectorResult result: results) {
-                double targetOffsetAngle_Vertical = result.getTargetYDegrees();
 
-                // how many degrees back is your limelight rotated from perfectly vertical?
-                double limelightMountAngleDegrees = -39;
-
-                // distance from the center of the Limelight lens to the floor
-                double limelightLensHeightInches = 4;
-
-                // distance from the target to the floor
-                double goalHeightInches = 1.5;
-
-                double angleToGoalDegrees = limelightMountAngleDegrees + targetOffsetAngle_Vertical;
-                double angleToGoalRadians = angleToGoalDegrees * (3.14159 / 180.0);
-
-                //calculate distance
-                double distanceFromLimelightToGoalInches = (goalHeightInches - limelightLensHeightInches) / Math.tan(angleToGoalRadians);
-                double wantedDistance = 5.66;
-                if (distanceFromLimelightToGoalInches >= 5.5 && distanceFromLimelightToGoalInches <= 5.8){
-                   blockColor = result.getClassName();
-                   telemetry.addData("color detected", blockColor);
-                   telemetry.update();
-                }
-
-            }
             }
 
 

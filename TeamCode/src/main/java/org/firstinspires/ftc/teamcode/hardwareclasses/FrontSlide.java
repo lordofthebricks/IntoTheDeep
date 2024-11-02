@@ -46,6 +46,8 @@ public class FrontSlide {
             } else {
                 slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
                 slide.setPower(0);
+                slide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
                 return false;
             }
         }
@@ -64,8 +66,10 @@ public class FrontSlide {
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
             if (!initialized) {
-                slide.setTargetPosition((int) (slide.getCurrentPosition() - (inches * InchesPerTick)));
+                int targetInches = (int) (slide.getCurrentPosition() - (inches * InchesPerTick));
+                slide.setTargetPosition(targetInches);
                 slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                slide.setTargetPosition(targetInches);
                 slide.setPower(0.4);
                 initialized = true;
             }
@@ -75,6 +79,7 @@ public class FrontSlide {
             } else {
                 slide.setPower(0);
                 slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                slide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                 return false;
 
             }

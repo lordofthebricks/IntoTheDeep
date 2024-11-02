@@ -1,12 +1,10 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.hardwareclasses;
 
 import androidx.annotation.NonNull;
 
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.robotcore.hardware.DcMotor;
-
-import org.firstinspires.ftc.teamcode.hardwareclasses.FrontSlide;
 
 public class Lift {
 
@@ -33,9 +31,11 @@ public class Lift {
 
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
-            if (!initialized){
-                lift.setTargetPosition((int)  (lift.getCurrentPosition() + (inches * InchesPerTick)));
+            if (!initialized) {
+                int targetInches = (int) (lift.getCurrentPosition() + (inches * InchesPerTick));
+                lift.setTargetPosition(targetInches);
                 lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                lift.setTargetPosition(targetInches);
                 lift.setPower(0.4);
                 initialized = true;
             }

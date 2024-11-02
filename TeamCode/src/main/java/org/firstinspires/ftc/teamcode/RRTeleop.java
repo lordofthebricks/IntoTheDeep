@@ -6,12 +6,11 @@ import com.acmerobotics.roadrunner.Action;
 import com.acmerobotics.roadrunner.InstantAction;
 import com.acmerobotics.roadrunner.SequentialAction;
 import com.acmerobotics.roadrunner.SleepAction;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.teamcode.hardwareclasses.FrontSlide;
+import org.firstinspires.ftc.teamcode.hardwareclasses.Lift;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,10 @@ public class RRTeleop extends OpMode {
     double BackSpeed = -0.8;
     double MaxSpeed = 1;
     double Rest = 0;
-    final double MAX_SPEED = 0.8;
+    final double MAX_SPEED = 1;
+    private double outInchs = 18;
+    private boolean firstRun = true;
+    private double inInchs = 15.5;
 
 
     @Override
@@ -36,6 +38,8 @@ public class RRTeleop extends OpMode {
         robot.init(hardwareMap);
         frontSlide = new FrontSlide(hardwareMap);
         lift = new Lift(robot.Lift);
+        firstRun = true;
+        outInchs = 19;
     }
 
     @Override
@@ -44,18 +48,26 @@ public class RRTeleop extends OpMode {
 
         // updated based on gamepads
         if (gamepad1.a) {
+            if(!firstRun){
+                outInchs= 16;
+            }
+            firstRun = false;
             runningActions.add(new SequentialAction(
-                    frontSlide.slideOut(18),
+                    frontSlide.slideOut(outInchs),
 
-                    new InstantAction(() -> robot.Wrist2.setPosition(135)),
-                    new InstantAction(() -> robot.Wrist1.setPosition(135)),
-                    new InstantAction(() -> robot.Claw.setPosition(135)),
-                    new SleepAction(0.25),
-                    new InstantAction(() -> robot.Claw.setPosition(260)),
-                    new InstantAction(() -> robot.Wrist2.setPosition(20)),
-                    frontSlide.slideIn(22),
-                    new InstantAction(() -> robot.Claw.setPosition(180)),
-                    frontSlide.slideOut(2)
+                    new InstantAction(() -> robot.Wrist2.setPosition(0.5)),
+                    new InstantAction(() -> robot.Wrist1.setPosition(0.5)),
+                    new InstantAction(() -> robot.Claw.setPosition(0.8)),
+                    new SleepAction(1),
+                    new InstantAction(() -> robot.Claw.setPosition(0.5)),
+                    new SleepAction(0.5),
+                    new InstantAction(() -> robot.Wrist2.setPosition(0.05)),
+                    new InstantAction(()-> robot.Wrist1.setPosition(0.2)),
+                    new SleepAction(0.5),
+                    frontSlide.slideIn(inInchs),
+                    new InstantAction(() -> robot.Claw.setPosition(0.70))
+//                    frontSlide.slideOut(2)
+
 
             ));
         }
