@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Lift {
 
@@ -13,6 +14,8 @@ public class Lift {
     double WheelInchesPerRotation = 4.72441;
     double MotorTicksPerRotation = 537.7;
     double InchesPerTick = 4.722441 / 537.7;
+
+    public Lift(HardwareMap hwMp) {hwMp.get(DcMotor.class, "Lift");}
 
     public Lift(DcMotor slide){
         this.lift = slide;
