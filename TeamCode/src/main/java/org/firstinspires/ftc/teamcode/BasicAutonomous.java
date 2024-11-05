@@ -49,6 +49,7 @@ public class BasicAutonomous extends LinearOpMode{
 
 
         //create strings of movements like this. Make sure to include
+        //create more if needed
         Action movement1 = drive.actionBuilder(initialPose)
 
                 .build();
