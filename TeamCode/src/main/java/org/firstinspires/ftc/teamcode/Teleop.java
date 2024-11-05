@@ -63,7 +63,7 @@ double Rest = 0;
 
         //simple tank drive
 //        robot.LeftBack.setPower(gamepad1.left_stick_y);
-//        robot.LeftFront.setPower(gamepad1.left_stick_y);
+//        robot.leftFront.setPower(gamepad1.left_stick_y);
 //        robot.RightBack.setPower(gamepad1.right_stick_y);
 //        robot.RightFront.setPower(gamepad1.right_stick_y);
 

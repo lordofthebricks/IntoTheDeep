@@ -75,9 +75,5 @@ public class B1BasketObservation extends LinearOpMode{
 
         );
 
-
-
-
-
     }
 }
