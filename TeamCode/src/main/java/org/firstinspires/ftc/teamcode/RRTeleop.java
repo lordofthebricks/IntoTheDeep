@@ -9,6 +9,7 @@ import com.acmerobotics.roadrunner.SleepAction;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+import org.firstinspires.ftc.teamcode.hardwareclasses.Claw;
 import org.firstinspires.ftc.teamcode.hardwareclasses.FrontSlide;
 import org.firstinspires.ftc.teamcode.hardwareclasses.Lift;
 
@@ -19,6 +20,7 @@ public class RRTeleop extends OpMode {
 
     FrontSlide frontSlide;
     Lift lift;
+    Claw claw;
     private FtcDashboard dash = FtcDashboard.getInstance();
     private List<Action> runningActions = new ArrayList<>();
     private hardware robot;
@@ -40,6 +42,7 @@ public class RRTeleop extends OpMode {
         lift = new Lift(hardwareMap);
         firstRun = true;
         outInchs = 14;
+        claw = new Claw(hardwareMap);
     }
 
     @Override
@@ -54,15 +57,12 @@ public class RRTeleop extends OpMode {
             firstRun = false;
             runningActions.add(new SequentialAction(
                     frontSlide.slideOut(outInchs),
-                    new InstantAction(() -> robot.Wrist2.setPosition(0.5)),
-                    new InstantAction(() -> robot.Wrist1.setPosition(0.5)),
-                    new InstantAction(() -> robot.Claw.setPosition(0.8)),
+                    claw.ReadyToGrab(),
                     frontSlide.slideOut( 4),
                     new SleepAction(1),
-                    new InstantAction(() -> robot.Claw.setPosition(0.5)),
+                    claw.Grab(),
                     new SleepAction(0.5),
-                    new InstantAction(() -> robot.Wrist2.setPosition(0.05)),
-                    new InstantAction(()-> robot.Wrist1.setPosition(0.2)),
+                    claw.BringUp(),
                     new SleepAction(0.5),
                     frontSlide.slideIn(inInchs),
                     new InstantAction(() -> robot.Claw.setPosition(0.70))
