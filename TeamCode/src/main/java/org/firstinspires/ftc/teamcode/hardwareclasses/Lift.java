@@ -19,7 +19,7 @@ public class Lift {
 
     public Lift(HardwareMap hwMp) {
         hwMp.get(DcMotor.class, "Lift");
-//        lift.setDirection(DcMotorSimple.Direction.REVERSE);
+       // lift.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
 
