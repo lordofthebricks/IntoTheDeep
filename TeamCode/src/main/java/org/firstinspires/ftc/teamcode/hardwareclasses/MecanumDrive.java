@@ -126,7 +126,7 @@ public final class MecanumDrive {
     private final DownsampledWriter mecanumCommandWriter = new DownsampledWriter("MECANUM_COMMAND", 50_000_000);
 
     public class DriveLocalizer implements Localizer {
-        public final Encoder leftFront, leftBack, rightBack, rightFront;
+        public final Encoder LeftFront, leftBack, rightBack, rightFront;
         public final IMU imu;
 
         private int lastLeftFrontPos, lastLeftBackPos, lastRightBackPos, lastRightFrontPos;
@@ -134,7 +134,7 @@ public final class MecanumDrive {
         private boolean initialized;
 
         public DriveLocalizer() {
-            leftFront = new OverflowEncoder(new RawEncoder(MecanumDrive.this.leftFront));
+            LeftFront = new OverflowEncoder(new RawEncoder(MecanumDrive.this.leftFront));
             leftBack = new OverflowEncoder(new RawEncoder(MecanumDrive.this.leftBack));
             rightBack = new OverflowEncoder(new RawEncoder(MecanumDrive.this.rightBack));
             rightFront = new OverflowEncoder(new RawEncoder(MecanumDrive.this.rightFront));
@@ -142,12 +142,12 @@ public final class MecanumDrive {
             imu = lazyImu.get();
 
             // TODO: reverse encoders if needed
-            //   leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
+            //   LeftFront.setDirection(DcMotorSimple.Direction.REVERSE);
         }
 
         @Override
         public Twist2dDual<Time> update() {
-            PositionVelocityPair leftFrontPosVel = leftFront.getPositionAndVelocity();
+            PositionVelocityPair leftFrontPosVel = LeftFront.getPositionAndVelocity();
             PositionVelocityPair leftBackPosVel = leftBack.getPositionAndVelocity();
             PositionVelocityPair rightBackPosVel = rightBack.getPositionAndVelocity();
             PositionVelocityPair rightFrontPosVel = rightFront.getPositionAndVelocity();
@@ -220,7 +220,7 @@ public final class MecanumDrive {
 
         // TODO: make sure your config has motors with these names (or change them)
         //   see https://ftc-docs.firstinspires.org/en/latest/hardware_and_software_configuration/configuring/index.html
-        leftFront = hardwareMap.get(DcMotorEx.class, "leftFront");
+        leftFront = hardwareMap.get(DcMotorEx.class, "LeftFront");
         leftBack = hardwareMap.get(DcMotorEx.class, "leftBack");
         rightBack = hardwareMap.get(DcMotorEx.class, "rightBack");
         rightFront = hardwareMap.get(DcMotorEx.class, "rightFront");
