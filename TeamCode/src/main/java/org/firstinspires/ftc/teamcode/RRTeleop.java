@@ -49,7 +49,7 @@ public class RRTeleop extends OpMode {
         // updated based on gamepads
         if (gamepad1.a) {
             if(!firstRun){
-                outInchs= 16;
+                outInchs = 16;
             }
             firstRun = false;
             runningActions.add(new SequentialAction(
@@ -75,7 +75,7 @@ public class RRTeleop extends OpMode {
         if (gamepad1.b) {
             runningActions.add(new SequentialAction(
                     lift.upLift(48),
-                    new InstantAction(() -> robot.Bucket.setPosition(135)),
+                    new InstantAction(() -> robot.Bucket.setPosition(1)),
                     new SleepAction(0.5),
                     new InstantAction(() -> robot.Bucket.setPosition(0)),
                     new SleepAction(0.5),

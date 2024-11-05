@@ -13,7 +13,8 @@ public class Lift {
 
     double WheelInchesPerRotation = 4.72441;
     double MotorTicksPerRotation = 537.7;
-    double InchesPerTick = 4.722441 / 537.7;
+    double InchesPerTick = MotorTicksPerRotation / WheelInchesPerRotation;
+
 
     public Lift(HardwareMap hwMp) {hwMp.get(DcMotor.class, "Lift");}
 
@@ -43,10 +44,13 @@ public class Lift {
 
             if (lift.getCurrentPosition() < lift.getTargetPosition()){
                 return true;
+            } else {
+                lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                lift.setPower(0);
+                lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+                return false;
             }
-            lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            lift.setPower(0);
-            return false;
         }
     }
 
@@ -64,8 +68,10 @@ public class Lift {
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
             if (!initialized){
-                lift.setTargetPosition((int)  (lift.getCurrentPosition() - (inches * InchesPerTick)));
+                int targetInches = (int) (lift.getCurrentPosition() - (inches * InchesPerTick));
+                lift.setTargetPosition(targetInches);
                 lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                lift.setTargetPosition(targetInches);
                 lift.setPower(0.4);
                 initialized = true;
             }
@@ -73,8 +79,9 @@ public class Lift {
             if (lift.getCurrentPosition() > lift.getTargetPosition()){
                 return true;
             }
-            lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             lift.setPower(0);
+            lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             return false;
         }
     }
