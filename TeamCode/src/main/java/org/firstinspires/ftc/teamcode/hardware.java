@@ -17,7 +17,7 @@ public class hardware {
     public DcMotor LeftBack;
     public DcMotor RightBack;
     public DcMotor Lift;
-//    public DcMotor Arm;
+    public DcMotor Arm;
     public Servo Bucket;
     public Servo Claw;
     public Servo Wrist1;
@@ -31,7 +31,7 @@ public class hardware {
     LeftBack = hwMp.get(DcMotor.class,"BackL");
     RightBack = hwMp.get(DcMotor.class,"BackR");
     Lift = hwMp.get(DcMotor.class,"Lift");
-//    Arm = hwMp.get(DcMotor.class, "Arm");
+    Arm = hwMp.get(DcMotor.class, "Arm");
     Bucket = hwMp.get(Servo.class, "Bucket");
     Claw = hwMp.get(Servo.class, "Claw");
     Wrist1 = hwMp.get(Servo.class, "Wrist1");

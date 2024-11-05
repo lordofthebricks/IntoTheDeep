@@ -141,6 +141,24 @@ public class RRTeleop extends OpMode {
             robot.RightFront.setPower(Rest);
             robot.RightBack.setPower(Rest);
         }
+
+        if (gamepad1.left_trigger == 1) {
+            robot.Arm.setPower(.5);
+        } else if (gamepad1.left_trigger == 0) {
+            robot.Arm.setPower(0);
+        }
+
+        if (gamepad1.right_trigger == -1) {
+            robot.Arm.setPower(-0.5);
+        } else if (gamepad1.right_trigger == 0) {
+            robot.Arm.setPower(0);
+        }
+
+        if (gamepad1.left_bumper == true) {
+            robot.Wrist1.setPosition(0.5);
+            robot.Wrist2.setPosition(0.5);
+            robot.Claw.setPosition(0.8);
+        }
     }
 
 }
