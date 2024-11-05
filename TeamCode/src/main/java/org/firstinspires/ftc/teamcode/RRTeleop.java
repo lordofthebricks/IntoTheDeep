@@ -31,7 +31,7 @@ public class RRTeleop extends OpMode {
     final double MAX_SPEED = 1;
     private double outInchs = 18;
     private boolean firstRun = true;
-    private double inInchs = 15.5;
+    private double inInchs = 16;
 
 
     @Override
@@ -41,7 +41,7 @@ public class RRTeleop extends OpMode {
         frontSlide = new FrontSlide(hardwareMap);
         lift = new Lift(hardwareMap);
         firstRun = true;
-        outInchs = 14;
+        outInchs = 18;
         claw = new Claw(hardwareMap);
     }
 
@@ -52,13 +52,13 @@ public class RRTeleop extends OpMode {
         // updated based on gamepads
         if (gamepad1.a) {
             if(!firstRun){
-                outInchs = 12;
+                outInchs = 16;
             }
             firstRun = false;
             runningActions.add(new SequentialAction(
                     frontSlide.slideOut(outInchs),
                     claw.ReadyToGrab(),
-                    frontSlide.slideOut( 4),
+//                    frontSlide.slideOut( 4),
                     new SleepAction(1),
                     claw.Grab(),
                     new SleepAction(0.5),
