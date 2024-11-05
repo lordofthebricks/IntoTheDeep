@@ -31,7 +31,7 @@ public class RRTeleop extends OpMode {
     final double MAX_SPEED = 1;
     private double outInchs = 18;
     private boolean firstRun = true;
-    private double inInchs = 15.5;
+    private double inInchs = 16;
 
 
     @Override
