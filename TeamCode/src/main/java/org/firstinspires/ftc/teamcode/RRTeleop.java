@@ -54,7 +54,6 @@ public class RRTeleop extends OpMode {
             firstRun = false;
             runningActions.add(new SequentialAction(
                     frontSlide.slideOut(outInchs),
-
                     new InstantAction(() -> robot.Wrist2.setPosition(0.5)),
                     new InstantAction(() -> robot.Wrist1.setPosition(0.5)),
                     new InstantAction(() -> robot.Claw.setPosition(0.8)),
