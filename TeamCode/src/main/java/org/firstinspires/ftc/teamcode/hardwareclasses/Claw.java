@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
+import com.acmerobotics.roadrunner.InstantAction;
 import com.qualcomm.hardware.limelightvision.LLResultTypes;
 import com.qualcomm.hardware.limelightvision.Limelight3A;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -28,14 +29,59 @@ public class Claw {
     }
 
 
+    public class ReadyToGrab implements Action {
+
+        boolean initialized = false;
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            if (!initialized) {
+                Wrist1.setPosition(0.5);
+                Wrist2.setPosition(0.5);
+                Claw.setPosition(0.8);
+                initialized = true;
+            }
+
+
+            // returns true if all the servos are not at their correct positions
+            return (Wrist1.getPosition() != 0.5 || Wrist2.getPosition() != 0.5 || Claw.getPosition() != 0.8);
+        }
+    }
+
+    public class Grab implements Action {
+        boolean initialized = false;
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            if( !initialized) {
+                Claw.setPosition(0.5);
+                initialized = true;
+            }
+
+            return (Claw.getPosition() != 0.5);
+        }
+    }
+
+    public class BringUp implements Action {
+        boolean initialized = false;
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            if( !initialized) {
+                Wrist2.setPosition(0.05);
+                Wrist1.setPosition(0.2);
+                initialized = true;
+            }
+
+            return (Wrist1.getPosition() != 0.2 || Wrist2.getPosition() != 0.05);
+        }
+    }
+
     public class llGrab implements Action {
-        private boolean initialized = false;
+
 
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
-            if (!initialized) {
 
-                initialized = true;
+
+
                 limelight3A.pipelineSwitch(0);
                 LLResultTypes.DetectorResult result = getDistanceToTarget("Yellow");
                 if (result != null) {
@@ -80,18 +126,21 @@ public class Claw {
 
 
 
-            }
+
 
             return false;
         }
     }
 
-    public Action spinUp() {
+    public Action LLGrab() {
         return new llGrab();
     }
 
+    public Action Grab(){ return  new Grab();}
 
+    public Action ReadyToGrab() { return new ReadyToGrab();}
 
+    public Action BringUp() { return new BringUp();}
 
     public LLResultTypes.DetectorResult getDistanceToTarget(String color){
         List<LLResultTypes.DetectorResult> results = limelight3A.getLatestResult().getDetectorResults();
