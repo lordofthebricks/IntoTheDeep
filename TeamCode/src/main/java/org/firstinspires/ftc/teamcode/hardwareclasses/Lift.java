@@ -17,9 +17,7 @@ public class Lift {
 
     public Lift(HardwareMap hwMp) {hwMp.get(DcMotor.class, "Lift");}
 
-    public Lift(DcMotor slide){
-        this.lift = slide;
-    }
+
 
     public class UpLift implements Action {
         private boolean initialized = false;

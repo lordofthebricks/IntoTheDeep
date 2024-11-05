@@ -37,7 +37,7 @@ public class RRTeleop extends OpMode {
         robot = new hardware();
         robot.init(hardwareMap);
         frontSlide = new FrontSlide(hardwareMap);
-        lift = new Lift(robot.Lift);
+        lift = new Lift(hardwareMap);
         firstRun = true;
         outInchs = 19;
     }

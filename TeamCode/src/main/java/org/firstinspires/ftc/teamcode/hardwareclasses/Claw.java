@@ -6,22 +6,23 @@ import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.hardware.limelightvision.LLResultTypes;
 import com.qualcomm.hardware.limelightvision.Limelight3A;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import java.util.List;
 
 public class Claw {
     private Limelight3A limelight3A;
-    private Servo wrist1;
-    private Servo wrist2;
+    private Servo Wrist1;
+    private Servo Wrist2;
     private Servo Claw;
 
 
-    public Claw(Limelight3A limelight3A, Servo wrist1, Servo wrist2, Servo claw) {
-        this.limelight3A = limelight3A;
-        this.wrist1 = wrist1;
-        this.wrist2 = wrist2;
-        Claw = claw;
+    public Claw(HardwareMap hwMap) {
+        limelight3A = hwMap.get(Limelight3A.class, "LL3A");
+        Claw = hwMap.get(Servo.class, "Claw");
+        Wrist1 = hwMap.get(Servo.class, "Wrist1");
+        Wrist2 = hwMap.get(Servo.class, "Wrist2");
 
 
     }
@@ -72,7 +73,7 @@ public class Claw {
                             targetAngle = 0.5 + (Math.atan2(c1c2YOffset,c1c2XOffset) * (1/300)) ;
                         }
                     }
-                    wrist1.setPosition(targetAngle);
+                    Wrist1.setPosition(targetAngle);
                     Claw.setPosition(0.8);
                 }
 
