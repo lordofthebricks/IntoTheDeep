@@ -39,7 +39,7 @@ public class RRTeleop extends OpMode {
         frontSlide = new FrontSlide(hardwareMap);
         lift = new Lift(hardwareMap);
         firstRun = true;
-        outInchs = 12;
+        outInchs = 14;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class RRTeleop extends OpMode {
         // updated based on gamepads
         if (gamepad1.a) {
             if(!firstRun){
-                outInchs = 10;
+                outInchs = 12;
             }
             firstRun = false;
             runningActions.add(new SequentialAction(
@@ -57,7 +57,7 @@ public class RRTeleop extends OpMode {
                     new InstantAction(() -> robot.Wrist2.setPosition(0.5)),
                     new InstantAction(() -> robot.Wrist1.setPosition(0.5)),
                     new InstantAction(() -> robot.Claw.setPosition(0.8)),
-                    frontSlide.slideOut( 6),
+                    frontSlide.slideOut( 4),
                     new SleepAction(1),
                     new InstantAction(() -> robot.Claw.setPosition(0.5)),
                     new SleepAction(0.5),
