@@ -33,8 +33,10 @@ public class B1BasketObservation extends LinearOpMode{
     @Override
     public void runOpMode() {
 
+        waitForStart();
+
         // instantiate your MecanumDrive at a particular pose.
-        Pose2d initialPose = new Pose2d(36, 61.7, Math.toRadians(90));
+        Pose2d initialPose = new Pose2d(38, 56, Math.toRadians(0));
         MecanumDrive drive = new MecanumDrive(hardwareMap, initialPose);
 
         // make a Claw instance
@@ -49,22 +51,25 @@ public class B1BasketObservation extends LinearOpMode{
 
         Action movement1 = drive.actionBuilder(initialPose)
                 .lineToX(56)
-                .lineToX(-56)
 
                 .build();
-
-        waitForStart();
 
         Actions.runBlocking(
                 new SequentialAction(
                         movement1,
-                        slide.slideOut(48),
+                        slide.slideOut(18),
                         new InstantAction(() -> robot.Claw.setPosition(0)),
-                        lift.upLift(12),
-                        new InstantAction(() -> robot.Bucket.setPosition(0))
+                        lift.upLift(48),
+                        new InstantAction(() -> robot.Bucket.setPosition(0)),
+                        lift.downLift(48)
                 )
 
         );
+
+        Action movement2 = drive.actionBuilder(initialPose)
+                .lineToX(-56)
+
+                .build();
 
         if (isStopRequested()) return;
 
