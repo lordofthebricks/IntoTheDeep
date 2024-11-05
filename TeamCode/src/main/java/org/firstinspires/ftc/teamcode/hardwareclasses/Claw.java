@@ -136,7 +136,7 @@ public class Claw {
         return new llGrab();
     }
 
-    public Action Grab(){ return  new Grab();}
+    public Action Grab(){ return new Grab();}
 
     public Action ReadyToGrab() { return new ReadyToGrab();}
 
