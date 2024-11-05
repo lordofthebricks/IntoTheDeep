@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
+import com.acmerobotics.roadrunner.InstantAction;
 import com.acmerobotics.roadrunner.Pose2d;
 import com.acmerobotics.roadrunner.SequentialAction;
 import com.acmerobotics.roadrunner.Trajectory;
@@ -46,11 +47,24 @@ public class B1BasketObservation extends LinearOpMode{
 
         hardware robot = new hardware();
 
-        TrajectoryActionBuilder tab1 = drive.actionBuilder(initialPose)
-                .lineToYSplineHeading(33, Math.toRadians(0))
-                .waitSeconds(2);
+        Action movement1 = drive.actionBuilder(initialPose)
+                .lineToX(56)
+                .lineToX(-56)
+
+                .build();
 
         waitForStart();
+
+        Actions.runBlocking(
+                new SequentialAction(
+                        movement1,
+                        slide.slideOut(48),
+                        new InstantAction(() -> robot.Claw.setPosition(0)),
+                        lift.upLift(12),
+                        new InstantAction(() -> robot.Bucket.setPosition(0))
+                )
+
+        );
 
         if (isStopRequested()) return;
 

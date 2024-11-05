@@ -13,12 +13,9 @@ public class MeepMeepTesting {
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 15)
                 .build();
-
         myBot.runAction(myBot.getDrive().actionBuilder(new Pose2d(38, 56, 0))
-                .turnTo(180)
-                .lineToX(-30)
-                //.turn(Math.toRadians(90))
-                //.lineToY(30)
+                .lineToX(56)
+                .lineToX(-56)
                //.turn(Math.toRadians(90))
                //.lineToX(0)
                 //.turn(Math.toRadians(90))
