@@ -26,6 +26,8 @@ public class hardware {
 
     public void init(@NonNull HardwareMap hwMp) {
 
+
+
     LeftFront = hwMp.get(DcMotor.class,"FrontL");
     RightFront = hwMp.get(DcMotor.class,"FrontR");
     LeftBack = hwMp.get(DcMotor.class,"BackL");
@@ -44,6 +46,9 @@ public class hardware {
 //    LeftBack.setDirection(DcMotorSimple.Direction.REVERSE);
     RightBack.setDirection(DcMotorSimple.Direction.REVERSE);
     RightFront.setDirection(DcMotorSimple.Direction.REVERSE);
+
+        Lift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
 
 
     }

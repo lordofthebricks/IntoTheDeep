@@ -142,23 +142,50 @@ public class RRTeleop extends OpMode {
             robot.RightBack.setPower(Rest);
         }
 
-        if (gamepad1.left_trigger == 1) {
+        if (gamepad2.left_trigger == 1) {
             robot.Arm.setPower(.5);
-        } else if (gamepad1.left_trigger == 0) {
-            robot.Arm.setPower(0);
-        }
-
-        if (gamepad1.right_trigger == -1) {
+        } else if (gamepad2.right_trigger == 1) {
             robot.Arm.setPower(-0.5);
-        } else if (gamepad1.right_trigger == 0) {
+        } else {
             robot.Arm.setPower(0);
         }
 
-        if (gamepad1.left_bumper == true) {
+        if (gamepad2.a == true) {
             robot.Wrist1.setPosition(0.5);
             robot.Wrist2.setPosition(0.5);
             robot.Claw.setPosition(0.8);
         }
-    }
 
-}
+        if (gamepad2.b == true) {
+            robot.Claw.setPosition(0.5);
+        }
+
+        if (gamepad2.x == true) {
+            robot.Wrist2.setPosition(0.01);
+            robot.Wrist1.setPosition(0.2);
+        }
+
+        if (gamepad2.y == true) {
+            robot.Claw.setPosition(0.8);
+        }
+
+        if (gamepad2.left_bumper == true) {
+            robot.Lift.setPower(0.5);
+        } else if (gamepad2.right_bumper == true) {
+            robot.Lift.setPower(-0.5);
+        } else {
+            robot.Lift.setPower(0.05);
+        }
+
+        if (gamepad2.dpad_up == true) {
+            robot.Bucket.setPosition(0);
+        }
+        if (gamepad2.dpad_down == true) {
+            robot.Bucket.setPosition(0.5);
+        }
+
+        }
+
+        }
+
+
