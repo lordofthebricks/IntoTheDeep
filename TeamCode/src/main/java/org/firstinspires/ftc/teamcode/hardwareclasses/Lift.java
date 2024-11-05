@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Lift {
@@ -16,7 +17,10 @@ public class Lift {
     double InchesPerTick = MotorTicksPerRotation / WheelInchesPerRotation;
 
 
-    public Lift(HardwareMap hwMp) {hwMp.get(DcMotor.class, "Lift");}
+    public Lift(HardwareMap hwMp) {
+        hwMp.get(DcMotor.class, "Lift");
+//        lift.setDirection(DcMotorSimple.Direction.REVERSE);
+    }
 
 
 
