@@ -28,7 +28,7 @@ public class RRTeleop extends OpMode {
     double BackSpeed = -0.8;
     double MaxSpeed = 1;
     double Rest = 0;
-    final double MAX_SPEED = 1;
+    final double MAX_SPEED = 0.8;
     private double outInchs = 18;
     private boolean firstRun = true;
     private double inInchs = 16;
