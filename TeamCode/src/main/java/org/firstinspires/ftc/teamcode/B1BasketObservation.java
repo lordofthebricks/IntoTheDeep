@@ -58,9 +58,8 @@ public class B1BasketObservation extends LinearOpMode{
 
                 .build();
 
-
+        robot.init(hardwareMap);
         waitForStart();
-
         if (isStopRequested()) return;
 
         Actions.runBlocking(
@@ -74,6 +73,10 @@ public class B1BasketObservation extends LinearOpMode{
                 )
 
         );
+
+
+
+
 
     }
 }
