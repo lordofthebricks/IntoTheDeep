@@ -47,9 +47,12 @@ public class hardware {
     RightBack.setDirection(DcMotorSimple.Direction.REVERSE);
     RightFront.setDirection(DcMotorSimple.Direction.REVERSE);
 
-        Lift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    Lift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-
+    LeftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    LeftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    RightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    RightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
     }
 }
