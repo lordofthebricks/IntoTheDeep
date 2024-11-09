@@ -51,9 +51,6 @@ public class B1BasketObservation extends LinearOpMode{
 
         Action movement1 = drive.actionBuilder(initialPose)
                 .lineToX(56)
-
-                .build();
-        Action movement2 = drive.actionBuilder(initialPose)
                 .lineToX(-56)
 
                 .build();

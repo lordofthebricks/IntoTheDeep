@@ -179,7 +179,7 @@ public class RRTeleop extends OpMode {
         }
 
         if (gamepad2.left_trigger == 1) {
-            robot.Arm.setPower(.5);
+            robot.Arm.setPower(0.5);
         } else if (gamepad2.left_bumper == true) {
             robot.Arm.setPower(-0.5);
         } else {
