@@ -64,16 +64,19 @@ public class B1BasketObservation extends LinearOpMode{
 
         Actions.runBlocking(
                 new SequentialAction(
-                        movement1,
-                        slide.slideOut(18),
-                        new InstantAction(() -> robot.Claw.setPosition(0)),
-                        lift.upLift(48),
-                        new InstantAction(() -> robot.Bucket.setPosition(0)),
-                        lift.downLift(48)
-                )
+                      //  movement1,
+                      //  slide.slideOut(18),
+                      //  new InstantAction(() -> robot.Claw.setPosition(0)),
+                        //new InstantAction(() -> robot.Lift.setPower(0.5)),
+                        //new InstantAction(() -> robot.Lift.setPower(sleep(3000);)),
+                        //lift.upLift(48),
+                        //new InstantAction(() -> robot.Bucket.setPosition(0))
 
+
+                )
         );
 
+        //robot.init(hardwareMap);
 
 
 
