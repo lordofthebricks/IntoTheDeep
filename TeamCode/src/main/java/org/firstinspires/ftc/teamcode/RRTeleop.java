@@ -52,7 +52,7 @@ public class RRTeleop extends OpMode {
         TelemetryPacket packet = new TelemetryPacket();
 
         // updated based on gamepads
-        if (gamepad1.a) {
+     /*   if (gamepad1.a) {
             if(!firstRun){
                 outInchs = 16;
             }
@@ -83,7 +83,7 @@ public class RRTeleop extends OpMode {
                     new SleepAction(0.5),
                     lift.downLift(48)
             ));
-        }
+        } */
 
         // update running actions
         List<Action> newActions = new ArrayList<>();
@@ -197,7 +197,7 @@ public class RRTeleop extends OpMode {
         }
 
         if (gamepad2.x == true) {
-            robot.Wrist2.setPosition(0.01);
+            robot.Wrist2.setPosition(0.05);
             robot.Wrist1.setPosition(0.2);
         }
 
@@ -221,16 +221,16 @@ public class RRTeleop extends OpMode {
         }
 
         if (gamepad2.left_stick_y == 1) {
-            WristPosition1 = WristPosition1 + 0.01;
+            WristPosition1 = WristPosition1 + 0.001;
             robot.Wrist1.setPosition(WristPosition1);
         } else if (gamepad2.left_stick_y == -1) {
-            WristPosition1 = WristPosition1 - 0.01;
+            WristPosition1 = WristPosition1 - 0.001;
             robot.Wrist1.setPosition(WristPosition1);
         } else if (gamepad2.left_stick_x == 1) {
-            WristPosition2 = WristPosition2 + 0.01;
+            WristPosition2 = WristPosition2 + 0.001;
             robot.Wrist2.setPosition(WristPosition2);
         } else if (gamepad2.left_stick_x == -1) {
-            WristPosition2 = WristPosition2 -0.01;
+            WristPosition2 = WristPosition2 -0.001;
             robot.Wrist2.setPosition(WristPosition2);
         }
 
