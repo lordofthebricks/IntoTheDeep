@@ -25,8 +25,8 @@ public class RRTeleop extends OpMode {
     private FtcDashboard dash = FtcDashboard.getInstance();
     private List<Action> runningActions = new ArrayList<>();
     private hardware robot;
-    double FrontSpeed = 0.8;
-    double BackSpeed = -0.8;
+    double FrontSpeed = 1;
+    double BackSpeed = -1;
     double MaxSpeed = 1;
     double Rest = 0;
     final double MAX_SPEED = 1;
@@ -129,11 +129,6 @@ public class RRTeleop extends OpMode {
             robot.LeftBack.setPower(-BackSpeed);
             robot.RightFront.setPower(-BackSpeed);
             robot.RightBack.setPower(-FrontSpeed);
-        } else {
-            robot.LeftFront.setPower(Rest);
-            robot.LeftBack.setPower(Rest);
-            robot.RightFront.setPower(Rest);
-            robot.RightBack.setPower(Rest);
         }
 
 
@@ -142,11 +137,6 @@ public class RRTeleop extends OpMode {
             robot.LeftBack.setPower(-FrontSpeed);
             robot.RightFront.setPower(-FrontSpeed);
             robot.RightBack.setPower(-BackSpeed);
-        } else if (gamepad1.dpad_left == false) {
-            robot.LeftFront.setPower(Rest);
-            robot.LeftBack.setPower(Rest);
-            robot.RightFront.setPower(Rest);
-            robot.RightBack.setPower(Rest);
         }
 
         if (gamepad1.dpad_right == true) {
@@ -154,11 +144,6 @@ public class RRTeleop extends OpMode {
             robot.LeftBack.setPower(-BackSpeed);
             robot.RightFront.setPower(-BackSpeed);
             robot.RightBack.setPower(-FrontSpeed);
-        } else if (gamepad1.dpad_right == false) {
-            robot.LeftFront.setPower(Rest);
-            robot.LeftBack.setPower(Rest);
-            robot.RightFront.setPower(Rest);
-            robot.RightBack.setPower(Rest);
         }
 
         if (gamepad1.dpad_up == true) {
@@ -171,11 +156,6 @@ public class RRTeleop extends OpMode {
             robot.LeftBack.setPower(BackSpeed);
             robot.RightFront.setPower(BackSpeed);
             robot.RightBack.setPower(BackSpeed);
-        } else {
-            robot.LeftFront.setPower(Rest);
-            robot.LeftBack.setPower(Rest);
-            robot.RightFront.setPower(Rest);
-            robot.RightBack.setPower(Rest);
         }
 
         if (gamepad2.left_trigger == 1) {
