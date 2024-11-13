@@ -1,6 +1,7 @@
 package com.example.meepmeeptesting;
 
 import com.acmerobotics.roadrunner.Pose2d;
+import com.acmerobotics.roadrunner.Vector2d;
 import com.noahbres.meepmeep.MeepMeep;
 import com.noahbres.meepmeep.roadrunner.DefaultBotBuilder;
 import com.noahbres.meepmeep.roadrunner.entity.RoadRunnerBotEntity;
@@ -15,7 +16,11 @@ public class MeepMeepTesting {
                 .build();
         myBot.runAction(myBot.getDrive().actionBuilder(new Pose2d(38, 56, 0))
                 .lineToX(56)
-                .lineToX(-56)
+                        .turn(Math.toRadians(45))
+                        .turn(-Math.toRadians(45))
+                        .lineToX(-56)
+                                .turn(-Math.toRadians(90))
+
                //.turn(Math.toRadians(90))
                //.lineToX(0)
                 //.turn(Math.toRadians(90))
@@ -23,7 +28,7 @@ public class MeepMeepTesting {
                 //.turn(Math.toRadians(90))
                 .build());
 
-        meepMeep.setBackground(MeepMeep.Background.FIELD_POWERPLAY_OFFICIAL)
+        meepMeep.setBackground(MeepMeep.Background.FIELD_INTO_THE_DEEP_JUICE_LIGHT)
                 .setDarkMode(true)
                 .setBackgroundAlpha(0.95f)
                 .addEntity(myBot)

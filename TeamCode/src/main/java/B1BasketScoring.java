@@ -1,6 +1,8 @@
 package org.firstinspires.ftc.teamcode;
 
 //RR specific imports
+import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
+
 import androidx.annotation.NonNull;
 
 import com.acmerobotics.dashboard.config.Config;
@@ -28,61 +30,41 @@ import org.firstinspires.ftc.teamcode.hardwareclasses.MecanumDrive;
 
 @Config
 @Autonomous(name = "B1_Basket_Observation", group = "Autonomous")
-public class B1BasketObservation extends LinearOpMode{
+
+public class B1BasketScoring extends LinearOpMode{
 
     @Override
     public void runOpMode() {
 
-
-
-        // instantiate your MecanumDrive at a particular pose.
         Pose2d initialPose = new Pose2d(38, 56, Math.toRadians(0));
         MecanumDrive drive = new MecanumDrive(hardwareMap, initialPose);
 
-        // make a Claw instance
         Claw claw = new Claw(hardwareMap);
-        // make a Lift instance
+
         Lift lift = new Lift(hardwareMap);
-        //make a Slide instance
+
         FrontSlide slide = new FrontSlide(hardwareMap);
-        //add a normal hardware just in case anything is needed
 
         hardware robot = new hardware();
 
         Action movement1 = drive.actionBuilder(initialPose)
                 .lineToX(56)
+                .turn(.6)
+                .turn(-.6)
                 .lineToX(-56)
-
-                .lineToX(56)
-                .turn(Math.toRadians(45))
-                .turn(-Math.toRadians(45))
-                .lineToX(-56)
-                .turn(-Math.toRadians(90))
-
                 .build();
 
-       // robot.init(hardwareMap);
-       waitForStart();
-       // if (isStopRequested()) return;
+        Action movement2 = drive.actionBuilder(new Pose2d())
 
-       // Actions.runBlocking(
-           //     new SequentialAction(
-                      //  movement1,
-                      //  slide.slideOut(18),
-                      //  new InstantAction(() -> robot.Claw.setPosition(0)),
-                        //new InstantAction(() -> robot.Lift.setPower(0.5)),
-                        //new InstantAction(() -> robot.Lift.setPower(sleep(3000);)),
-                        //lift.upLift(48),
-                        //new InstantAction(() -> robot.Bucket.setPosition(0))
+        waitForStart();
 
-
-               // )
-       // );
-
-        //robot.init(hardwareMap);
-
-
-
-
+        Actions.runBlocking(
+                new SequentialAction(
+                        movement1,
+                        slide.slideOut(18),
+                        new InstantAction(() -> robot.Claw.setPosition(0))
+                )
+        );
     }
 }
+
