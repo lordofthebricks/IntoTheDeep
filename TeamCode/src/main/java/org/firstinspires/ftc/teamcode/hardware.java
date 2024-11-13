@@ -22,6 +22,8 @@ public class hardware {
     public Servo Claw;
     public Servo Wrist1;
     public Servo Wrist2;
+    public Servo HangArm;
+    public DcMotor Winch;
 
 
     public void init(@NonNull HardwareMap hwMp) {
@@ -38,7 +40,8 @@ public class hardware {
     Claw = hwMp.get(Servo.class, "Claw");
     Wrist1 = hwMp.get(Servo.class, "Wrist1");
     Wrist2 = hwMp.get(Servo.class, "Wrist2");
-
+    Winch = hwMp.get(DcMotor.class, "Winch");
+    HangArm = hwMp.get(Servo.class, "HangArm");
 //    Arm.setDirection(DcMotorSimple.Direction.REVERSE);
     Lift.setDirection(DcMotorSimple.Direction.REVERSE);
 
