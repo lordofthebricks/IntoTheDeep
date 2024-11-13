@@ -53,10 +53,16 @@ public class B1BasketObservation extends LinearOpMode{
                 .lineToX(56)
                 .lineToX(-56)
 
+                .lineToX(56)
+                .turn(Math.toRadians(45))
+                .turn(-Math.toRadians(45))
+                .lineToX(-56)
+                .turn(-Math.toRadians(90))
+
                 .build();
 
        // robot.init(hardwareMap);
-       // waitForStart();
+       waitForStart();
        // if (isStopRequested()) return;
 
        // Actions.runBlocking(
