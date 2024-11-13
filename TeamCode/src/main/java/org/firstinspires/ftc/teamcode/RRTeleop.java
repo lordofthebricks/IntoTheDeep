@@ -29,7 +29,7 @@ public class RRTeleop extends OpMode {
     double BackSpeed = -1;
     double MaxSpeed = 1;
     double Rest = 0;
-    final double MAX_SPEED = 1;
+    final double MAX_SPEED = 0.8;
     private double outInchs = 18;
     private boolean firstRun = true;
     private double inInchs = 16;
@@ -147,28 +147,29 @@ public class RRTeleop extends OpMode {
         }
 
         if (gamepad1.dpad_up == true) {
-            robot.LeftFront.setPower(FrontSpeed);
-            robot.LeftBack.setPower(FrontSpeed);
-            robot.RightFront.setPower(FrontSpeed);
-            robot.RightBack.setPower(FrontSpeed);
+            robot.LeftFront.setPower(-FrontSpeed);
+            robot.LeftBack.setPower(-FrontSpeed);
+            robot.RightFront.setPower(-FrontSpeed);
+            robot.RightBack.setPower(-FrontSpeed);
         } else if (gamepad1.dpad_down == true) {
-            robot.LeftFront.setPower(BackSpeed);
-            robot.LeftBack.setPower(BackSpeed);
-            robot.RightFront.setPower(BackSpeed);
-            robot.RightBack.setPower(BackSpeed);
+            robot.LeftFront.setPower(-BackSpeed);
+            robot.LeftBack.setPower(-BackSpeed);
+            robot.RightFront.setPower(-BackSpeed);
+            robot.RightBack.setPower(-BackSpeed);
         }
 
         if (gamepad1.a){
-            robot.HangArm.setPosition(0.3);
+            robot.HangArm.setPosition(0.5);
         }
         if(gamepad1.b){
-            robot.HangArm.setPosition(0.8);
+            robot.HangArm.setPosition(1);
         }
         if(gamepad1.right_trigger == 1){
-            robot.Winch.setPower(0.8);
-        }
-        if (gamepad1.right_bumper){
-            robot.Winch.setPower(-0.8);
+            robot.Winch.setPower(1);
+        }else if (gamepad1.right_bumper){
+            robot.Winch.setPower(-1);
+        }else{
+            robot.Winch.setPower(0);
         }
 
         if (gamepad2.left_trigger == 1) {
@@ -203,7 +204,7 @@ public class RRTeleop extends OpMode {
         } else if (gamepad2.right_bumper == true) {
             robot.Lift.setPower(-0.5);
         } else {
-            robot.Lift.setPower(0.05);
+            robot.Lift.setPower(0.08);
         }
 
         if (gamepad2.dpad_up == true) {

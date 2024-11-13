@@ -18,7 +18,7 @@ import org.firstinspires.ftc.teamcode.hardwareclasses.Lift;
 import org.firstinspires.ftc.teamcode.hardwareclasses.MecanumDrive;
 
 @Config
-@Autonomous(name = "B1_Basket_Observation", group = "Autonomous")
+@Autonomous(name = "B1_Basket_Scoring", group = "Autonomous")
 
 public class B1BasketScoring extends LinearOpMode{
 
