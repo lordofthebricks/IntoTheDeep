@@ -7,6 +7,7 @@ import com.acmerobotics.roadrunner.Action;
 import com.acmerobotics.roadrunner.InstantAction;
 import com.acmerobotics.roadrunner.Pose2d;
 import com.acmerobotics.roadrunner.SequentialAction;
+import com.acmerobotics.roadrunner.SleepAction;
 import com.acmerobotics.roadrunner.ftc.Actions;
 //Non-RR imports
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -52,7 +53,12 @@ public class B1BasketScoring extends LinearOpMode{
                 new SequentialAction(
                         movement1,
                         slide.slideOut(18),
-                        new InstantAction(() -> robot.Claw.setPosition(0))
+                        new InstantAction(() -> robot.Claw.setPosition(0)),
+                        new InstantAction(() -> robot.Lift.setPower(0.5)),
+                        new SleepAction(3),
+                        new InstantAction(() -> robot.Lift.setPower(0)),
+                        lift.upLift(48),
+                        new InstantAction(() -> robot.Bucket.setPosition(0))
                 )
         );
     }
