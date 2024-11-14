@@ -28,6 +28,15 @@ public class Claw {
 
     }
 
+    public void init(){
+
+        limelight3A.pipelineSwitch(0);
+
+
+        limelight3A.start();
+
+    }
+
 
     public class ReadyToGrab implements Action {
 

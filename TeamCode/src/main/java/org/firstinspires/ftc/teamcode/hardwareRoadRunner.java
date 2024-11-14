@@ -32,20 +32,6 @@ public class hardwareRoadRunner {
         LeftBack.setDirection(DcMotorSimple.Direction.REVERSE);
 
     }
-    public class Claw {
-        private Servo claw;
-
-        public Claw(HardwareMap hwmap){
-            claw = hwmap.get(Servo.class, "claw");
-        }
-        public class CloseClaw implements Action  {
-
-            @Override
-            public boolean run(@NonNull TelemetryPacket telemetryPacket) {
-                return false;
-            }
-        }
-    }
 
 
 }
