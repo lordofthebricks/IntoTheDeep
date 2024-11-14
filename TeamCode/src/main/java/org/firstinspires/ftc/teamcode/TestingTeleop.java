@@ -38,6 +38,7 @@ public class TestingTeleop extends OpMode {
         //update with gamepad
         if(gamepad1.a){
             runningActions.add(new SequentialAction(
+                    arm.slideOut(18),
                     claw.LLGrab()
 
             ));
