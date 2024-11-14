@@ -18,16 +18,19 @@ import java.util.List;
 
 @TeleOp
 public class TestingTeleop extends OpMode {
-    Claw claw = new Claw(hardwareMap);
-    FrontSlide arm = new FrontSlide(hardwareMap);
+    Claw claw;
+    FrontSlide arm;
 
-    hardwareRoadRunner robot = new hardwareRoadRunner();
+    hardwareRoadRunner robot;
 
     private FtcDashboard dash = FtcDashboard.getInstance();
     private List<Action> runningActions = new ArrayList<>();
 
     @Override
     public void init() {
+        claw = new Claw(hardwareMap);
+        robot = new hardwareRoadRunner();
+        arm = new FrontSlide(hardwareMap);
         robot.init(hardwareMap);
         claw.init();
     }
