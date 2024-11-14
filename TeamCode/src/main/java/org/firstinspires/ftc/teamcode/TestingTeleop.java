@@ -7,6 +7,7 @@ import com.acmerobotics.roadrunner.InstantAction;
 import com.acmerobotics.roadrunner.SequentialAction;
 import com.acmerobotics.roadrunner.SleepAction;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.hardwareclasses.Claw;
 import org.firstinspires.ftc.teamcode.hardwareclasses.FrontSlide;
@@ -14,6 +15,8 @@ import org.firstinspires.ftc.teamcode.hardwareclasses.FrontSlide;
 import java.util.ArrayList;
 import java.util.List;
 
+
+@TeleOp
 public class TestingTeleop extends OpMode {
     Claw claw = new Claw(hardwareMap);
     FrontSlide arm = new FrontSlide(hardwareMap);
