@@ -130,6 +130,9 @@ public class Claw {
                     }
                     Wrist1.setPosition(targetAngle);
                     Claw.setPosition(0.8);
+                } else {
+                    packet.put("No Target Found", null);
+                    return true;
                 }
 
 
@@ -152,7 +155,12 @@ public class Claw {
     public Action BringUp() { return new BringUp();}
 
     public LLResultTypes.DetectorResult getDistanceToTarget(String color){
+
+
         List<LLResultTypes.DetectorResult> results = limelight3A.getLatestResult().getDetectorResults();
+        if (results == null) {
+            return null;
+        }
         for (LLResultTypes.DetectorResult result: results) {
             double targetOffsetAngle_Vertical = result.getTargetYDegrees();
 
