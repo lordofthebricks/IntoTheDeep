@@ -38,7 +38,7 @@ public class B1BasketObservation extends LinearOpMode{
 
 
         // instantiate your MecanumDrive at a particular pose.
-        Pose2d initialPose = new Pose2d(34, 63.5, Math.toRadians(0));
+        Pose2d initialPose = new Pose2d(34, 63.5, Math.PI);
         MecanumDrive drive = new MecanumDrive(hardwareMap, initialPose);
 
         // make a Claw instance
@@ -56,26 +56,27 @@ public class B1BasketObservation extends LinearOpMode{
         Action movement1 = drive.actionBuilder(initialPose)
                 //.splineToConstantHeading(new Vector2d(56,56), Math.PI)
                // .strafeToConstantHeading(new Vector2d(56,56))
-                .lineToX(56)
-                .turn(Math.toRadians(45))
+                .strafeToConstantHeading(new Vector2d(34,56))
+                .waitSeconds(1)
+                .strafeToConstantHeading(new Vector2d(56,56))
+                .waitSeconds(1)
+                .turnTo(135)
                 .build();
 
-        Action movement2 = drive.actionBuilder(new Pose2d(56,56,Math.toRadians(225)))
-                .turn(-Math.toRadians(-45))
+        Action movement2 = drive.actionBuilder(new Pose2d(56,56,Math.toRadians(135)))
+                .turn(Math.PI)
                 .strafeTo(new Vector2d(-56,56))
                 .turnTo(Math.toRadians(270))
                 .build();
 
-       // robot.init(hardwareMap);
+
        waitForStart();
-       // if (isStopRequested()) return
+
 
         Actions.runBlocking(
                 new SequentialAction(
                         movement1,
-                        new InstantAction(() -> {
-                            robot.Lift.setPower(0.8);
-                        }),
+                        new InstantAction(() -> robot.Lift.setPower(0.8)),
                         new SleepAction(1.5),
                         new InstantAction(() -> robot.Bucket.setPosition(0.5)),
                         movement2
