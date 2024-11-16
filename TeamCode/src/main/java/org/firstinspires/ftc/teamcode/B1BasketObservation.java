@@ -1,87 +1,45 @@
 package org.firstinspires.ftc.teamcode;
 
-//RR specific imports
-import androidx.annotation.NonNull;
-
 import com.acmerobotics.dashboard.config.Config;
-import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
-import com.acmerobotics.roadrunner.Action;
-import com.acmerobotics.roadrunner.InstantAction;
-import com.acmerobotics.roadrunner.Pose2d;
-import com.acmerobotics.roadrunner.SequentialAction;
-import com.acmerobotics.roadrunner.SleepAction;
-import com.acmerobotics.roadrunner.Trajectory;
-import com.acmerobotics.roadrunner.TrajectoryActionBuilder;
-import com.acmerobotics.roadrunner.Vector2d;
-import com.acmerobotics.roadrunner.ftc.Actions;
-//Non-RR imports
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorEx;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
-
-import org.firstinspires.ftc.teamcode.hardwareclasses.Claw;
-import org.firstinspires.ftc.teamcode.hardwareclasses.FrontSlide;
-import org.firstinspires.ftc.teamcode.hardwareclasses.Lift;
-import org.firstinspires.ftc.teamcode.hardwareclasses.MecanumDrive;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Config
 @Autonomous(name = "B1_Basket_Observation", group = "Autonomous")
 public class B1BasketObservation extends LinearOpMode{
 
+    private ElapsedTime runtime = new ElapsedTime();
+    static final double     MAX_SPEED = 1;
+    static final double     FORWARD_SPEED = 0.8;
+    static final double     REVERSE_SPEED = -0.6;
+    static final double     STRAFE_SPEED = 0.6;
+    static final double     TURN_SPEED = 0.5;
     @Override
     public void runOpMode() {
 
-
-
-        // instantiate your MecanumDrive at a particular pose.
-        Pose2d initialPose = new Pose2d(34, 63.5, Math.toRadians(0));
-        MecanumDrive drive = new MecanumDrive(hardwareMap, initialPose);
-
-        // make a Claw instance
-        Claw claw = new Claw(hardwareMap);
-        // make a Lift instance
-//        Lift lift = new Lift(hardwareMap);
-        //make a Slide instance
-        FrontSlide slide = new FrontSlide(hardwareMap);
-        //add a normal hardware just in case anything is needed
-
         hardware robot = new hardware();
 
-        robot.init(hardwareMap);
+        waitForStart();
 
-        Action movement1 = drive.actionBuilder(initialPose)
-                //.splineToConstantHeading(new Vector2d(56,56), Math.PI)
-               // .strafeToConstantHeading(new Vector2d(56,56))
-                .lineToX(56)
-                .turn(Math.toRadians(45))
-                .build();
+        robot.LeftFront.setPower(-MAX_SPEED);
+        robot.RightFront.setPower(-MAX_SPEED);
+        robot.LeftBack.setPower(-MAX_SPEED);
+        robot.RightBack.setPower(-MAX_SPEED);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 1.5)) {
+            telemetry.addData("Path", "Leg 1: %4.1f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
 
-        Action movement2 = drive.actionBuilder(new Pose2d(56,56,Math.toRadians(225)))
-                .turn(-Math.toRadians(-45))
-                .strafeTo(new Vector2d(-56,56))
-                .turnTo(Math.toRadians(270))
-                .build();
-
-       // robot.init(hardwareMap);
-       waitForStart();
-       // if (isStopRequested()) return
-
-        Actions.runBlocking(
-                new SequentialAction(
-                        movement1,
-                        new InstantAction(() -> {
-                            robot.Lift.setPower(0.8);
-                        }),
-                        new SleepAction(1.5),
-                        new InstantAction(() -> robot.Bucket.setPosition(0.5)),
-                        movement2
-                        )
-                    );
-
-
+        robot.LeftFront.setPower(-TURN_SPEED);
+        robot.RightFront.setPower(TURN_SPEED);
+        robot.LeftBack.setPower(-TURN_SPEED);
+        robot.RightBack.setPower(TURN_SPEED);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 2)) {
+            telemetry.addData("Path", "Leg 2: %4.1f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
     }
 }

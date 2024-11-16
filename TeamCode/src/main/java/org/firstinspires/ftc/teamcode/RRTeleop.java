@@ -215,16 +215,16 @@ public class RRTeleop extends OpMode {
         }
 
         if (gamepad2.left_stick_y == 1) {
-            WristPosition1 = WristPosition1 + 0.001;
+            WristPosition1 = WristPosition1 + 0.005;
             robot.Wrist1.setPosition(WristPosition1);
         } else if (gamepad2.left_stick_y == -1) {
-            WristPosition1 = WristPosition1 - 0.001;
+            WristPosition1 = WristPosition1 - 0.005;
             robot.Wrist1.setPosition(WristPosition1);
         } else if (gamepad2.left_stick_x == 1) {
-            WristPosition2 = WristPosition2 + 0.001;
+            WristPosition2 = WristPosition2 + 0.005;
             robot.Wrist2.setPosition(WristPosition2);
         } else if (gamepad2.left_stick_x == -1) {
-            WristPosition2 = WristPosition2 -0.001;
+            WristPosition2 = WristPosition2 -0.005;
             robot.Wrist2.setPosition(WristPosition2);
         }
 
