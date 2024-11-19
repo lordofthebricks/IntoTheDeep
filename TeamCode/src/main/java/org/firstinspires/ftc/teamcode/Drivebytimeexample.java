@@ -33,6 +33,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import org.firstinspires.ftc.teamcode.hardwareclasses.Claw;
+import org.firstinspires.ftc.teamcode.hardwareclasses.FrontSlide;
+import org.firstinspires.ftc.teamcode.hardwareclasses.Lift;
 import org.firstinspires.ftc.teamcode.hardwareclasses.MecanumDrive;
 
 import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
@@ -66,11 +69,13 @@ public class Drivebytimeexample extends LinearOpMode {
     //HardwarePushbot robot   = new HardwarePushbot();   // Use a Pushbot's hardware
 
     hardware robot = new hardware();
-    private ElapsedTime     runtime = new ElapsedTime();
+    private ElapsedTime runtime = new ElapsedTime();
 
 
-    static final double     FORWARD_SPEED = 0.6;
-    static final double     TURN_SPEED    = 0.5;
+    static final double FORWARD_SPEED = 0.8;
+    static final double TURN_SPEED = 0.5;
+    static final double LIFT_SPEED = 0.5;
+    static final double STRAFE_SPEED = 0.6;
 
     @Override
     public void runOpMode() {
@@ -96,18 +101,18 @@ public class Drivebytimeexample extends LinearOpMode {
         robot.LeftBack.setPower(FORWARD_SPEED);
         robot.RightBack.setPower(FORWARD_SPEED);
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 3.0)) {
+        while (opModeIsActive() && (runtime.seconds() < 2.0)) {
             telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
         }
 
         // Step 2:  Spin right for 1.3 seconds
-       // robot.leftDrive.setPower(TURN_SPEED);
+        // robot.leftDrive.setPower(TURN_SPEED);
         //robot.rightDrive.setPower(-TURN_SPEED);
         robot.LeftFront.setPower(TURN_SPEED);
-        robot.RightFront.setPower(TURN_SPEED);
+        robot.RightFront.setPower(-TURN_SPEED);
         robot.LeftBack.setPower(TURN_SPEED);
-        robot.RightBack.setPower(TURN_SPEED);
+        robot.RightBack.setPower(-TURN_SPEED);
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 1.3)) {
             telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
@@ -120,19 +125,63 @@ public class Drivebytimeexample extends LinearOpMode {
         robot.LeftBack.setPower(-FORWARD_SPEED);
         robot.RightBack.setPower(-FORWARD_SPEED);
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.0)) {
+        while (opModeIsActive() && (runtime.seconds() < 1.5)) {
             telemetry.addData("Path", "Leg 3: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
         }
 
+        robot.Lift.setPower(LIFT_SPEED);
+        while (opModeIsActive() && (runtime.seconds() < 5.0)) {
+            telemetry.addData("Path", "Leg 3: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
+
+        robot.Bucket.setPosition(0);
+        robot.Bucket.setPosition(0.5);
+
+
+            robot.Lift.setPower(-LIFT_SPEED);
+            while (opModeIsActive() && (runtime.seconds() < 5.0)) {
+                telemetry.addData("Path", "Leg 3: %2.5f S Elapsed", runtime.seconds());
+                telemetry.update();
+            }
+
+        robot.LeftFront.setPower(-TURN_SPEED);
+        robot.RightFront.setPower(TURN_SPEED);
+        robot.LeftBack.setPower(-TURN_SPEED);
+        robot.RightBack.setPower(TURN_SPEED);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 1.3)) {
+            telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
+
+        robot.LeftFront.setPower(-FORWARD_SPEED);
+        robot.RightFront.setPower(-FORWARD_SPEED);
+        robot.LeftBack.setPower(-FORWARD_SPEED);
+        robot.RightBack.setPower(-FORWARD_SPEED);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 2.0)) {
+            telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
+
+        robot.LeftFront.setPower(STRAFE_SPEED);
+        robot.RightFront.setPower(-STRAFE_SPEED);
+        robot.LeftBack.setPower(-STRAFE_SPEED);
+        robot.RightBack.setPower(STRAFE_SPEED);
+        while (opModeIsActive() && (runtime.seconds() < 7.0)) {
+            telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
         // Step 4:  Stop and close the claw.
         //robot.leftDrive.setPower(0);
         //robot.rightDrive.setPower(0);
         //robot.leftClaw.setPosition(1.0);
         //robot.rightClaw.setPosition(0.0);
-        robot.Lift.setPower(0.5);
-        telemetry.addData("Path", "Complete");
-        telemetry.update();
-        sleep(4000);
+        //robot.Lift.setPower(0.5);
+        //telemetry.addData("Path", "Complete");
+        //telemetry.update();
+        //sleep(4000);
     }
 }
