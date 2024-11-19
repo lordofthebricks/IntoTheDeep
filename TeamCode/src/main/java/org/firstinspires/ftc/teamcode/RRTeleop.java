@@ -29,7 +29,7 @@ public class RRTeleop extends OpMode {
     double BackSpeed = -1;
     double MaxSpeed = 1;
     double Rest = 0;
-    final double MAX_SPEED = 0.8;
+    final double MAX_SPEED = 1;
     private double outInchs = 18;
     private boolean firstRun = true;
     private double inInchs = 16;
@@ -129,6 +129,11 @@ public class RRTeleop extends OpMode {
             robot.LeftBack.setPower(-BackSpeed);
             robot.RightFront.setPower(-BackSpeed);
             robot.RightBack.setPower(-FrontSpeed);
+        } else {
+            robot.LeftFront.setPower(Rest);
+            robot.LeftBack.setPower(Rest);
+            robot.RightFront.setPower(Rest);
+            robot.RightBack.setPower(Rest);
         }
 
 
@@ -137,14 +142,24 @@ public class RRTeleop extends OpMode {
             robot.LeftBack.setPower(-FrontSpeed);
             robot.RightFront.setPower(-FrontSpeed);
             robot.RightBack.setPower(-BackSpeed);
-        }
+        } /*else if (gamepad1.dpad_left == false) {
+            robot.LeftFront.setPower(Rest);
+            robot.LeftBack.setPower(Rest);
+            robot.RightFront.setPower(Rest);
+            robot.RightBack.setPower(Rest);
+        }*/
 
         if (gamepad1.dpad_right == true) {
             robot.LeftFront.setPower(-FrontSpeed);
             robot.LeftBack.setPower(-BackSpeed);
             robot.RightFront.setPower(-BackSpeed);
             robot.RightBack.setPower(-FrontSpeed);
-        }
+        } /*else if (gamepad1.dpad_right == false) {
+            robot.LeftFront.setPower(Rest);
+            robot.LeftBack.setPower(Rest);
+            robot.RightFront.setPower(Rest);
+            robot.RightBack.setPower(Rest);
+        }*/
 
         if (gamepad1.dpad_up == true) {
             robot.LeftFront.setPower(-FrontSpeed);
@@ -191,8 +206,8 @@ public class RRTeleop extends OpMode {
         }
 
         if (gamepad2.x == true) {
-            robot.Wrist2.setPosition(0.05);
-            robot.Wrist1.setPosition(0.2);
+            robot.Wrist2.setPosition(0.001);
+            robot.Wrist1.setPosition(-0.2);
         }
 
         if (gamepad2.y == true) {
@@ -201,7 +216,7 @@ public class RRTeleop extends OpMode {
 
         if (gamepad2.right_trigger == 1) {
             robot.Lift.setPower(0.5);
-        } else if (gamepad2.right_bumper == true) {
+        } else if (gamepad2.right_bumper == true)  {
             robot.Lift.setPower(-0.5);
         } else {
             robot.Lift.setPower(0.08);
@@ -215,16 +230,16 @@ public class RRTeleop extends OpMode {
         }
 
         if (gamepad2.left_stick_y == 1) {
-            WristPosition1 = WristPosition1 + 0.001;
+            WristPosition1 = WristPosition1 + 0.005;
             robot.Wrist1.setPosition(WristPosition1);
         } else if (gamepad2.left_stick_y == -1) {
-            WristPosition1 = WristPosition1 - 0.001;
+            WristPosition1 = WristPosition1 - 0.005;
             robot.Wrist1.setPosition(WristPosition1);
         } else if (gamepad2.left_stick_x == 1) {
-            WristPosition2 = WristPosition2 + 0.001;
+            WristPosition2 = WristPosition2 + 0.005;
             robot.Wrist2.setPosition(WristPosition2);
         } else if (gamepad2.left_stick_x == -1) {
-            WristPosition2 = WristPosition2 -0.001;
+            WristPosition2 = WristPosition2 -0.005;
             robot.Wrist2.setPosition(WristPosition2);
         }
 

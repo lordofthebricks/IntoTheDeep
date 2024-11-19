@@ -21,7 +21,7 @@ import org.firstinspires.ftc.teamcode.hardwareclasses.MecanumDrive;
 @Config
 @Autonomous(name = "B1_Basket_Scoring", group = "Autonomous")
 
-public class B1BasketScoring extends LinearOpMode{
+public class B1BasketScoring extends LinearOpMode {
 
     @Override
     public void runOpMode() {
@@ -46,6 +46,33 @@ public class B1BasketScoring extends LinearOpMode{
 
         //Action movement2 = drive.actionBuilder(new Pose2d(56,56,0));
         //.lin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //.build();
         waitForStart();
 
@@ -63,4 +90,3 @@ public class B1BasketScoring extends LinearOpMode{
         );
     }
 }
-
