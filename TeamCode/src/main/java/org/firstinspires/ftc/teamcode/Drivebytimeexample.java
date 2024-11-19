@@ -131,16 +131,19 @@ public class Drivebytimeexample extends LinearOpMode {
         }
 
         robot.Lift.setPower(LIFT_SPEED);
+        runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 5.0)) {
             telemetry.addData("Path", "Leg 3: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
         }
 
         robot.Bucket.setPosition(0);
+        sleep(2000);
         robot.Bucket.setPosition(0.5);
 
 
             robot.Lift.setPower(-LIFT_SPEED);
+            runtime.reset();
             while (opModeIsActive() && (runtime.seconds() < 5.0)) {
                 telemetry.addData("Path", "Leg 3: %2.5f S Elapsed", runtime.seconds());
                 telemetry.update();
@@ -170,6 +173,7 @@ public class Drivebytimeexample extends LinearOpMode {
         robot.RightFront.setPower(-STRAFE_SPEED);
         robot.LeftBack.setPower(-STRAFE_SPEED);
         robot.RightBack.setPower(STRAFE_SPEED);
+        runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 7.0)) {
             telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
