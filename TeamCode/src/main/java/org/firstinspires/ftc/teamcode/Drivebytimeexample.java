@@ -61,7 +61,7 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Pushbot: Auto Drive By Time", group="Pushbot")
+@Autonomous(name="Drive_by_time_example", group="Autonomous")
 
 public class Drivebytimeexample extends LinearOpMode {
 
@@ -142,9 +142,9 @@ public class Drivebytimeexample extends LinearOpMode {
         robot.Bucket.setPosition(0.5);
 
 
-            robot.Lift.setPower(-LIFT_SPEED);
-            runtime.reset();
-            while (opModeIsActive() && (runtime.seconds() < 5.0)) {
+        robot.Lift.setPower(-LIFT_SPEED);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 5.0)) {
                 telemetry.addData("Path", "Leg 3: %2.5f S Elapsed", runtime.seconds());
                 telemetry.update();
             }
