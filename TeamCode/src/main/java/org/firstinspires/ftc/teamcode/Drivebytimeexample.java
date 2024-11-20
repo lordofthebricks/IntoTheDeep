@@ -114,7 +114,7 @@ public class Drivebytimeexample extends LinearOpMode {
         robot.RightFront.setPower(TURN_SPEED);
         robot.LeftBack.setPower(-TURN_SPEED);
         robot.RightBack.setPower(TURN_SPEED);
-        sleep(360);
+        sleep(355);
         robot.LeftFront.setPower(0);
         robot.RightFront.setPower(0);
         robot.LeftBack.setPower(0);
