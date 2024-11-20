@@ -79,7 +79,7 @@ public class SensorLimelight3A extends LinearOpMode {
 
         telemetry.setMsTransmissionInterval(11);
 
-        limelight.pipelineSwitch(0);
+        limelight.pipelineSwitch(1);
 
         /*
          * Starts polling for data.  If you neglect to call start(), getLatestResult() will return null.
@@ -145,6 +145,8 @@ public class SensorLimelight3A extends LinearOpMode {
                     // Access color results
                     List<LLResultTypes.ColorResult> colorResults = result.getColorResults();
                     for (LLResultTypes.ColorResult cr : colorResults) {
+
+
                         telemetry.addData("Color", "X: %.2f, Y: %.2f", cr.getTargetXDegrees(), cr.getTargetYDegrees());
                     }
                 }
