@@ -13,7 +13,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import java.util.List;
 
 public class Claw {
-    private Limelight3A limelight3A;
+    public Limelight3A limelight3A;
     private Servo Wrist1;
     private Servo Wrist2;
     private Servo Claw;
@@ -91,7 +91,7 @@ public class Claw {
 
 
 
-                limelight3A.pipelineSwitch(0);
+                limelight3A.pipelineSwitch(1);
                 LLResultTypes.DetectorResult result = getDistanceToTarget("Yellow");
                 if (result != null) {
                     List<List<Double>> targetCorners = result.getTargetCorners();

@@ -29,7 +29,7 @@ public class RRTeleop extends OpMode {
     double BackSpeed = -1;
     double MaxSpeed = 1;
     double Rest = 0;
-    final double MAX_SPEED = 1;
+    final double MAX_SPEED = 0.8;
     private double outInchs = 18;
     private boolean firstRun = true;
     private double inInchs = 16;
@@ -214,17 +214,17 @@ public class RRTeleop extends OpMode {
             robot.Bucket.setPosition(0.5);
         }
 
-        if (gamepad2.left_stick_y == 1) {
-            WristPosition1 = WristPosition1 + 0.005;
+        if (gamepad2.left_stick_y == 1 && WristPosition1 < 0.8) {
+            WristPosition1 = WristPosition1 + 0.01;
             robot.Wrist1.setPosition(WristPosition1);
-        } else if (gamepad2.left_stick_y == -1) {
-            WristPosition1 = WristPosition1 - 0.005;
+        } else if (gamepad2.left_stick_y == -1 && WristPosition1 > 0.2) {
+            WristPosition1 = WristPosition1 - 0.01;
             robot.Wrist1.setPosition(WristPosition1);
-        } else if (gamepad2.left_stick_x == 1) {
-            WristPosition2 = WristPosition2 + 0.005;
+        } else if (gamepad2.left_stick_x == 1 && WristPosition2 < 0.8) {
+            WristPosition2 = WristPosition2 + 0.01;
             robot.Wrist2.setPosition(WristPosition2);
-        } else if (gamepad2.left_stick_x == -1) {
-            WristPosition2 = WristPosition2 -0.005;
+        } else if (gamepad2.left_stick_x == -1 && WristPosition2 > 0.2) {
+            WristPosition2 = WristPosition2 -0.01;
             robot.Wrist2.setPosition(WristPosition2);
         }
 
