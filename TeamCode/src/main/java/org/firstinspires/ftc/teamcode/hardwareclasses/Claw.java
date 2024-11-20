@@ -41,11 +41,12 @@ public class Claw {
 
 
 
+
     }
 
     public void init(){
 
-        limelight3A.pipelineSwitch(0);
+        limelight3A.pipelineSwitch(1);
 
 
         limelight3A.start();
