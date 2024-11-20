@@ -29,9 +29,11 @@ public class TestingTeleop extends OpMode {
 
     @Override
     public void init() {
+
+        robot = new hardwareRoadRunner();
         robot.init(hardwareMap);
         claw = new Claw(hardwareMap, robot.LeftFront, robot.LeftBack, robot.RightFront, robot.RightBack);
-        robot = new hardwareRoadRunner();
+
         arm = new FrontSlide(hardwareMap);
         claw.init();
     }
