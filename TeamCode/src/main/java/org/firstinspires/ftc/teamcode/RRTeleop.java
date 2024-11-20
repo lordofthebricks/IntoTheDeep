@@ -129,11 +129,6 @@ public class RRTeleop extends OpMode {
             robot.LeftBack.setPower(-BackSpeed);
             robot.RightFront.setPower(-BackSpeed);
             robot.RightBack.setPower(-FrontSpeed);
-        } else {
-            robot.LeftFront.setPower(Rest);
-            robot.LeftBack.setPower(Rest);
-            robot.RightFront.setPower(Rest);
-            robot.RightBack.setPower(Rest);
         }
 
 
@@ -142,24 +137,14 @@ public class RRTeleop extends OpMode {
             robot.LeftBack.setPower(-FrontSpeed);
             robot.RightFront.setPower(-FrontSpeed);
             robot.RightBack.setPower(-BackSpeed);
-        } /*else if (gamepad1.dpad_left == false) {
-            robot.LeftFront.setPower(Rest);
-            robot.LeftBack.setPower(Rest);
-            robot.RightFront.setPower(Rest);
-            robot.RightBack.setPower(Rest);
-        }*/
+        }
 
         if (gamepad1.dpad_right == true) {
             robot.LeftFront.setPower(-FrontSpeed);
             robot.LeftBack.setPower(-BackSpeed);
             robot.RightFront.setPower(-BackSpeed);
             robot.RightBack.setPower(-FrontSpeed);
-        } /*else if (gamepad1.dpad_right == false) {
-            robot.LeftFront.setPower(Rest);
-            robot.LeftBack.setPower(Rest);
-            robot.RightFront.setPower(Rest);
-            robot.RightBack.setPower(Rest);
-        }*/
+        }
 
         if (gamepad1.dpad_up == true) {
             robot.LeftFront.setPower(-FrontSpeed);
