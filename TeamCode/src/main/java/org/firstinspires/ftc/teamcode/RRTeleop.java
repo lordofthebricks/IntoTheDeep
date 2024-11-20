@@ -44,7 +44,7 @@ public class RRTeleop extends OpMode {
         lift = new Lift(hardwareMap);
         firstRun = true;
         outInchs = 18;
-        claw = new Claw(hardwareMap);
+        claw = new Claw(hardwareMap, robot.LeftFront, robot.LeftBack, robot.RightFront, robot.RightBack);
     }
 
     @Override

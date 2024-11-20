@@ -8,6 +8,7 @@ import com.acmerobotics.roadrunner.InstantAction;
 import com.qualcomm.hardware.limelightvision.LLResult;
 import com.qualcomm.hardware.limelightvision.LLResultTypes;
 import com.qualcomm.hardware.limelightvision.Limelight3A;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -19,12 +20,25 @@ public class Claw {
     private Servo Wrist2;
     private Servo Claw;
 
+    private DcMotor LeftFront;
+    private DcMotor LeftBack ;
+    private DcMotor RightFront;
+    private DcMotor RightBack;
 
-    public Claw(HardwareMap hwMap) {
+
+    public Claw(HardwareMap hwMap, DcMotor LF, DcMotor LB, DcMotor RF, DcMotor RB ) {
         limelight3A = hwMap.get(Limelight3A.class, "LL3A");
         Claw = hwMap.get(Servo.class, "Claw");
         Wrist1 = hwMap.get(Servo.class, "Wrist1");
         Wrist2 = hwMap.get(Servo.class, "Wrist2");
+
+        LeftFront = LF;
+        LeftBack = LB;
+        RightFront = RF;
+        RightBack = RB;
+
+
+
 
 
     }
@@ -84,13 +98,111 @@ public class Claw {
         }
     }
 
+    public class LLLineUpHorizontal implements Action {
+        private boolean initialized = false;
+
+        LLResult result;
+        LLResultTypes.ColorResult colorResult;
+
+        @Override
+        public boolean run(@NonNull TelemetryPacket packet) {
+            if (!initialized) {
+                limelight3A.pipelineSwitch(1);
+                result = limelight3A.getLatestResult();
+                if(result.isValid()) {
+                    colorResult = result.getColorResults().get(0);
+
+                    if (colorResult.getTargetXDegrees() > 2) {
+                        LeftFront.setPower(-0.2);
+                        LeftBack.setPower(0.2);
+                        RightFront.setPower(0.2);
+                        RightBack.setPower(-0.2);
+                    }
+
+                    if (colorResult.getTargetXDegrees() < -2) {
+                        LeftFront.setPower(0.2);
+                        LeftBack.setPower(-0.2);
+                        RightFront.setPower(-0.2);
+                        RightBack.setPower(0.2);
+                    }
+
+                    initialized = true;
+                }else {
+                    return true;
+                }
+            }
+
+
+            if (colorResult.getTargetXDegrees() < 2 && colorResult.getTargetXDegrees() > -2){
+                LeftFront.setPower(0);
+                LeftBack.setPower(0);
+                RightFront.setPower(0);
+                RightBack.setPower(0);
+                return false;
+            }else{
+                return true;
+            }
+
+
+        }
+    }
+
+    public class LLLineUpVertical implements Action {
+        private boolean initialized = false;
+
+        LLResult result;
+        LLResultTypes.ColorResult colorResult;
+
+        @Override
+        public boolean run(@NonNull TelemetryPacket packet) {
+            if (!initialized) {
+                limelight3A.pipelineSwitch(1);
+                result = limelight3A.getLatestResult();
+                if(result.isValid()) {
+                    colorResult = result.getColorResults().get(0);
+
+                    if (colorResult.getTargetYDegrees() > 2) {
+                        LeftFront.setPower(-0.2);
+                        LeftBack.setPower(-0.2);
+                        RightFront.setPower(-0.2);
+                        RightBack.setPower(-0.2);
+                    }
+
+                    if (colorResult.getTargetYDegrees() < -2) {
+                        LeftFront.setPower(0.2);
+                        LeftBack.setPower(0.2);
+                        RightFront.setPower(0.2);
+                        RightBack.setPower(0.2);
+                    }
+
+                    initialized = true;
+                }else {
+                    return true;
+                }
+            }
+
+
+            if (colorResult.getTargetYDegrees() < 2 && colorResult.getTargetYDegrees() > -2){
+
+                LeftFront.setPower(0);
+                LeftBack.setPower(0);
+                RightFront.setPower(0);
+                RightBack.setPower(0);
+
+                return false;
+            }else{
+                return true;
+            }
+
+
+        }
+    }
+
     public class llGrab implements Action {
 
 
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
-
-
 
             limelight3A.pipelineSwitch(1);
             LLResult result = limelight3A.getLatestResult();
@@ -132,7 +244,11 @@ public class Claw {
                         targetAngle = 0.5 - (Math.atan2(c1c2YOffset,c1c2XOffset) * (1/300)) ;
                     }
                 }
+
+                Wrist2.setPosition(0.2);
                 Wrist1.setPosition(targetAngle);
+                Wrist2.setPosition(0.5);
+
                 Claw.setPosition(0.8);
             } else {
                 packet.put("No Target Found", null);
@@ -152,6 +268,12 @@ public class Claw {
     public Action ReadyToGrab() { return new ReadyToGrab();}
 
     public Action BringUp() { return new BringUp();}
+
+    public Action LLLineupHorizontal() { return new LLLineUpHorizontal(); }
+
+    public Action LLLVertical() {return new LLLineUpVertical(); }
+
+
 
 //    public LLResultTypes.DetectorResult getDistanceToTarget(String color){
 //

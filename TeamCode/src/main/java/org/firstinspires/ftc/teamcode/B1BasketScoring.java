@@ -29,7 +29,7 @@ public class B1BasketScoring extends LinearOpMode {
         Pose2d initialPose = new Pose2d(38, 56, Math.toRadians(0));
         MecanumDrive drive = new MecanumDrive(hardwareMap, initialPose);
 
-        Claw claw = new Claw(hardwareMap);
+//        Claw claw = new Claw(hardwareMap);
 
         Lift lift = new Lift(hardwareMap);
 

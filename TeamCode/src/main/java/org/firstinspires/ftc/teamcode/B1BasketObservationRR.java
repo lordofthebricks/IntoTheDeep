@@ -31,15 +31,16 @@ public class B1BasketObservationRR extends LinearOpMode{
         Pose2d initialPose = new Pose2d(34, 63.5, Math.toRadians(0));
         MecanumDrive drive = new MecanumDrive(hardwareMap, initialPose);
 
+        hardware robot = new hardware();
         // make a Claw instance
-        Claw claw = new Claw(hardwareMap);
+        Claw claw = new Claw(hardwareMap, robot.LeftFront, robot.LeftBack, robot.RightFront, robot.RightBack);
         // make a Lift instance
 //        Lift lift = new Lift(hardwareMap);
         //make a Slide instance
         FrontSlide slide = new FrontSlide(hardwareMap);
         //add a normal hardware just in case anything is needed
 
-        hardware robot = new hardware();
+
 
         robot.init(hardwareMap);
 

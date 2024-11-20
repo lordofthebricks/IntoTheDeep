@@ -29,10 +29,10 @@ public class TestingTeleop extends OpMode {
 
     @Override
     public void init() {
-        claw = new Claw(hardwareMap);
+        robot.init(hardwareMap);
+        claw = new Claw(hardwareMap, robot.LeftFront, robot.LeftBack, robot.RightFront, robot.RightBack);
         robot = new hardwareRoadRunner();
         arm = new FrontSlide(hardwareMap);
-        robot.init(hardwareMap);
         claw.init();
     }
     @Override
@@ -50,6 +50,8 @@ public class TestingTeleop extends OpMode {
         //update with gamepad
         if(gamepad1.a){
             runningActions.add(new SequentialAction(
+                    claw.LLLineupHorizontal(),
+                    claw.LLLVertical(),
                     claw.LLGrab()
 
             ));

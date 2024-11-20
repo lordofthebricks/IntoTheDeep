@@ -39,7 +39,7 @@ public class BasicAutonomous extends LinearOpMode{
         Pose2d initialPose = new Pose2d(11.8, 61.7, Math.toRadians(90));
         MecanumDrive drive = new MecanumDrive(hardwareMap, initialPose);
         // make a Claw instance
-        Claw claw = new Claw(hardwareMap);
+//        Claw claw = new Claw(hardwareMap);
         // make a Lift instance
         Lift lift = new Lift(hardwareMap);
         //make a Slide instance
