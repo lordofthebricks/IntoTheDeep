@@ -76,7 +76,7 @@ public class Drivebytimeexample extends LinearOpMode {
     static final double REVERSE_SPEED = 0.8;
     static final double TURN_SPEED = 0.5;
     static final double LIFT_SPEED = 0.5;
-    static final double STRAFE_SPEED = -0.6;
+    static final double STRAFE_SPEED = -0.5;
 
     @Override
     public void runOpMode() {
@@ -101,7 +101,7 @@ public class Drivebytimeexample extends LinearOpMode {
         robot.RightFront.setPower(FORWARD_SPEED);
         robot.LeftBack.setPower(FORWARD_SPEED);
         robot.RightBack.setPower(FORWARD_SPEED);
-        sleep(2000);
+        sleep(450);
         robot.LeftFront.setPower(0);
         robot.RightFront.setPower(0);
         robot.LeftBack.setPower(0);
@@ -114,7 +114,7 @@ public class Drivebytimeexample extends LinearOpMode {
         robot.RightFront.setPower(TURN_SPEED);
         robot.LeftBack.setPower(-TURN_SPEED);
         robot.RightBack.setPower(TURN_SPEED);
-        sleep(1300);
+        sleep(355);
         robot.LeftFront.setPower(0);
         robot.RightFront.setPower(0);
         robot.LeftBack.setPower(0);
@@ -125,47 +125,47 @@ public class Drivebytimeexample extends LinearOpMode {
         robot.RightFront.setPower(REVERSE_SPEED);
         robot.LeftBack.setPower(REVERSE_SPEED);
         robot.RightBack.setPower(REVERSE_SPEED);
-        sleep(5000);
+        sleep(680);
         robot.LeftFront.setPower(0);
         robot.RightFront.setPower(0);
         robot.LeftBack.setPower(0);
         robot.RightBack.setPower(0);
 
         robot.Lift.setPower(LIFT_SPEED);
-        sleep(5000);
+        sleep(4300);
         robot.Bucket.setPosition(0);
         sleep(2000);
         robot.Bucket.setPosition(0.5);
-
+        sleep(2000);
 
         robot.Lift.setPower(-LIFT_SPEED);
-        sleep(5000);
+        sleep(3000);
 
         robot.LeftFront.setPower(TURN_SPEED);
         robot.RightFront.setPower(-TURN_SPEED);
         robot.LeftBack.setPower(TURN_SPEED);
         robot.RightBack.setPower(-TURN_SPEED);
-        sleep(1300);
+        sleep(300);
         robot.LeftFront.setPower(0);
         robot.RightFront.setPower(0);
         robot.LeftBack.setPower(0);
         robot.RightBack.setPower(0);
 
-        robot.LeftFront.setPower(REVERSE_SPEED);
-        robot.RightFront.setPower(REVERSE_SPEED);
-        robot.LeftBack.setPower(REVERSE_SPEED);
-        robot.RightBack.setPower(REVERSE_SPEED);
-        sleep(2000);
-        robot.LeftFront.setPower(0);
-        robot.RightFront.setPower(0);
-        robot.LeftBack.setPower(0);
-        robot.RightBack.setPower(0);
+        //robot.LeftFront.setPower(REVERSE_SPEED);
+        //robot.RightFront.setPower(REVERSE_SPEED);
+        //robot.LeftBack.setPower(REVERSE_SPEED);
+        //robot.RightBack.setPower(REVERSE_SPEED);
+        //sleep(250);
+        //robot.LeftFront.setPower(0);
+        //robot.RightFront.setPower(0);
+        //robot.LeftBack.setPower(0);
+        //robot.RightBack.setPower(0);
 
-        robot.LeftFront.setPower(-STRAFE_SPEED);
-        robot.RightFront.setPower(STRAFE_SPEED);
-        robot.LeftBack.setPower(STRAFE_SPEED);
-        robot.RightBack.setPower(-STRAFE_SPEED);
-        sleep(7000);
+        robot.LeftFront.setPower(STRAFE_SPEED);
+        robot.RightFront.setPower(-STRAFE_SPEED);
+        robot.LeftBack.setPower(-STRAFE_SPEED);
+        robot.RightBack.setPower(STRAFE_SPEED);
+        sleep(8500);
         robot.LeftFront.setPower(0);
         robot.RightFront.setPower(0);
         robot.LeftBack.setPower(0);
