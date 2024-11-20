@@ -187,7 +187,7 @@ public class RRTeleop extends OpMode {
         }
 
         if (gamepad2.b == true) {
-            robot.Claw.setPosition(0.5);
+            robot.Claw.setPosition(0.7);
         }
 
         if (gamepad2.x == true) {
@@ -196,7 +196,7 @@ public class RRTeleop extends OpMode {
         }
 
         if (gamepad2.y == true) {
-            robot.Claw.setPosition(0.8);
+            robot.Claw.setPosition(0);
         }
 
         if (gamepad2.right_trigger == 1) {
