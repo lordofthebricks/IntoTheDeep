@@ -207,6 +207,9 @@ public class Claw {
             if (!colorResults.isEmpty()) {
                 colorResult = colorResults.get(0);
                 List<List<Double>> targetCorners = colorResult.getTargetCorners();
+                if (targetCorners.isEmpty()){
+                    return true;
+                }
                 List<Double> c1 = targetCorners.get(0);
                 List<Double> c2 = targetCorners.get(1);
                 List<Double> c3 = targetCorners.get(2);
