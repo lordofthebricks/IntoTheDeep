@@ -36,12 +36,6 @@ public class Claw {
         LeftBack = LB;
         RightFront = RF;
         RightBack = RB;
-
-
-
-
-
-
     }
 
     public void init(){
