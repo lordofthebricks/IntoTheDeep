@@ -110,7 +110,7 @@ public class Claw {
             if (!initialized) {
                 limelight3A.pipelineSwitch(1);
                 result = limelight3A.getLatestResult();
-                if(result.isValid()) {
+                if(result.isValid() && !result.getColorResults().isEmpty()) {
                     colorResult = result.getColorResults().get(0);
 
                     if (colorResult.getTargetXDegrees() > 2) {
@@ -159,7 +159,7 @@ public class Claw {
             if (!initialized) {
                 limelight3A.pipelineSwitch(1);
                 result = limelight3A.getLatestResult();
-                if(result.isValid()) {
+                if(result.isValid() && !result.getColorResults().isEmpty()) {
                     colorResult = result.getColorResults().get(0);
 
                     if (colorResult.getTargetYDegrees() > 2) {
@@ -207,11 +207,12 @@ public class Claw {
 
             limelight3A.pipelineSwitch(1);
             LLResult result = limelight3A.getLatestResult();
-            LLResultTypes.ColorResult colorResults = result.getColorResults().get(0);
+            LLResultTypes.ColorResult colorResult;
+            List<LLResultTypes.ColorResult> colorResults = result.getColorResults();
 
-
-            if (colorResults != null) {
-                List<List<Double>> targetCorners = colorResults.getTargetCorners();
+            if (!colorResults.isEmpty()) {
+                colorResult = colorResults.get(0);
+                List<List<Double>> targetCorners = colorResult.getTargetCorners();
                 List<Double> c1 = targetCorners.get(0);
                 List<Double> c2 = targetCorners.get(1);
                 List<Double> c3 = targetCorners.get(2);
@@ -251,12 +252,13 @@ public class Claw {
                 Wrist2.setPosition(0.5);
 
                 Claw.setPosition(0.8);
+                return false;
             } else {
                 packet.put("No Target Found", null);
+
                 return true;
             }
 
-            return false;
         }
     }
 
