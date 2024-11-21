@@ -6,11 +6,11 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
-
 @Config
-@Autonomous(name = "B1_Basket_Observation", group = "Autonomous")
-public class B1BasketObservation extends LinearOpMode {
+@Autonomous(name = "B1_Basket_Observation_notworking", group = "Autonomous")
+public class B1Basketobeservationnotworking extends LinearOpMode {
+
+
     hardware robot   = new hardware();
     private DcMotor leftfDrive = null;
     private DcMotor rightfDrive = null;

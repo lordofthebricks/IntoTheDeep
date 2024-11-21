@@ -12,9 +12,9 @@ public class Lift {
 
     DcMotor lift;
 
-    double WheelInchesPerRotation = 4.72441;
-    double MotorTicksPerRotation = 537.7;
-    double InchesPerTick = MotorTicksPerRotation / WheelInchesPerRotation;
+    static double WheelInchesPerRotation = 4.72441;
+    static double MotorTicksPerRotation = 537.7;
+   public final static double InchesPerTick = MotorTicksPerRotation / WheelInchesPerRotation;
 
 
     public Lift(HardwareMap hwMp) {
