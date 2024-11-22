@@ -154,10 +154,10 @@ public class B1preloadedsampleobservation extends LinearOpMode {
         robot.LeftBack.setPower(0);
         robot.RightBack.setPower(0);
 
-        robot.LeftFront.setPower(STRAFE_SPEED);
+        robot.LeftFront.setPower(-0.6);
         robot.RightFront.setPower(-STRAFE_SPEED);
         robot.LeftBack.setPower(-STRAFE_SPEED);
-        robot.RightBack.setPower(STRAFE_SPEED);
+        robot.RightBack.setPower(-0.6);
         sleep(7500);
         robot.LeftFront.setPower(0);
         robot.RightFront.setPower(0);
