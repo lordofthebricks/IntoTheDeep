@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -27,7 +28,7 @@ import org.firstinspires.ftc.teamcode.hardwareclasses.Lift;
  * Use Android Studios to Copy this Class, and Paste it into your team's code folder with a new name.
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
-
+@Disabled
 @Autonomous(name="R1Preloaded_Sample_Observation", group="Autonomous")
 
 public class R1preloadedsampleobservation extends LinearOpMode {
@@ -150,6 +151,16 @@ public class R1preloadedsampleobservation extends LinearOpMode {
         robot.LeftBack.setPower(-STRAFE_SPEED);
         robot.RightBack.setPower(STRAFE_SPEED);
         sleep(7500);
+        robot.LeftFront.setPower(0);
+        robot.RightFront.setPower(0);
+        robot.LeftBack.setPower(0);
+        robot.RightBack.setPower(0);
+
+        robot.LeftFront.setPower(REVERSE_SPEED);
+        robot.RightFront.setPower(REVERSE_SPEED);
+        robot.LeftBack.setPower(REVERSE_SPEED);
+        robot.RightBack.setPower(REVERSE_SPEED);
+        sleep(150);
         robot.LeftFront.setPower(0);
         robot.RightFront.setPower(0);
         robot.LeftBack.setPower(0);

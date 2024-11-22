@@ -89,7 +89,7 @@ public class B1preloadedsampleobservation extends LinearOpMode {
         robot.RightFront.setPower(TURN_SPEED);
         robot.LeftBack.setPower(-TURN_SPEED);
         robot.RightBack.setPower(TURN_SPEED);
-        sleep(330);
+        sleep(435);
         robot.LeftFront.setPower(0);
         robot.RightFront.setPower(0);
         robot.LeftBack.setPower(0);
@@ -137,7 +137,7 @@ public class B1preloadedsampleobservation extends LinearOpMode {
         robot.RightFront.setPower(TURN_SPEED);
         robot.LeftBack.setPower(TURN_SPEED);
         robot.RightBack.setPower(-TURN_SPEED);
-        sleep(340);
+        sleep(370);
         robot.LeftFront.setPower(0);
         robot.RightFront.setPower(0);
         robot.LeftBack.setPower(0);
@@ -147,7 +147,7 @@ public class B1preloadedsampleobservation extends LinearOpMode {
         robot.RightFront.setPower(FORWARD_SPEED);
         robot.LeftBack.setPower(FORWARD_SPEED);
         robot.RightBack.setPower(FORWARD_SPEED);
-        sleep(250);
+        sleep(90);
         robot.LeftFront.setPower(0);
         robot.RightFront.setPower(0);
         robot.LeftBack.setPower(0);
@@ -162,6 +162,17 @@ public class B1preloadedsampleobservation extends LinearOpMode {
         robot.RightFront.setPower(0);
         robot.LeftBack.setPower(0);
         robot.RightBack.setPower(0);
+
+        robot.LeftFront.setPower(REVERSE_SPEED);
+        robot.RightFront.setPower(REVERSE_SPEED);
+        robot.LeftBack.setPower(REVERSE_SPEED);
+        robot.RightBack.setPower(REVERSE_SPEED);
+        sleep(150);
+        robot.LeftFront.setPower(0);
+        robot.RightFront.setPower(0);
+        robot.LeftBack.setPower(0);
+        robot.RightBack.setPower(0);
+
         // Step 4:  Stop and close the claw.
         //robot.leftDrive.setPower(0);
         //robot.rightDrive.setPower(0);

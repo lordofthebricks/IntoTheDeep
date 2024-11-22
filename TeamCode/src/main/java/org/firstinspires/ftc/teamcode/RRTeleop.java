@@ -159,14 +159,14 @@ public class RRTeleop extends OpMode {
         }
 
         if (gamepad1.a == true){
-            robot.HangArm.setPosition(0.5);
+            robot.HangArm.setPosition(0.6);
         }
         if(gamepad1.b == true){
-            robot.HangArm.setPosition(1);
+            robot.HangArm.setPosition(0);
         }
-        if(gamepad1.right_trigger == 1){
+        if(gamepad1.right_bumper == true){
             robot.Winch.setPower(1);
-        }else if (gamepad1.right_bumper){
+        }else if (gamepad1.right_trigger == 1){
             robot.Winch.setPower(-1);
         }else{
             robot.Winch.setPower(0);
