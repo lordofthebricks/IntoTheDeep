@@ -42,11 +42,21 @@ public class Observationpreloadedsamplesubmersible extends LinearOpMode {
 
         // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
 
+        robot.LeftFront.setPower(FORWARD_SPEED);
+        robot.RightFront.setPower(FORWARD_SPEED);
+        robot.LeftBack.setPower(FORWARD_SPEED);
+        robot.RightBack.setPower(FORWARD_SPEED);
+        sleep(300);
+        robot.LeftFront.setPower(0);
+        robot.RightFront.setPower(0);
+        robot.LeftBack.setPower(0);
+        robot.RightBack.setPower(0);
+
         robot.LeftFront.setPower(0.6);
         robot.RightFront.setPower(STRAFE_SPEED);
         robot.LeftBack.setPower(STRAFE_SPEED);
         robot.RightBack.setPower(0.6);
-        sleep(5000);
+        sleep(3500);
         robot.LeftFront.setPower(0);
         robot.RightFront.setPower(0);
         robot.LeftBack.setPower(0);
@@ -56,7 +66,7 @@ public class Observationpreloadedsamplesubmersible extends LinearOpMode {
         robot.RightFront.setPower(TURN_SPEED);
         robot.LeftBack.setPower(-TURN_SPEED);
         robot.RightBack.setPower(TURN_SPEED);
-        sleep(330);
+        sleep(510);
         robot.LeftFront.setPower(0);
         robot.RightFront.setPower(0);
         robot.LeftBack.setPower(0);
@@ -66,7 +76,7 @@ public class Observationpreloadedsamplesubmersible extends LinearOpMode {
         robot.RightFront.setPower(REVERSE_SPEED);
         robot.LeftBack.setPower(REVERSE_SPEED);
         robot.RightBack.setPower(REVERSE_SPEED);
-        sleep(670);
+        sleep(350);
         robot.LeftFront.setPower(0);
         robot.RightFront.setPower(0);
         robot.LeftBack.setPower(0);
@@ -113,17 +123,27 @@ public class Observationpreloadedsamplesubmersible extends LinearOpMode {
         robot.RightFront.setPower(-STRAFE_SPEED);
         robot.LeftBack.setPower(-STRAFE_SPEED);
         robot.RightBack.setPower(-0.6);
-        sleep(7500);
+        sleep(1000);
         robot.LeftFront.setPower(0);
         robot.RightFront.setPower(0);
         robot.LeftBack.setPower(0);
         robot.RightBack.setPower(0);
 
-        robot.LeftFront.setPower(REVERSE_SPEED);
-        robot.RightFront.setPower(REVERSE_SPEED);
-        robot.LeftBack.setPower(REVERSE_SPEED);
-        robot.RightBack.setPower(REVERSE_SPEED);
-        sleep(300);
+        robot.LeftFront.setPower(FORWARD_SPEED);
+        robot.RightFront.setPower(FORWARD_SPEED);
+        robot.LeftBack.setPower(FORWARD_SPEED);
+        robot.RightBack.setPower(FORWARD_SPEED);
+        sleep(1100);
+        robot.LeftFront.setPower(0);
+        robot.RightFront.setPower(0);
+        robot.LeftBack.setPower(0);
+        robot.RightBack.setPower(0);
+
+        robot.LeftFront.setPower(-0.6);
+        robot.RightFront.setPower(-STRAFE_SPEED);
+        robot.LeftBack.setPower(-STRAFE_SPEED);
+        robot.RightBack.setPower(-0.6);
+        sleep(1000);
         robot.LeftFront.setPower(0);
         robot.RightFront.setPower(0);
         robot.LeftBack.setPower(0);
