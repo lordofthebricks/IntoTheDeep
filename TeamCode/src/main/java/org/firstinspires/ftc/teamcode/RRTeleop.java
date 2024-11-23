@@ -3,12 +3,8 @@ package org.firstinspires.ftc.teamcode;
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
-import com.acmerobotics.roadrunner.InstantAction;
-import com.acmerobotics.roadrunner.SequentialAction;
-import com.acmerobotics.roadrunner.SleepAction;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.sun.tools.javac.jvm.ClassReader;
 
 import org.firstinspires.ftc.teamcode.hardwareclasses.Claw;
 import org.firstinspires.ftc.teamcode.hardwareclasses.FrontSlide;
@@ -165,11 +161,14 @@ public class RRTeleop extends OpMode {
             robot.HangArm.setPosition(0);
         }
         if(gamepad1.right_bumper == true){
-            robot.Winch.setPower(1);
+            robot.Winch1.setPower(-0.9);
+            robot.Winch2.setPower(1);
         }else if (gamepad1.right_trigger == 1){
-            robot.Winch.setPower(-1);
+            robot.Winch1.setPower(0.9);
+            robot.Winch2.setPower(-1);
         }else{
-            robot.Winch.setPower(0);
+            robot.Winch1.setPower(0);
+            robot.Winch2.setPower(0);
         }
         //HERE IT'S RIGHT HERE!!!
         if (gamepad2.right_trigger == 1) {

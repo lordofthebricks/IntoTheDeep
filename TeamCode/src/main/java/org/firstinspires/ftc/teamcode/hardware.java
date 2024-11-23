@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode;
 
 import androidx.annotation.NonNull;
 
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -23,7 +22,8 @@ public class hardware {
     public Servo Wrist1;
     public Servo Wrist2;
     public Servo HangArm;
-    public DcMotor Winch;
+    public DcMotor Winch1;
+    public DcMotor Winch2;
 
 
     public void init(@NonNull HardwareMap hwMp) {
@@ -40,7 +40,8 @@ public class hardware {
     Claw = hwMp.get(Servo.class, "Claw");
     Wrist1 = hwMp.get(Servo.class, "Wrist1");
     Wrist2 = hwMp.get(Servo.class, "Wrist2");
-    Winch = hwMp.get(DcMotor.class, "Winch");
+    Winch1 = hwMp.get(DcMotor.class, "Winch");
+    Winch2 = hwMp.get(DcMotor.class,"HeadingPod");
     HangArm = hwMp.get(Servo.class, "HangArm");
 //    Arm.setDirection(DcMotorSimple.Direction.REVERSE);
     Lift.setDirection(DcMotorSimple.Direction.REVERSE);
