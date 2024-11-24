@@ -21,7 +21,7 @@ public class Observationpreloadedsampleobservation extends LinearOpMode {
     static final double FORWARD_SPEED = -0.8;
     static final double REVERSE_SPEED = 0.8;
     static final double TURN_SPEED = 0.5;
-    static final double LIFT_SPEED = 0.5;
+    static final double LIFT_SPEED = 0.8;
     static final double STRAFE_SPEED = -0.5;
 
     @Override
@@ -40,6 +40,8 @@ public class Observationpreloadedsampleobservation extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
+        //REMOVE THE FOLLWING LINE LATER
+        sleep(10000);
         // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
         robot.LeftFront.setPower(FORWARD_SPEED);
         robot.RightFront.setPower(FORWARD_SPEED);
@@ -65,7 +67,7 @@ public class Observationpreloadedsampleobservation extends LinearOpMode {
         robot.RightFront.setPower(TURN_SPEED);
         robot.LeftBack.setPower(-TURN_SPEED);
         robot.RightBack.setPower(TURN_SPEED);
-        sleep(510);
+        sleep(490);
         robot.LeftFront.setPower(0);
         robot.RightFront.setPower(0);
         robot.LeftBack.setPower(0);
@@ -128,11 +130,11 @@ public class Observationpreloadedsampleobservation extends LinearOpMode {
         robot.LeftBack.setPower(0);
         robot.RightBack.setPower(0);
 
-        robot.LeftFront.setPower(FORWARD_SPEED);
-        robot.RightFront.setPower(FORWARD_SPEED);
-        robot.LeftBack.setPower(FORWARD_SPEED);
-        robot.RightBack.setPower(FORWARD_SPEED);
-        sleep(2300);
+        robot.LeftFront.setPower(-1);
+        robot.RightFront.setPower(-1);
+        robot.LeftBack.setPower(-1);
+        robot.RightBack.setPower(-1);
+        sleep(2000);
         robot.LeftFront.setPower(0);
         robot.RightFront.setPower(0);
         robot.LeftBack.setPower(0);

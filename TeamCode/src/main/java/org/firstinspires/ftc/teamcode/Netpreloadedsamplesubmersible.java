@@ -50,10 +50,6 @@ public class Netpreloadedsamplesubmersible extends LinearOpMode {
         robot.LeftBack.setPower(0);
         robot.RightBack.setPower(0);
 
-        // Step 2:  Spin right for 1.3 seconds
-        // robot.leftDrive.setPower(TURN_SPEED);
-        //robot.rightDrive.setPower(-TURN_SPEED);
-
         robot.LeftFront.setPower(-TURN_SPEED);
         robot.RightFront.setPower(TURN_SPEED);
         robot.LeftBack.setPower(-TURN_SPEED);
@@ -69,7 +65,7 @@ public class Netpreloadedsamplesubmersible extends LinearOpMode {
         robot.RightFront.setPower(REVERSE_SPEED);
         robot.LeftBack.setPower(REVERSE_SPEED);
         robot.RightBack.setPower(REVERSE_SPEED);
-        sleep(670);
+        sleep(660);
         robot.LeftFront.setPower(0);
         robot.RightFront.setPower(0);
         robot.LeftBack.setPower(0);
