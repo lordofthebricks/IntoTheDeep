@@ -1,13 +1,11 @@
+package org.firstinspires.ftc.teamcode;
+
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.hardware;
-
 @Autonomous(name="Encoder_Practice", group="Autonomous")
-@Disabled
 
 public class EncoderPractice extends LinearOpMode {
 
@@ -22,10 +20,11 @@ static final double COUNTS_PER_INCH = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTI
                                       (WHEEL_DIAMETER_INCHES * Math.PI);
 
 static final double FORWARD_SPEED = 0.8;
-static final double REVERSE_SPEED = -0.6;
 
 @Override
-public void runOpMode(){
+public void runOpMode() {
+
+    robot.init(hardwareMap);
 
     robot.LeftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     robot.RightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -47,6 +46,12 @@ telemetry.update();
 waitForStart();
 
 encoderDrive(FORWARD_SPEED,48,48,48,48,3.0);
+
+    telemetry.addData("Path","Complete");
+telemetry.update();
+sleep(1000);
+
+encoderDrive(FORWARD_SPEED,-24,-24,-24,-24,3.0);
 
     telemetry.addData("Path","Complete");
 telemetry.update();
@@ -80,7 +85,7 @@ sleep(1000);
         runtime.reset();
         robot.LeftFront.setPower(Math.abs(speed));
         robot.RightFront.setPower(Math.abs(speed));
-        robot.LeftFront.setPower(Math.abs(speed));
+        robot.LeftBack.setPower(Math.abs(speed));
         robot.RightBack.setPower(Math.abs(speed));
 
             while (opModeIsActive() &&
