@@ -45,15 +45,20 @@ public class Diagonalencoderpractice extends LinearOpMode {
 
         waitForStart();
 
-        encoderDrive(FORWARD_SPEED, 48, 48, 48, 48, 3.0);
+       // encoderDrive(FORWARD_SPEED, 48, 48, 48, 48, 3.0);
 
-        encoderLift(FORWARD_SPEED, 40, 3.0);
+        encoderLift(FORWARD_SPEED, 102, 3.0);
 
-        encoderLift(FORWARD_SPEED, -40, 3.0);
+        robot.Bucket.setPosition(0);
 
-        encoderArm(FORWARD_SPEED,12,3.0);
+        sleep(1000);
+        robot.Bucket.setPosition(0.5);
+        sleep(500);
+        encoderLift(FORWARD_SPEED, -100, 3.0);
 
-        encoderArm(FORWARD_SPEED,-12,3.0);
+        encoderArm(FORWARD_SPEED,40,3.0);
+
+        encoderArm(FORWARD_SPEED,-40,3.0);
     }
 
     public void encoderDrive(double speed,
