@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous(name="Diagonal_Encoder_Practice", group="Autonomous")
 
-public class Diagonalencoderpractice extends LinearOpMode {
+public class Multiplesampleencoderpractice extends LinearOpMode {
 
     hardware robot = new hardware();
 
@@ -70,7 +70,7 @@ public class Diagonalencoderpractice extends LinearOpMode {
         encoderDrive(FORWARD_SPEED,11,11,11,11,3.0);
 
         encoderArm(FORWARD_SPEED,50,3.0);
-        sleep(5000);
+        sleep(1000);
         encoderArm(FORWARD_SPEED,-50,3.0);
 
         encoderDrive(FORWARD_SPEED,3,-3,3,-3,3.0);
