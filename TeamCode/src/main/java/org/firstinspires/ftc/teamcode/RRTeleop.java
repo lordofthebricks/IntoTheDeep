@@ -210,9 +210,9 @@ public class RRTeleop extends OpMode {
             robot.Bucket.setPosition(0.5);
         }
 
-        if (gamepad2.left_stick_y == 1 && WristPosition1 < 0.8) {
+       /* if (gamepad2.left_stick_y == 1 && WristPosition1 < 0.8) {
             WristPosition1 = WristPosition1 + 0.01;
-            robot.Wrist1.setPosition(WristPosition1);
+            Wrist1.setPosition(WristPosition1);
         } else if (gamepad2.left_stick_y == -1 && WristPosition1 > 0.2) {
             WristPosition1 = WristPosition1 - 0.01;
             robot.Wrist1.setPosition(WristPosition1);
@@ -222,7 +222,7 @@ public class RRTeleop extends OpMode {
         } else if (gamepad2.left_stick_x == -1 && WristPosition2 > 0.2) {
             WristPosition2 = WristPosition2 -0.01;
             robot.Wrist2.setPosition(WristPosition2);
-        }
+        } */
 
 
         }

@@ -34,26 +34,26 @@ double Rest = 0;
     public void loop() {
         double Wrist2Pos = robot.Wrist2.getPosition();
 
-        double Wrist1Pos = robot.Wrist1.getPosition();
+    //    double Wrist1Pos = robot.Wrist1.getPosition();
 
-        double ClawPos = robot.Claw.getPosition();
-        if(gamepad1.a) robot.Claw.setPosition(robot.Claw.getPosition() + 0.01);
+     //   double ClawPos = robot.Claw.getPosition();
+     //   if(gamepad1.a) robot.Claw.setPosition(robot.Claw.getPosition() + 0.01);
 
-        if(gamepad1.b) robot.Claw.setPosition(robot.Claw.getPosition() - 0.01);
+    //    if(gamepad1.b) robot.Claw.setPosition(robot.Claw.getPosition() - 0.01);
 
         if(gamepad1.x) robot.Wrist2.setPosition(robot.Wrist2.getPosition() + 0.01);
 
         if(gamepad1.y) robot.Wrist2.setPosition(robot.Wrist2.getPosition() - 0.01);
 
-        if(gamepad1.dpad_up) robot.Wrist1.setPosition(robot.Wrist1.getPosition() + 0.01);
+     //   if(gamepad1.dpad_up) robot.Wrist1.setPosition(robot.Wrist1.getPosition() + 0.01);
 
-        if(gamepad1.dpad_down) robot.Wrist1.setPosition(robot.Wrist1.getPosition() - 0.01);
+      //  if(gamepad1.dpad_down) robot.Wrist1.setPosition(robot.Wrist1.getPosition() - 0.01);
 
         telemetry.addData("Wrist 2 Position: ", Wrist2Pos);
 
-        telemetry.addData("Wrist 1 Position: ", Wrist1Pos);
+      //  telemetry.addData("Wrist 1 Position: ", Wrist1Pos);
 
-        telemetry.addData("Claw Pos: ", ClawPos);
+      //  telemetry.addData("Claw Pos: ", ClawPos);
 
         telemetry.update();
 

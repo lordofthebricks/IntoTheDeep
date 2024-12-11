@@ -38,8 +38,8 @@ public class hardware {
     Lift = hwMp.get(DcMotor.class,"Lift");
     Arm = hwMp.get(DcMotor.class, "Arm");
     Bucket = hwMp.get(Servo.class, "Bucket");
-    Intake1 = hwMp.get(CRServo.class, "Claw");
-    Intake2 = hwMp.get(CRServo.class, "Wrist1");
+    Intake1 = hwMp.get(CRServo.class, "Intake1");
+    Intake2 = hwMp.get(CRServo.class, "Intake2");
     Wrist2 = hwMp.get(Servo.class, "Wrist2");
     Winch1 = hwMp.get(DcMotor.class, "Winch");
     Winch2 = hwMp.get(DcMotor.class,"HeadingPod");
