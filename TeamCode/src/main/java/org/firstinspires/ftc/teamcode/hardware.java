@@ -46,6 +46,7 @@ public class hardware {
     HangArm = hwMp.get(Servo.class, "HangArm");
 //    Arm.setDirection(DcMotorSimple.Direction.REVERSE);
     Lift.setDirection(DcMotorSimple.Direction.REVERSE);
+    Intake1.setDirection(CRServo.Direction.REVERSE);
 
     LeftFront.setDirection(DcMotorSimple.Direction.REVERSE);
     LeftBack.setDirection(DcMotorSimple.Direction.REVERSE);

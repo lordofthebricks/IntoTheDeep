@@ -180,22 +180,19 @@ public class RRTeleop extends OpMode {
         }
 
         if (gamepad2.a == true) {
-            robot.Wrist1.setPosition(0.5);
-            robot.Wrist2.setPosition(0.5);
-            robot.Claw.setPosition(0.5);
+         robot.Intake1.setPower(1);
+         robot.Intake2.setPower(1);
         }
 
         if (gamepad2.b == true) {
-            robot.Claw.setPosition(0);
+            robot.Intake1.setPower(-1);
+            robot.Intake2.setPower(-1);
         }
 
         if (gamepad2.x == true) {
-            robot.Wrist2.setPosition(0.001);
-            robot.Wrist1.setPosition(-0.2);
         }
 
         if (gamepad2.y == true) {
-            robot.Claw.setPosition(0.4);
         }
         //HERE IT'S ALSO RIGHT HERE!!!
         if (gamepad2.left_trigger == 1) {
