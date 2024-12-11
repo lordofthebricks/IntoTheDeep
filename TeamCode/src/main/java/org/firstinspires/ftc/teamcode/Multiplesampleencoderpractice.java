@@ -69,28 +69,26 @@ public class Multiplesampleencoderpractice extends LinearOpMode {
 
         encoderDrive(FORWARD_SPEED,11,11,11,11,3.0);
 
-        encoderArm(FORWARD_SPEED,35,3.0);
+        encoderArm(FORWARD_SPEED,30,3.0);
 
         robot.Wrist2.setPosition(0.2);
-
-        encoderDrive(FORWARD_SPEED,10,10,10,10,3.0);
+        sleep(2000);
+        encoderDrive(0.5,10,10,10,10,3.0);
 
         robot.Intake1.setPower(1);
         robot.Intake2.setPower(1);
         sleep(2000);
-        robot.Intake1.setPower(-1);
-        robot.Intake2.setPower(-1);
-        sleep(2000);
-        encoderArm(FORWARD_SPEED,-40,3.0);
 
         robot.Wrist2.setPosition(0.9);
 
+        encoderArm(FORWARD_SPEED,-40,3.0);
+
         robot.Intake1.setPower(-1);
-        robot.Intake2.setPower(1);
+        robot.Intake2.setPower(-1);
 
         encoderDrive(FORWARD_SPEED,3,-3,3,-3,3.0);
 
-        encoderDrive(FORWARD_SPEED,-10,-10,-10,-10,3.0);
+        encoderDrive(FORWARD_SPEED,10,-10,-10,10,3.0);
 
         encoderLift(FORWARD_SPEED, 102, 3.0);
 
