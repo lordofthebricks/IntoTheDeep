@@ -190,10 +190,13 @@ public class RRTeleop extends OpMode {
         }
 
         if (gamepad2.x == true) {
+            robot.Wrist2.setPosition(0.2);
         }
 
         if (gamepad2.y == true) {
+            robot.Wrist2.setPosition(0.9);
         }
+
         //HERE IT'S ALSO RIGHT HERE!!!
         if (gamepad2.left_trigger == 1) {
             robot.Lift.setPower(0.5);
