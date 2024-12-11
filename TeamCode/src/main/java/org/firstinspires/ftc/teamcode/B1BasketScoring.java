@@ -28,7 +28,7 @@ public class B1BasketScoring extends LinearOpMode {
          * Initialize the drive system variables.
          * The init() method of the hardware class does all the work here
          */
-        robot.init(hardwareMap);
+        /*robot.init(hardwareMap);
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Status", "Ready to run");    //
@@ -210,7 +210,7 @@ public class B1BasketScoring extends LinearOpMode {
         robot.LeftFront.setPower(0);
         robot.RightFront.setPower(0);
         robot.LeftBack.setPower(0);
-        robot.RightBack.setPower(0);
+        robot.RightBack.setPower(0);*/
 
     }
 }

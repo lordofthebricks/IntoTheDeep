@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import androidx.annotation.NonNull;
 
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -18,8 +19,8 @@ public class hardware {
     public DcMotor Lift;
     public DcMotor Arm;
     public Servo Bucket;
-    public Servo Claw;
-    public Servo Wrist1;
+    public CRServo Intake1;
+    public CRServo Intake2;
     public Servo Wrist2;
     public Servo HangArm;
     public DcMotor Winch1;
@@ -37,8 +38,8 @@ public class hardware {
     Lift = hwMp.get(DcMotor.class,"Lift");
     Arm = hwMp.get(DcMotor.class, "Arm");
     Bucket = hwMp.get(Servo.class, "Bucket");
-    Claw = hwMp.get(Servo.class, "Claw");
-    Wrist1 = hwMp.get(Servo.class, "Wrist1");
+    Intake1 = hwMp.get(CRServo.class, "Claw");
+    Intake2 = hwMp.get(CRServo.class, "Wrist1");
     Wrist2 = hwMp.get(Servo.class, "Wrist2");
     Winch1 = hwMp.get(DcMotor.class, "Winch");
     Winch2 = hwMp.get(DcMotor.class,"HeadingPod");
