@@ -61,7 +61,7 @@ public class Multiplesampleencoderpractice extends LinearOpMode {
         robot.Bucket.setPosition(0.5);
         sleep(500);
 
-        encoderDrive(FORWARD_SPEED,1,1,1,1,3.0);
+        encoderDrive(FORWARD_SPEED,2,2,2,2,3.0);
 
         encoderLift(FORWARD_SPEED, -100, 3.0);
 
@@ -69,17 +69,21 @@ public class Multiplesampleencoderpractice extends LinearOpMode {
 
         encoderDrive(FORWARD_SPEED,11,11,11,11,3.0);
 
-        encoderArm(FORWARD_SPEED,50,3.0);
+        encoderArm(FORWARD_SPEED,35,3.0);
 
-        robot.Wrist2.setPosition(0.6);
+        robot.Wrist2.setPosition(0.2);
+
+        encoderDrive(FORWARD_SPEED,10,10,10,10,3.0);
 
         robot.Intake1.setPower(1);
+        robot.Intake2.setPower(1);
+        sleep(2000);
+        robot.Intake1.setPower(-1);
         robot.Intake2.setPower(-1);
+        sleep(2000);
+        encoderArm(FORWARD_SPEED,-40,3.0);
 
-        sleep(5000);
-       /* encoderArm(FORWARD_SPEED,-40,3.0);
-
-        robot.Wrist2.setPosition(0.001);
+        robot.Wrist2.setPosition(0.9);
 
         robot.Intake1.setPower(-1);
         robot.Intake2.setPower(1);
@@ -98,7 +102,7 @@ public class Multiplesampleencoderpractice extends LinearOpMode {
 
         encoderDrive(FORWARD_SPEED,1,1,1,1,3.0);
 
-        encoderLift(FORWARD_SPEED, -100, 3.0); */
+        encoderLift(FORWARD_SPEED, -100, 3.0);
     }
 
     public void encoderDrive(double speed,

@@ -21,7 +21,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 
-import org.firstinspires.ftc.teamcode.hardwareclasses.Claw;
+//import org.firstinspires.ftc.teamcode.hardwareclasses.Claw;
 import org.firstinspires.ftc.teamcode.hardwareclasses.FrontSlide;
 import org.firstinspires.ftc.teamcode.hardwareclasses.Lift;
 import org.firstinspires.ftc.teamcode.hardwareclasses.MecanumDrive;

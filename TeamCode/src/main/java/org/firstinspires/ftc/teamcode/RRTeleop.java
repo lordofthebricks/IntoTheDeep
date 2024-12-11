@@ -5,8 +5,9 @@ import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-import org.firstinspires.ftc.teamcode.hardwareclasses.Claw;
+//import org.firstinspires.ftc.teamcode.hardwareclasses.Claw;
 import org.firstinspires.ftc.teamcode.hardwareclasses.FrontSlide;
 import org.firstinspires.ftc.teamcode.hardwareclasses.Lift;
 
@@ -17,7 +18,7 @@ public class RRTeleop extends OpMode {
 
     FrontSlide frontSlide;
     Lift lift;
-    Claw claw;
+    //Claw claw;
     private FtcDashboard dash = FtcDashboard.getInstance();
     private List<Action> runningActions = new ArrayList<>();
     private hardware robot;
@@ -32,6 +33,7 @@ public class RRTeleop extends OpMode {
     private double WristPosition1 = 0.5;
     private double WristPosition2 = 0.5;
 
+
     @Override
     public void init() {
         robot = new hardware();
@@ -40,7 +42,11 @@ public class RRTeleop extends OpMode {
         lift = new Lift(hardwareMap);
         firstRun = true;
         outInchs = 18;
-        claw = new Claw(hardwareMap, robot.LeftFront, robot.LeftBack, robot.RightFront, robot.RightBack);
+        robot.LeftFront.setDirection(DcMotorSimple.Direction.FORWARD);
+        robot.LeftBack.setDirection(DcMotorSimple.Direction.FORWARD);
+        robot.RightBack.setDirection(DcMotorSimple.Direction.REVERSE);
+        robot.RightFront.setDirection(DcMotorSimple.Direction.REVERSE);
+        //claw = new Claw(hardwareMap, robot.LeftFront, robot.LeftBack, robot.RightFront, robot.RightBack);
     }
 
     @Override
@@ -179,15 +185,18 @@ public class RRTeleop extends OpMode {
             robot.Arm.setPower(0);
         }
 
-        if (gamepad2.a == true) {
+        if (gamepad2.dpad_right == true) {
          robot.Intake1.setPower(1);
          robot.Intake2.setPower(1);
-        }
-
-        if (gamepad2.b == true) {
+        }  if (gamepad2.dpad_left == true) {
             robot.Intake1.setPower(-1);
             robot.Intake2.setPower(-1);
+        } else if (gamepad2.dpad_right == false) {
+            robot.Intake1.setPower(0);
+            robot.Intake2.setPower(0);
         }
+
+
 
         if (gamepad2.x == true) {
             robot.Wrist2.setPosition(0.2);

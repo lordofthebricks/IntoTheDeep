@@ -10,7 +10,7 @@ import com.qualcomm.hardware.limelightvision.LLStatus;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.hardwareclasses.Claw;
+//import org.firstinspires.ftc.teamcode.hardwareclasses.Claw;
 import org.firstinspires.ftc.teamcode.hardwareclasses.FrontSlide;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import java.util.List;
 
 @TeleOp
 public class TestingTeleop extends OpMode {
-    Claw claw;
+   // Claw claw;
     FrontSlide arm;
 
     hardwareRoadRunner robot;
@@ -32,16 +32,16 @@ public class TestingTeleop extends OpMode {
 
         robot = new hardwareRoadRunner();
         robot.init(hardwareMap);
-        claw = new Claw(hardwareMap, robot.LeftFront, robot.LeftBack, robot.RightFront, robot.RightBack);
+       // claw = new Claw(hardwareMap, robot.LeftFront, robot.LeftBack, robot.RightFront, robot.RightBack);
 
         arm = new FrontSlide(hardwareMap);
-        claw.init();
+        //claw.init();
     }
     @Override
     public void loop() {
         TelemetryPacket packet = new TelemetryPacket();
 
-        LLStatus status = claw.limelight3A.getStatus();
+        /*LLStatus status = claw.limelight3A.getStatus();
         telemetry.addData("Name", "%s",
                 status.getName());
         telemetry.addData("LL", "Temp: %.1fC, CPU: %.1f%%, FPS: %d",
@@ -72,7 +72,7 @@ public class TestingTeleop extends OpMode {
                     arm.slideIn(18)
 
             ));
-        }
+        } */
 
 
 

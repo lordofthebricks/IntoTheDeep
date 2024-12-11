@@ -14,7 +14,7 @@ import com.acmerobotics.roadrunner.ftc.Actions;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import org.firstinspires.ftc.teamcode.hardwareclasses.Claw;
+//import org.firstinspires.ftc.teamcode.hardwareclasses.Claw;
 import org.firstinspires.ftc.teamcode.hardwareclasses.FrontSlide;
 import org.firstinspires.ftc.teamcode.hardwareclasses.MecanumDrive;
 
@@ -33,7 +33,7 @@ public class B1BasketObservationRR extends LinearOpMode{
 
         hardware robot = new hardware();
         // make a Claw instance
-        Claw claw = new Claw(hardwareMap, robot.LeftFront, robot.LeftBack, robot.RightFront, robot.RightBack);
+        //Claw claw = new Claw(hardwareMap, robot.LeftFront, robot.LeftBack, robot.RightFront, robot.RightBack);
         // make a Lift instance
 //        Lift lift = new Lift(hardwareMap);
         //make a Slide instance
