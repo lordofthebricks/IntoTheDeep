@@ -1,30 +1,21 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.bombadil1;
 
-
-import androidx.annotation.NonNull;
 
 // RR-specific imports
-import com.acmerobotics.dashboard.config.Config;
-import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
 import com.acmerobotics.roadrunner.InstantAction;
 import com.acmerobotics.roadrunner.Pose2d;
 import com.acmerobotics.roadrunner.SequentialAction;
-import com.acmerobotics.roadrunner.TrajectoryActionBuilder;
-import com.acmerobotics.roadrunner.Vector2d;
-import com.acmerobotics.roadrunner.ftc.Actions;
+        import com.acmerobotics.roadrunner.ftc.Actions;
 
 // Non-RR imports
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.hardware.DcMotorEx;
 
 //import org.firstinspires.ftc.teamcode.hardwareclasses.Claw;
-import org.firstinspires.ftc.teamcode.hardwareclasses.FrontSlide;
-import org.firstinspires.ftc.teamcode.hardwareclasses.Lift;
-import org.firstinspires.ftc.teamcode.hardwareclasses.MecanumDrive;
+import org.firstinspires.ftc.teamcode.bombadil1.hardwareclasses.FrontSlide;
+import org.firstinspires.ftc.teamcode.bombadil1.hardwareclasses.Lift;
+import org.firstinspires.ftc.teamcode.MecanumDrive;
 
 //Important: Do Not Use this File, Make sure to copy and paste this to create your autonomouses
 @Autonomous(name = "Basic Auto", group = "Autonomous")

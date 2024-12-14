@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.bombadil1;
 
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
@@ -8,8 +8,8 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 //import org.firstinspires.ftc.teamcode.hardwareclasses.Claw;
-import org.firstinspires.ftc.teamcode.hardwareclasses.FrontSlide;
-import org.firstinspires.ftc.teamcode.hardwareclasses.Lift;
+import org.firstinspires.ftc.teamcode.bombadil1.hardwareclasses.FrontSlide;
+import org.firstinspires.ftc.teamcode.bombadil1.hardwareclasses.Lift;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -215,10 +215,10 @@ public class RRTeleop extends OpMode {
             robot.Lift.setPower(0.08);
         }
 
-        if (gamepad2.dpad_up == true) {
+        if (gamepad2.a) {
             robot.Bucket.setPosition(0);
         }
-        if (gamepad2.dpad_down == true) {
+        if (gamepad2.b) {
             robot.Bucket.setPosition(0.5);
         }
 

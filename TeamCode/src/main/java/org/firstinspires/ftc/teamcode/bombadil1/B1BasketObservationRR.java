@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.bombadil1;
 
 //RR specific imports
 
@@ -15,8 +15,8 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 //import org.firstinspires.ftc.teamcode.hardwareclasses.Claw;
-import org.firstinspires.ftc.teamcode.hardwareclasses.FrontSlide;
-import org.firstinspires.ftc.teamcode.hardwareclasses.MecanumDrive;
+import org.firstinspires.ftc.teamcode.bombadil1.hardwareclasses.FrontSlide;
+import org.firstinspires.ftc.teamcode.MecanumDrive;
 
 @Config
 @Autonomous(name = "B1_Basket_ObservationRR", group = "Autonomous")
