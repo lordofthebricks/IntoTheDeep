@@ -1,7 +1,10 @@
 package org.firstinspires.ftc.teamcode.bombadil2;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+
+@TeleOp
 public class BombadilTeleop extends OpMode {
 
     final double MAX_SPEED = 0.8;
