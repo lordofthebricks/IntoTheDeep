@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="Diagonal_Encoder_Practice", group="Autonomous")
+@Autonomous(name="Multiple_Sample_Encoder_Practice", group="Autonomous")
 
 public class Multiplesampleencoderpractice extends LinearOpMode {
 
@@ -65,11 +65,11 @@ public class Multiplesampleencoderpractice extends LinearOpMode {
 
         encoderLift(FORWARD_SPEED, -100, 3.0);
 
-        encoderDrive(FORWARD_SPEED,-3,3,-3,3,3.0);
+        encoderDrive(FORWARD_SPEED,-1.7,1.7,-1.7,1.7,3.0);
 
         encoderDrive(FORWARD_SPEED,11,11,11,11,3.0);
 
-        encoderArm(FORWARD_SPEED,30,3.0);
+        encoderArm(FORWARD_SPEED,27,3.0);
 
         robot.Wrist2.setPosition(0.2);
         sleep(2000);
