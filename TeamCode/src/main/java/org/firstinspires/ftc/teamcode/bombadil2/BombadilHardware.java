@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.bombadil2;
 
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -17,7 +18,9 @@ public class BombadilHardware {
     DcMotorEx tilt;
     DcMotorEx slide;
 
-    DigitalChannelImpl Limit;
+    CRServo intake1;
+    CRServo intake2;
+    DigitalChannel Limit;
 
 
     public int init(HardwareMap hwMap){
@@ -31,16 +34,20 @@ public class BombadilHardware {
             tilt = hwMap.get(DcMotorEx.class, "Tilt");
             slide = hwMap.get(DcMotorEx.class, "Slide");
 
+            intake1 = hwMap.get(CRServo.class, "Intake1");
+            intake2 = hwMap.get(CRServo.class, "Intake2");
+
+
             rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
             rightBack.setDirection(DcMotorSimple.Direction.REVERSE);
 
-            Limit = hwMap.get(DigitalChannelImpl.class, "");
+//            Limit = hwMap.get(DigitalChannel.class, "");
 
 
         } catch (Exception e) {
             return 0;
         }
-            Limit.setMode(DigitalChannel.Mode.INPUT);
+//            Limit.setMode(DigitalChannel.Mode.INPUT);
 
         return 1;
     }
