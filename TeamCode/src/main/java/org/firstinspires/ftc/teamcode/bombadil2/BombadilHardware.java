@@ -31,8 +31,8 @@ public class BombadilHardware {
             tilt = hwMap.get(DcMotorEx.class, "Tilt");
             slide = hwMap.get(DcMotorEx.class, "Slide");
 
-            leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
-            leftBack.setDirection(DcMotorSimple.Direction.REVERSE);
+            rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
+            rightBack.setDirection(DcMotorSimple.Direction.REVERSE);
 
             Limit = hwMap.get(DigitalChannelImpl.class, "");
 
