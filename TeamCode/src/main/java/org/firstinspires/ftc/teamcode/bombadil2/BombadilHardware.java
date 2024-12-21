@@ -38,9 +38,9 @@ public class BombadilHardware {
             intake2 = hwMap.get(CRServo.class, "Intake2");
 
 
-            rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
-            rightBack.setDirection(DcMotorSimple.Direction.REVERSE);
-
+//            rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
+//            rightBack.setDirection(DcMotorSimple.Direction.REVERSE);
+            leftBack.setDirection(DcMotorSimple.Direction.REVERSE);
 //            Limit = hwMap.get(DigitalChannel.class, "");
 
 
