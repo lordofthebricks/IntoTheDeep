@@ -101,6 +101,13 @@ public class BombadilTeleop extends OpMode {
             robot.intake2.setPower(0);
         }
 
+        if (gamepad1.x ){
+            robot.wrist.setPosition(1);
+        }
+
+        if(gamepad1.y ){
+            robot.wrist.setPosition(0.3);
+        }
 
     }
 }
