@@ -68,28 +68,28 @@ public class BombadilTeleop extends OpMode {
                 }
 
                 if (gamepad1.left_stick_x == -1) {
-                    robot.leftFront.setPower(STRAFE_SPEED);
-                    robot.leftBack.setPower(-STRAFE_SPEED);
-                    robot.rightFront.setPower(-STRAFE_SPEED);
-                    robot.rightBack.setPower(STRAFE_SPEED);
-                } else if (gamepad1.right_stick_x == 1) {
                     robot.leftFront.setPower(-STRAFE_SPEED);
                     robot.leftBack.setPower(STRAFE_SPEED);
                     robot.rightFront.setPower(STRAFE_SPEED);
                     robot.rightBack.setPower(-STRAFE_SPEED);
+                } else if (gamepad1.right_stick_x == 1) {
+                    robot.leftFront.setPower(STRAFE_SPEED);
+                    robot.leftBack.setPower(-STRAFE_SPEED);
+                    robot.rightFront.setPower(-STRAFE_SPEED);
+                    robot.rightBack.setPower(STRAFE_SPEED);
                 }
 
                 //dpad precision controls
                 if (gamepad1.dpad_up){
-                    robot.leftFront.setPower(-0.5);
-                    robot.leftBack.setPower(-0.5);
-                    robot.rightFront.setPower(-0.5);
-                    robot.rightBack.setPower(-0.5);
+                    robot.leftFront.setPower(-0.3);
+                    robot.leftBack.setPower(-0.3);
+                    robot.rightFront.setPower(-0.4);
+                    robot.rightBack.setPower(-0.4);
                 } else if (gamepad1.dpad_down){
-                    robot.leftFront.setPower(0.5);
-                    robot.leftBack.setPower(0.5);
-                    robot.rightFront.setPower(0.5);
-                    robot.rightBack.setPower(0.5);
+                    robot.leftFront.setPower(0.3);
+                    robot.leftBack.setPower(0.3);
+                    robot.rightFront.setPower(0.35);
+                    robot.rightBack.setPower(0.35);
                 }
 
                 //dpad strafing controls
@@ -119,6 +119,8 @@ public class BombadilTeleop extends OpMode {
                     //robot.tilt.setPower(0.3);
                     robot.tilt.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
                 }
+
+                //left bumper = slide
 
                 if (gamepad1.left_bumper) {
                     robot.slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -158,13 +160,21 @@ public class BombadilTeleop extends OpMode {
                     robot.wrist.setPosition(0.3);
                 }
 
+                //position for sample scoring and specimen pickup
                 if (gamepad1.left_stick_button){
                     robot.wrist.setPosition(0.5);
                 }
 
+                //position for scoring specimens
                 if (gamepad1.right_stick_button){
                     robot.wrist.setPosition(0.8);
                 }
+
+                if (gamepad1.right_stick_button){
+                    robot.tilt.setPower(0.3);
+
+                 }
+
 
             }
         }

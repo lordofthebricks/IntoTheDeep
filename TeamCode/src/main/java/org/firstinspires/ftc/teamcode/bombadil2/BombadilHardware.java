@@ -34,8 +34,9 @@ public class BombadilHardware {
             leftBack = hwMap.get(DcMotorEx.class, "LeftBack");
             rightBack = hwMap.get(DcMotorEx.class, "rightBack");
             rightFront = hwMap.get(DcMotorEx.class, "rightFront");
-            tilt = hwMap.get(DcMotorEx.class, "Tilt");
-            slide = hwMap.get(DcMotorEx.class, "Slide");
+            //the following two motors are configured incorrectly the name change helps to keep things consistent
+            slide = hwMap.get(DcMotorEx.class, "Tilt");
+            tilt = hwMap.get(DcMotorEx.class, "Slide");
 
             intake1 = hwMap.get(CRServo.class, "Intake1");
             intake2 = hwMap.get(CRServo.class, "Intake2");
