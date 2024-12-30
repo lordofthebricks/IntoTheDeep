@@ -116,17 +116,13 @@ public class BombadilTeleop extends OpMode {
             robot.tilt.setPower(-0.3);
             robot.tilt.setTargetPosition(robot.tilt.getCurrentPosition());
         } else {
-//                    robot.tilt.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            //robot.tilt.setTargetPosition(robot.tilt.getCurrentPosition());
             robot.tilt.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            //robot.tilt.setTargetPosition(robot.tilt.getCurrentPosition());
             robot.tilt.setPower(0.3);
-//                    robot.tilt.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         }
 
         //left bumper = slide
         if (!robot.limit.getState()) {
-            if (gamepad1.left_bumper) {
+            if (gamepad1.left_bumper && robot.slide.getCurrentPosition() <= 40 * robot.SLIDE_TICKS_PER_INCH) {
                 robot.slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
                 robot.slide.setPower(0.3);
                 robot.slide.setTargetPosition(robot.slide.getCurrentPosition());
@@ -135,6 +131,11 @@ public class BombadilTeleop extends OpMode {
                 robot.slide.setPower(-0.3);
                 robot.slide.setTargetPosition(robot.slide.getCurrentPosition());
             } else {
+                if (robot.slide.getTargetPosition() > 40 * robot.SLIDE_TICKS_PER_INCH){
+                    robot.slide.setTargetPosition((int) (40 * robot.SLIDE_TICKS_PER_INCH));
+
+                }
+
                 robot.slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 robot.slide.setPower(0.3);
             }
@@ -151,6 +152,10 @@ public class BombadilTeleop extends OpMode {
                 robot.slide.setPower(-0.3);
                 robot.slide.setTargetPosition(robot.slide.getCurrentPosition());
             } else {
+                if (robot.slide.getTargetPosition() > robot.MAX_SLIDE_POSITION){
+                    robot.slide.setTargetPosition(robot.MAX_SLIDE_POSITION);
+
+                }
                 robot.slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 robot.slide.setPower(0.3);
             }
