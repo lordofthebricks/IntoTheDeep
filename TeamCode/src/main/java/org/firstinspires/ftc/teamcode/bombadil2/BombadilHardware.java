@@ -7,6 +7,8 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.DigitalChannelImpl;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.DigitalChannel;
 
 public class BombadilHardware {
 
@@ -20,7 +22,8 @@ public class BombadilHardware {
 
     CRServo intake1;
     CRServo intake2;
-    DigitalChannel Limit;
+    Servo wrist;
+    DigitalChannel limit;
 
 
     public int init(HardwareMap hwMap){
@@ -38,9 +41,9 @@ public class BombadilHardware {
             intake2 = hwMap.get(CRServo.class, "Intake2");
 
 
-            rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
-            rightBack.setDirection(DcMotorSimple.Direction.REVERSE);
-
+//            rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
+//            rightBack.setDirection(DcMotorSimple.Direction.REVERSE);
+            leftBack.setDirection(DcMotorSimple.Direction.REVERSE);
             Limit = hwMap.get(DigitalChannel.class, "Limit");
 
             Limit.setMode(DigitalChannel.Mode.INPUT);
