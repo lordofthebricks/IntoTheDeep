@@ -83,20 +83,20 @@ public class Bom2specimenauto extends LinearOpMode {
             robot.rightFront.setPower(-0.7);
             robot.rightBack.setPower(-0.7);
 
-            if (distance1.getDistance(DistanceUnit.CM) < 10 && distance2.getDistance(DistanceUnit.CM) < 10) {
+            if (distance1.getDistance(DistanceUnit.INCH) < 6 && distance2.getDistance(DistanceUnit.INCH) < 6) {
                 robot.leftFront.setPower(0);
                 robot.leftBack.setPower(0);
                 robot.rightFront.setPower(0);
                 robot.rightBack.setPower(0);
             } else {
 
-                if (distance1.getDistance(DistanceUnit.CM) < 10) ;
+                if (distance1.getDistance(DistanceUnit.INCH) < 6) ;
                 {
                     robot.leftFront.setPower(0);
                     robot.leftBack.setPower(0);
                 }
 
-                if (distance2.getDistance(DistanceUnit.CM) < 10) ;
+                if (distance2.getDistance(DistanceUnit.INCH) < 6) ;
                 {
                     robot.rightFront.setPower(0);
                     robot.rightBack.setPower(0);
