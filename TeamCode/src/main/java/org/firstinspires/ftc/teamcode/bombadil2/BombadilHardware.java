@@ -26,6 +26,13 @@ public class BombadilHardware {
     DigitalChannel limit;
 
 
+    private final double SLIDE_PULLY_DIAMETER = 1.504;
+
+    private final double SLIDE_TICKS_PER_REV = 384.5;
+
+    private final double SLIDE_TICKS_PER_INCH = SLIDE_TICKS_PER_REV/(Math.PI * SLIDE_PULLY_DIAMETER);
+    public final int MAX_SLIDE_POSITION = (int) (35 * SLIDE_TICKS_PER_INCH);
+
     public int init(HardwareMap hwMap){
 
         try {
