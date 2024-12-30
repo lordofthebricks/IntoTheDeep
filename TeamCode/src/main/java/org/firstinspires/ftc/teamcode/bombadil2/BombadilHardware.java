@@ -44,9 +44,9 @@ public class BombadilHardware {
 //            rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
 //            rightBack.setDirection(DcMotorSimple.Direction.REVERSE);
             leftBack.setDirection(DcMotorSimple.Direction.REVERSE);
-            Limit = hwMap.get(DigitalChannel.class, "Limit");
+            limit = hwMap.get(DigitalChannel.class, "Limit");
 
-            Limit.setMode(DigitalChannel.Mode.INPUT);
+            limit.setMode(DigitalChannel.Mode.INPUT);
 
 
         } catch (Exception e) {
