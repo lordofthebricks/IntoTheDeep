@@ -1,11 +1,13 @@
 package org.firstinspires.ftc.teamcode.bombadil2;
 
+import com.qualcomm.hardware.rev.Rev2mDistanceSensor;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.DigitalChannelImpl;
+import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
@@ -24,7 +26,8 @@ public class BombadilHardware {
     CRServo intake2;
     Servo wrist;
     DigitalChannel limit;
-
+     DistanceSensor distance1;
+     DistanceSensor distance2;
 
     private final double SLIDE_PULLY_DIAMETER = 1.504;
 
@@ -47,6 +50,8 @@ public class BombadilHardware {
             intake1 = hwMap.get(CRServo.class, "Intake1");
             intake2 = hwMap.get(CRServo.class, "Intake2");
 
+            distance1 = hwMap.get(DistanceSensor.class,"distance1");
+            distance2 = hwMap.get(DistanceSensor.class, "distance2");
 
 //            rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
 //            rightBack.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -54,7 +59,6 @@ public class BombadilHardware {
             limit = hwMap.get(DigitalChannel.class, "Limit");
 
             limit.setMode(DigitalChannel.Mode.INPUT);
-
 
         } catch (Exception e) {
             return 0;

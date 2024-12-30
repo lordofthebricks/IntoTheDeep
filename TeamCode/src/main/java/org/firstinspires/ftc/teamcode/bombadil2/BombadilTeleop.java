@@ -154,12 +154,11 @@ public class BombadilTeleop extends OpMode {
                     }
                 }
 
-
-
-
-
-
-
+                    //robot.slide.setTargetPosition(robot.slide.getCurrentPosition());
+                    //robot.slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    //robot.slide.setPower(0.3);
+                    robot.slide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+                }
 
                 //a = out
                 //b = in
@@ -194,6 +193,10 @@ public class BombadilTeleop extends OpMode {
                     robot.wrist.setPosition(0.8);
                 }
 
+                if (gamepad1.right_stick_button){
+                    robot.tilt.setPower(0.3);
+
+                 }
 
 
             }

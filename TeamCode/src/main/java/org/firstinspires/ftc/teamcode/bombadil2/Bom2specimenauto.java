@@ -24,24 +24,10 @@ public class Bom2specimenauto extends LinearOpMode {
     static final double COUNTS_PER_INCH = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
             (WHEEL_DIAMETER_INCHES * Math.PI);
 
-    private DistanceSensor distance1;
-    private DistanceSensor distance2;
+
 
 
     public void runOpMode() {
-
-        distance1 = hardwareMap.get(DistanceSensor.class, "distance1");
-        distance2 = hardwareMap.get(DistanceSensor.class, "distance2");
-
-        Rev2mDistanceSensor sensorTimeOfFlight1 = (Rev2mDistanceSensor) distance1;
-
-        telemetry.addData(">>", "Press start to continue");
-        telemetry.update();
-
-        Rev2mDistanceSensor sensorTimeOfFlight2 = (Rev2mDistanceSensor) distance2;
-
-        telemetry.addData(">>", "Press start to continue");
-        telemetry.update();
 
         robot.init(hardwareMap);
 
@@ -83,20 +69,20 @@ public class Bom2specimenauto extends LinearOpMode {
             robot.rightFront.setPower(-0.7);
             robot.rightBack.setPower(-0.7);
 
-            if (distance1.getDistance(DistanceUnit.INCH) < 6 && distance2.getDistance(DistanceUnit.INCH) < 6) {
+            if (robot.distance1.getDistance(DistanceUnit.INCH) < 6 && robot.distance2.getDistance(DistanceUnit.INCH) < 6) {
                 robot.leftFront.setPower(0);
                 robot.leftBack.setPower(0);
                 robot.rightFront.setPower(0);
                 robot.rightBack.setPower(0);
             } else {
 
-                if (distance1.getDistance(DistanceUnit.INCH) < 6) ;
+                if (robot.distance1.getDistance(DistanceUnit.INCH) < 6) ;
                 {
                     robot.leftFront.setPower(0);
                     robot.leftBack.setPower(0);
                 }
 
-                if (distance2.getDistance(DistanceUnit.INCH) < 6) ;
+                if (robot.distance2.getDistance(DistanceUnit.INCH) < 6) ;
                 {
                     robot.rightFront.setPower(0);
                     robot.rightBack.setPower(0);
