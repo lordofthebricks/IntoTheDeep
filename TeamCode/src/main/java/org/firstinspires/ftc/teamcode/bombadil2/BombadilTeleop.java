@@ -123,6 +123,7 @@ public class BombadilTeleop extends OpMode {
                 //left bumper = slide
 
                 if (gamepad1.left_bumper) {
+                    robot.slide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     robot.slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
                     robot.slide.setPower(0.3);
                 } else if (gamepad1.left_trigger == 1) {
