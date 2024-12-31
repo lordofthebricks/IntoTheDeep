@@ -11,6 +11,7 @@ public class BombadilTeleop extends OpMode {
 
     final double MAX_SPEED = 0.8;
     final double STRAFE_SPEED = 0.5;
+    int slideRestingPos = 0;
     BombadilHardware robot = new BombadilHardware();
 
 
@@ -22,6 +23,8 @@ public class BombadilTeleop extends OpMode {
             stop();
         }
         robot.slide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        slideRestingPos = robot.slide.getCurrentPosition();
         robot.slide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         robot.tilt.setTargetPosition(robot.tilt.getCurrentPosition());
         robot.slide.setTargetPosition(robot.slide.getCurrentPosition());
@@ -47,23 +50,23 @@ public class BombadilTeleop extends OpMode {
 
             telemetry.update();*/
 
-        if (gamepad1.left_stick_y >= 0.2) {
-            robot.rightFront.setPower(gamepad1.left_stick_y * MAX_SPEED);
-            robot.rightBack.setPower(gamepad1.left_stick_y * MAX_SPEED);
-        } else if (gamepad1.left_stick_y <= -0.2) {
-            robot.rightFront.setPower(gamepad1.left_stick_y * MAX_SPEED);
-            robot.rightBack.setPower(gamepad1.left_stick_y * MAX_SPEED);
+        if (gamepad1.right_stick_y >= 0.2) {
+            robot.rightFront.setPower(gamepad1.right_stick_y * MAX_SPEED);
+            robot.rightBack.setPower(gamepad1.right_stick_y * MAX_SPEED);
+        } else if (gamepad1.right_stick_y <= -0.2) {
+            robot.rightFront.setPower(gamepad1.right_stick_y * MAX_SPEED);
+            robot.rightBack.setPower(gamepad1.right_stick_y * MAX_SPEED);
         } else {
             robot.rightFront.setPower(0);
             robot.rightBack.setPower(0);
         }
 
-        if (gamepad1.right_stick_y >= 0.2) {
-            robot.leftFront.setPower(gamepad1.right_stick_y * MAX_SPEED);
-            robot.leftBack.setPower(gamepad1.right_stick_y * MAX_SPEED);
-        } else if (gamepad1.right_stick_y <= -0.2) {
-            robot.leftFront.setPower(gamepad1.right_stick_y * MAX_SPEED);
-            robot.leftBack.setPower(gamepad1.right_stick_y * MAX_SPEED);
+        if (gamepad1.left_stick_y >= 0.2) {
+            robot.leftFront.setPower(gamepad1.left_stick_y * MAX_SPEED);
+            robot.leftBack.setPower(gamepad1.left_stick_y * MAX_SPEED);
+        } else if (gamepad1.left_stick_y <= -0.2) {
+            robot.leftFront.setPower(gamepad1.left_stick_y * MAX_SPEED);
+            robot.leftBack.setPower(gamepad1.left_stick_y * MAX_SPEED);
         } else {
             robot.leftFront.setPower(0);
             robot.leftBack.setPower(0);
@@ -120,9 +123,31 @@ public class BombadilTeleop extends OpMode {
             robot.tilt.setPower(0.3);
         }
 
+//left bumper backup code
+        if (gamepad1.left_bumper) {
+            robot.slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            robot.slide.setPower(0.3);
+            robot.slide.setTargetPosition(robot.slide.getCurrentPosition());
+        } else if (gamepad1.left_trigger == 1) {
+            robot.slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            robot.slide.setPower(-0.3);
+            robot.slide.setTargetPosition(robot.slide.getCurrentPosition());
+        } else {
+//            if (robot.slide.getTargetPosition() > 40 * robot.SLIDE_TICKS_PER_INCH){
+//                robot.slide.setTargetPosition((int) (40 * robot.SLIDE_TICKS_PER_INCH));
+//
+//            }
+
+            robot.slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.slide.setPower(0);
+        }
+
+
+
         //left bumper = slide
+/*
         if (!robot.limit.getState()) {
-            if (gamepad1.left_bumper && robot.slide.getCurrentPosition() <= 40 * robot.SLIDE_TICKS_PER_INCH) {
+            if (gamepad1.left_bumper && robot.slide.getCurrentPosition() <= slideRestingPos + (30 * robot.SLIDE_TICKS_PER_INCH)) {
                 robot.slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
                 robot.slide.setPower(0.3);
                 robot.slide.setTargetPosition(robot.slide.getCurrentPosition());
@@ -131,8 +156,8 @@ public class BombadilTeleop extends OpMode {
                 robot.slide.setPower(-0.3);
                 robot.slide.setTargetPosition(robot.slide.getCurrentPosition());
             } else {
-                if (robot.slide.getTargetPosition() > 40 * robot.SLIDE_TICKS_PER_INCH){
-                    robot.slide.setTargetPosition((int) (40 * robot.SLIDE_TICKS_PER_INCH));
+                if (robot.slide.getTargetPosition() > slideRestingPos + (40 * robot.SLIDE_TICKS_PER_INCH)){
+                    robot.slide.setTargetPosition((int) (slideRestingPos + (40 * robot.SLIDE_TICKS_PER_INCH)));
 
                 }
 
@@ -143,7 +168,7 @@ public class BombadilTeleop extends OpMode {
 
             robot.wrist.setPosition(0.3);
 
-            if (gamepad1.left_bumper && robot.slide.getCurrentPosition() < robot.MAX_SLIDE_POSITION) {
+            if (gamepad1.left_bumper && robot.slide.getCurrentPosition() < slideRestingPos + robot.MAX_SLIDE_POSITION) {
                 robot.slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
                 robot.slide.setPower(0.3);
                 robot.slide.setTargetPosition(robot.slide.getCurrentPosition());
@@ -152,15 +177,14 @@ public class BombadilTeleop extends OpMode {
                 robot.slide.setPower(-0.3);
                 robot.slide.setTargetPosition(robot.slide.getCurrentPosition());
             } else {
-                if (robot.slide.getTargetPosition() > robot.MAX_SLIDE_POSITION){
-                    robot.slide.setTargetPosition(robot.MAX_SLIDE_POSITION);
-
+                if (robot.slide.getTargetPosition() > slideRestingPos + robot.MAX_SLIDE_POSITION){
+                    robot.slide.setTargetPosition(slideRestingPos + robot.MAX_SLIDE_POSITION);
                 }
                 robot.slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 robot.slide.setPower(0.3);
             }
         }
-
+*/
 
         //a = out
         //b = in

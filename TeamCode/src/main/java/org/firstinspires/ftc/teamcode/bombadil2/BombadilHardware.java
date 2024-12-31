@@ -33,6 +33,7 @@ public class BombadilHardware {
 
     private final double SLIDE_TICKS_PER_REV = 384.5;
 
+    private final double TILT_TICKS_PER_REV = 1425.1;
     public final double SLIDE_TICKS_PER_INCH = SLIDE_TICKS_PER_REV/(Math.PI * SLIDE_PULLY_DIAMETER);
     public final int MAX_SLIDE_POSITION = (int) (35 * SLIDE_TICKS_PER_INCH);
 
@@ -53,9 +54,9 @@ public class BombadilHardware {
             distance1 = hwMap.get(DistanceSensor.class,"distance1");
             distance2 = hwMap.get(DistanceSensor.class, "distance2");
 
-//            rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
-//            rightBack.setDirection(DcMotorSimple.Direction.REVERSE);
-            leftBack.setDirection(DcMotorSimple.Direction.REVERSE);
+            rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
+            rightBack.setDirection(DcMotorSimple.Direction.REVERSE);
+            leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
             limit = hwMap.get(DigitalChannel.class, "Limit");
 
             limit.setMode(DigitalChannel.Mode.INPUT);
