@@ -112,25 +112,25 @@ public class BombadilTeleop extends OpMode {
 
         if (gamepad1.right_bumper) {
             robot.tilt.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            robot.tilt.setPower(0.3);
+            robot.tilt.setPower(0.5);
             robot.tilt.setTargetPosition(robot.tilt.getCurrentPosition());
         } else if (gamepad1.right_trigger == 1) {
             robot.tilt.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            robot.tilt.setPower(-0.3);
+            robot.tilt.setPower(-0.5);
             robot.tilt.setTargetPosition(robot.tilt.getCurrentPosition());
         } else {
             robot.tilt.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            robot.tilt.setPower(0.3);
+            robot.tilt.setPower(0.5);
         }
 
 //left bumper backup code
         if (gamepad1.left_bumper) {
             robot.slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            robot.slide.setPower(0.3);
+            robot.slide.setPower(0.6);
             robot.slide.setTargetPosition(robot.slide.getCurrentPosition());
         } else if (gamepad1.left_trigger == 1) {
             robot.slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            robot.slide.setPower(-0.3);
+            robot.slide.setPower(-0.6);
             robot.slide.setTargetPosition(robot.slide.getCurrentPosition());
         } else {
 //            if (robot.slide.getTargetPosition() > 40 * robot.SLIDE_TICKS_PER_INCH){

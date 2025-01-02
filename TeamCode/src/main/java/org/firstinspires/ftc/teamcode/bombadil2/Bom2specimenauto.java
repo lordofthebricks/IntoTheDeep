@@ -17,8 +17,10 @@ public class Bom2specimenauto extends LinearOpMode {
     BombadilHardware robot = new BombadilHardware();
 
     private ElapsedTime runtime = new ElapsedTime();
-    static final double DISTANCE_FROM_WALL = 6;
-    static final double COUNTS_PER_MOTOR_REV = 537.7;
+    static final double DISTANCE_FROM_WALL = 17.35;
+
+    // was put as 537.7
+    static final double COUNTS_PER_MOTOR_REV = 384.5;
     static final double DRIVE_GEAR_REDUCTION = 1.0;
     static final double WHEEL_DIAMETER_INCHES = 4.0;
     static final double COUNTS_PER_INCH = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
@@ -35,10 +37,10 @@ public class Bom2specimenauto extends LinearOpMode {
 
 
         //come off of the wall slightly
-        robot.leftFront.setPower(-0.5);
-        robot.rightFront.setPower(-0.5);
-        robot.leftBack.setPower(-0.5);
-        robot.rightBack.setPower(-0.5);
+        robot.leftFront.setPower(0.5);
+        robot.rightFront.setPower(0.5);
+        robot.leftBack.setPower(0.5);
+        robot.rightBack.setPower(0.5);
         sleep(90);
         robot.leftFront.setPower(0);
         robot.rightFront.setPower(0);
@@ -60,15 +62,15 @@ public class Bom2specimenauto extends LinearOpMode {
         //encoderTilt(0.3, -25, 3.0);
 
         //deploy the slide
-        //encoderSlide(0.3, 5, 3.0);
+//        encoderSlide(0.3, 25, 3.0);
 
 
 
             while (robot.distance1.getDistance(DistanceUnit.INCH) > DISTANCE_FROM_WALL && robot.distance2.getDistance(DistanceUnit.INCH) > DISTANCE_FROM_WALL){
-                robot.leftFront.setPower(-0.7);
-                robot.leftBack.setPower(-0.7);
-                robot.rightFront.setPower(-0.7);
-                robot.rightBack.setPower(-0.7);
+                robot.leftFront.setPower(0.7);
+                robot.leftBack.setPower(0.7);
+                robot.rightFront.setPower(0.7);
+                robot.rightBack.setPower(0.7);
             }
 
             robot.leftFront.setPower(0);
@@ -78,17 +80,17 @@ public class Bom2specimenauto extends LinearOpMode {
 
             while (robot.distance1.getDistance(DistanceUnit.INCH) >= robot.distance2.getDistance(DistanceUnit.INCH) + 0.5){
                 //correction code goes here
-                robot.leftFront.setPower(0.5);
-                robot.leftBack.setPower(0.5);
-                robot.rightFront.setPower(-0.5);
-                robot.leftBack.setPower(-0.5);
-            }
-            while (robot.distance1.getDistance(DistanceUnit.INCH) <= robot.distance2.getDistance(DistanceUnit.INCH) - 0.5){
-                //correction code goes here
                 robot.leftFront.setPower(-0.5);
                 robot.leftBack.setPower(-0.5);
                 robot.rightFront.setPower(0.5);
                 robot.leftBack.setPower(0.5);
+            }
+            while (robot.distance1.getDistance(DistanceUnit.INCH) <= robot.distance2.getDistance(DistanceUnit.INCH) - 0.5){
+                //correction code goes here
+                robot.leftFront.setPower(0.5);
+                robot.leftBack.setPower(0.5);
+                robot.rightFront.setPower(-0.5);
+                robot.leftBack.setPower(-0.5);
             }
 
 
@@ -117,7 +119,7 @@ public class Bom2specimenauto extends LinearOpMode {
         robot.wrist.setPosition(0);
 
         //pull the slide down
-        encoderSlide(-0.3, 10, 3.0);
+//        encoderSlide(-0.3, 10, 3.0);
 
     }
 
