@@ -17,7 +17,7 @@ public class Bom2specimenauto extends LinearOpMode {
     BombadilHardware robot = new BombadilHardware();
 
     private ElapsedTime runtime = new ElapsedTime();
-
+    static final double DISTANCE_FROM_WALL = 6;
     static final double COUNTS_PER_MOTOR_REV = 537.7;
     static final double DRIVE_GEAR_REDUCTION = 1.0;
     static final double WHEEL_DIAMETER_INCHES = 4.0;
@@ -39,7 +39,7 @@ public class Bom2specimenauto extends LinearOpMode {
         robot.rightFront.setPower(-0.5);
         robot.leftBack.setPower(-0.5);
         robot.rightBack.setPower(-0.5);
-        sleep(150);
+        sleep(90);
         robot.leftFront.setPower(0);
         robot.rightFront.setPower(0);
         robot.leftBack.setPower(0);
@@ -57,38 +57,62 @@ public class Bom2specimenauto extends LinearOpMode {
         robot.rightBack.setPower(0);
 
         //deploy the tilt
-        encoderTilt(0.3, -4, 3.0);
+        //encoderTilt(0.3, -25, 3.0);
 
         //deploy the slide
-        encoderSlide(0.3, 5, 3.0);
+        //encoderSlide(0.3, 5, 3.0);
 
-        while (opModeIsActive()) {
 
-            robot.leftFront.setPower(-0.7);
-            robot.leftBack.setPower(-0.7);
-            robot.rightFront.setPower(-0.7);
-            robot.rightBack.setPower(-0.7);
 
-            if (robot.distance1.getDistance(DistanceUnit.INCH) < 6 && robot.distance2.getDistance(DistanceUnit.INCH) < 6) {
-                robot.leftFront.setPower(0);
-                robot.leftBack.setPower(0);
-                robot.rightFront.setPower(0);
-                robot.rightBack.setPower(0);
-            } else {
-
-                if (robot.distance1.getDistance(DistanceUnit.INCH) < 6) ;
-                {
-                    robot.leftFront.setPower(0);
-                    robot.leftBack.setPower(0);
-                }
-
-                if (robot.distance2.getDistance(DistanceUnit.INCH) < 6) ;
-                {
-                    robot.rightFront.setPower(0);
-                    robot.rightBack.setPower(0);
-                }
+            while (robot.distance1.getDistance(DistanceUnit.INCH) > DISTANCE_FROM_WALL && robot.distance2.getDistance(DistanceUnit.INCH) > DISTANCE_FROM_WALL){
+                robot.leftFront.setPower(-0.7);
+                robot.leftBack.setPower(-0.7);
+                robot.rightFront.setPower(-0.7);
+                robot.rightBack.setPower(-0.7);
             }
-        }
+
+            robot.leftFront.setPower(0);
+            robot.leftBack.setPower(0);
+            robot.rightFront.setPower(0);
+            robot.rightBack.setPower(0);
+
+            while (robot.distance1.getDistance(DistanceUnit.INCH) >= robot.distance2.getDistance(DistanceUnit.INCH) + 0.5){
+                //correction code goes here
+                robot.leftFront.setPower(0.5);
+                robot.leftBack.setPower(0.5);
+                robot.rightFront.setPower(-0.5);
+                robot.leftBack.setPower(-0.5);
+            }
+            while (robot.distance1.getDistance(DistanceUnit.INCH) <= robot.distance2.getDistance(DistanceUnit.INCH) - 0.5){
+                //correction code goes here
+                robot.leftFront.setPower(-0.5);
+                robot.leftBack.setPower(-0.5);
+                robot.rightFront.setPower(0.5);
+                robot.leftBack.setPower(0.5);
+            }
+
+
+
+//            if (robot.distance1.getDistance(DistanceUnit.INCH) < 6 && robot.distance2.getDistance(DistanceUnit.INCH) < 6) {
+//                robot.leftFront.setPower(0);
+//                robot.leftBack.setPower(0);
+//                robot.rightFront.setPower(0);
+//                robot.rightBack.setPower(0);
+//            } else {
+//
+//                if (robot.distance1.getDistance(DistanceUnit.INCH) < 6) ;
+//                {
+//                    robot.leftFront.setPower(0);
+//                    robot.leftBack.setPower(0);
+//                }
+//
+//                if (robot.distance2.getDistance(DistanceUnit.INCH) < 6) ;
+//                {
+//                    robot.rightFront.setPower(0);
+//                    robot.rightBack.setPower(0);
+//                }
+//            }
+//        }
         //get the wrist in position to pull away from the bar
         robot.wrist.setPosition(0);
 
@@ -128,17 +152,17 @@ public class Bom2specimenauto extends LinearOpMode {
             {
 
 
-                newslideTarget = robot.tilt.getCurrentPosition() + (int) (slideInches * COUNTS_PER_INCH);
-                robot.tilt.setTargetPosition(newslideTarget);
+                newslideTarget = robot.slide.getCurrentPosition() + (int) (slideInches * COUNTS_PER_INCH);
+                robot.slide.setTargetPosition(newslideTarget);
 
-                robot.tilt.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                robot.slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
                 runtime.reset();
-                robot.tilt.setPower(Math.abs(speed));
+                robot.slide.setPower(Math.abs(speed));
 
                 while (opModeIsActive() &&
                         (runtime.seconds() < timeout) &&
-                        (robot.tilt.isBusy())
+                        (robot.slide.isBusy())
                 ) ;
             }
         }
