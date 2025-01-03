@@ -24,7 +24,7 @@ public class Tilt {
         private double currentAngle;
         public ToAngle(double angle) {
             //multiply the the angle by the encoder resolution divided by 360
-            targetAngle = angle * (537.7 / 360);
+            targetAngle = angle * (1425.1 / 360);
         }
 
         @Override
@@ -34,13 +34,13 @@ public class Tilt {
                 currentAngle = motor.getCurrentPosition();
 
                 motor.setTargetPosition((int) targetAngle);
-
+                motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 motor.setPower(0.5);
                 initialized = true;
             }
+            currentAngle = motor.getCurrentPosition();
 
-
-            return targetAngle < (int) (currentAngle - motor.getTargetPositionTolerance());
+            return motor.isBusy();
         }
     }
 

@@ -24,8 +24,8 @@ public class Intake {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
             if (!initialized) {
-                intake1.setPower(-0.5);
-                intake2.setPower(0.5);
+                intake1.setPower(-0.8);
+                intake2.setPower(0.8);
                 initialized = true;
             }
 
@@ -43,8 +43,8 @@ public class Intake {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
             if (!initialized) {
-                intake1.setPower(0.5);
-                intake2.setPower(-0.5);
+                intake1.setPower(0.8);
+                intake2.setPower(-0.8);
                 initialized = true;
             }
 
