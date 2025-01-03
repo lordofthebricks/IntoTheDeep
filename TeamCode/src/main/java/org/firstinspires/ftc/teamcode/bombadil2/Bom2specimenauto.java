@@ -66,7 +66,7 @@ public class Bom2specimenauto extends LinearOpMode {
 
 
 
-            while (robot.distance1.getDistance(DistanceUnit.INCH) > DISTANCE_FROM_WALL && robot.distance2.getDistance(DistanceUnit.INCH) > DISTANCE_FROM_WALL){
+            while (robot.distance1.getDistance(DistanceUnit.INCH) < DISTANCE_FROM_WALL && robot.distance2.getDistance(DistanceUnit.INCH) < DISTANCE_FROM_WALL){
                 robot.leftFront.setPower(0.7);
                 robot.leftBack.setPower(0.7);
                 robot.rightFront.setPower(0.7);

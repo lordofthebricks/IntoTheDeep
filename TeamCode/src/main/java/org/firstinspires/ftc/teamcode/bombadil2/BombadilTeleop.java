@@ -73,15 +73,15 @@ public class BombadilTeleop extends OpMode {
         }
 
         if (gamepad1.left_stick_x == -1) {
-            robot.leftFront.setPower(-STRAFE_SPEED);
-            robot.leftBack.setPower(STRAFE_SPEED);
-            robot.rightFront.setPower(STRAFE_SPEED);
-            robot.rightBack.setPower(-STRAFE_SPEED);
-        } else if (gamepad1.right_stick_x == 1) {
             robot.leftFront.setPower(STRAFE_SPEED);
             robot.leftBack.setPower(-STRAFE_SPEED);
             robot.rightFront.setPower(-STRAFE_SPEED);
             robot.rightBack.setPower(STRAFE_SPEED);
+        } else if (gamepad1.right_stick_x == 1) {
+            robot.leftFront.setPower(-STRAFE_SPEED);
+            robot.leftBack.setPower(STRAFE_SPEED);
+            robot.rightFront.setPower(STRAFE_SPEED);
+            robot.rightBack.setPower(-STRAFE_SPEED);
         }
 
         //dpad precision controls
@@ -99,15 +99,15 @@ public class BombadilTeleop extends OpMode {
 
         //dpad strafing controls
         if (gamepad1.dpad_right) {
-            robot.leftFront.setPower(STRAFE_SPEED);
-            robot.leftBack.setPower(-STRAFE_SPEED);
-            robot.rightFront.setPower(-STRAFE_SPEED);
-            robot.rightBack.setPower(STRAFE_SPEED);
-        } else if (gamepad1.dpad_left) {
             robot.leftFront.setPower(-STRAFE_SPEED);
             robot.leftBack.setPower(STRAFE_SPEED);
             robot.rightFront.setPower(STRAFE_SPEED);
             robot.rightBack.setPower(-STRAFE_SPEED);
+        } else if (gamepad1.dpad_left) {
+            robot.leftFront.setPower(STRAFE_SPEED);
+            robot.leftBack.setPower(-STRAFE_SPEED);
+            robot.rightFront.setPower(-STRAFE_SPEED);
+            robot.rightBack.setPower(STRAFE_SPEED);
         }
 
         if (gamepad1.right_bumper) {
@@ -189,11 +189,11 @@ public class BombadilTeleop extends OpMode {
         //a = out
         //b = in
         if (gamepad1.a) {
-            robot.intake1.setPower(0.8);
-            robot.intake2.setPower(-0.8);
-        } else if (gamepad1.b) {
             robot.intake1.setPower(-0.8);
             robot.intake2.setPower(0.8);
+        } else if (gamepad1.b) {
+            robot.intake1.setPower(0.8);
+            robot.intake2.setPower(-0.8);
         } else {
             robot.intake1.setPower(0);
             robot.intake2.setPower(0);

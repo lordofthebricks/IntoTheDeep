@@ -11,6 +11,7 @@ import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
+import com.qualcomm.robotcore.hardware.TouchSensor;
 
 public class BombadilHardware {
 
@@ -25,9 +26,9 @@ public class BombadilHardware {
     CRServo intake1;
     CRServo intake2;
     Servo wrist;
-    DigitalChannel limit;
-     DistanceSensor distance1;
-     DistanceSensor distance2;
+    TouchSensor limit;
+    DistanceSensor distance1;
+    DistanceSensor distance2;
 
     private final double SLIDE_PULLY_DIAMETER = 1.504;
 
@@ -57,10 +58,12 @@ public class BombadilHardware {
             rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
             rightBack.setDirection(DcMotorSimple.Direction.REVERSE);
             leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
-            limit = hwMap.get(DigitalChannel.class, "Limit");
+            limit = hwMap.get(TouchSensor.class, "Limit");
 
-            limit.setMode(DigitalChannel.Mode.INPUT);
-
+            rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            rightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            leftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         } catch (Exception e) {
             return 0;
         }
