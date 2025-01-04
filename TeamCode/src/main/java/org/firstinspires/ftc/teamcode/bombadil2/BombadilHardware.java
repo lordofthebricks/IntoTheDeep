@@ -57,7 +57,6 @@ public class BombadilHardware {
 
             rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
             rightBack.setDirection(DcMotorSimple.Direction.REVERSE);
-            leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
             limit = hwMap.get(TouchSensor.class, "Limit");
 
             rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
