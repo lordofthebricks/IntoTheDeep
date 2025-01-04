@@ -13,7 +13,7 @@ public class BombadilTeleop extends OpMode {
     final double STRAFE_SPEED = 0.5;
     int slideRestingPos = 0;
     BombadilHardware robot = new BombadilHardware();
-
+    int normal = 1;
 
     @Override
     public void init() {
@@ -34,8 +34,16 @@ public class BombadilTeleop extends OpMode {
     @Override
     public void loop() {
 
+        if (gamepad1.start){
+            normal = 0;
+        }
+
+        if (gamepad1.back){
+            normal = 1;
+        }
 
 
+    if (normal == 1) {
        /* robot.limit = hardwareMap.get(DigitalChannel.class, "digitalTouch");
 
         robot.limit.setMode(DigitalChannel.Mode.INPUT);
@@ -85,17 +93,17 @@ public class BombadilTeleop extends OpMode {
         }
 
         //dpad precision controls
-        if (gamepad1.dpad_up) {
-            robot.leftFront.setPower(-0.4);
-            robot.leftBack.setPower(-0.4);
-            robot.rightFront.setPower(-0.4);
-            robot.rightBack.setPower(-0.4);
-        } else if (gamepad1.dpad_down) {
+     /*   if (gamepad1.dpad_up) {
             robot.leftFront.setPower(0.4);
             robot.leftBack.setPower(0.4);
             robot.rightFront.setPower(0.4);
             robot.rightBack.setPower(0.4);
-        }
+        } else if (gamepad1.dpad_down) {
+            robot.leftFront.setPower(-0.4);
+            robot.leftBack.setPower(-0.4);
+            robot.rightFront.setPower(-0.4);
+            robot.rightBack.setPower(-0.4);
+        } */
 
         //dpad strafing controls
         if (gamepad1.dpad_right) {
@@ -141,7 +149,6 @@ public class BombadilTeleop extends OpMode {
             robot.slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             robot.slide.setPower(0);
         }
-
 
 
         //left bumper = slide
@@ -224,7 +231,50 @@ public class BombadilTeleop extends OpMode {
 
         }
 
+    } else if (normal == 0) {
+        if (gamepad1.left_stick_y >= 0.2){
+            robot.leftFront.setPower(0.2);
+            robot.leftBack.setPower(0.2);
+            robot.rightBack.setPower(0.2);
+            robot.rightFront.setPower(0.2);
+        } else if (gamepad1.left_stick_y <= -0.2){
+            robot.leftFront.setPower(-0.2);
+            robot.leftBack.setPower(-0.2);
+            robot.rightBack.setPower(-0.2);
+            robot.rightFront.setPower(-0.2);
+        } else if (gamepad1.left_stick_y == 0){
+            robot.leftFront.setPower(0);
+            robot.leftBack.setPower(0);
+            robot.rightBack.setPower(0);
+            robot.rightFront.setPower(0);
+        }
 
+        if (gamepad1.left_stick_x == -1) {
+            robot.leftFront.setPower(STRAFE_SPEED);
+            robot.leftBack.setPower(-STRAFE_SPEED);
+            robot.rightFront.setPower(-STRAFE_SPEED);
+            robot.rightBack.setPower(STRAFE_SPEED);
+        } else if (gamepad1.left_stick_x == 1) {
+            robot.leftFront.setPower(-STRAFE_SPEED);
+            robot.leftBack.setPower(STRAFE_SPEED);
+            robot.rightFront.setPower(STRAFE_SPEED);
+            robot.rightBack.setPower(-STRAFE_SPEED);
+        }
+
+        }
+
+        if (gamepad1.a) {
+            robot.intake1.setPower(-0.8);
+            robot.intake2.setPower(0.8);
+        } else if (gamepad1.b) {
+            robot.intake1.setPower(0.8);
+            robot.intake2.setPower(-0.8);
+        } else {
+            robot.intake1.setPower(0);
+            robot.intake2.setPower(0);
+        }
+
+    }
     }
 }
 

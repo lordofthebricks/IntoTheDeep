@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Config
-@Autonomous(name = "Bombadil2_Specimen_Autonomous", group = "Autonomous")
+@Autonomous(name = "Bombadil3_Specimen_Autonomous", group = "Autonomous")
 
 public class Bom2specimenauto extends LinearOpMode {
 
