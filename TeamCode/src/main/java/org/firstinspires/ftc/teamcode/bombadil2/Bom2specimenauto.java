@@ -59,10 +59,10 @@ public class Bom2specimenauto extends LinearOpMode {
         robot.rightBack.setPower(0);
 
         //deploy the tilt
-        //encoderTilt(0.3, -25, 3.0);
+        encoderTilt(0.3, -25, 3.0);
 
         //deploy the slide
-//        encoderSlide(0.3, 25, 3.0);
+        encoderSlide(0.3, 25, 3.0);
 
 
 
@@ -132,7 +132,7 @@ public class Bom2specimenauto extends LinearOpMode {
             {
 
 
-                newtiltTarget = robot.tilt.getCurrentPosition() + (int) (tiltInches * COUNTS_PER_INCH);
+                newtiltTarget = robot.tilt.getCurrentPosition() + (int) (tiltInches * BombadilHardware.TILT_TICKS_PER_INCH);
                 robot.tilt.setTargetPosition(newtiltTarget);
 
                 robot.tilt.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -154,7 +154,7 @@ public class Bom2specimenauto extends LinearOpMode {
             {
 
 
-                newslideTarget = robot.slide.getCurrentPosition() + (int) (slideInches * COUNTS_PER_INCH);
+                newslideTarget = robot.slide.getCurrentPosition() + (int) (slideInches * BombadilHardware.SLIDE_TICKS_PER_INCH);
                 robot.slide.setTargetPosition(newslideTarget);
 
                 robot.slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
