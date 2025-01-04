@@ -10,9 +10,9 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Config
-@Autonomous(name = "Bombadil3_Specimen_Autonomous", group = "Autonomous")
+@Autonomous(name = "B2_Red_Specimen_Observation_Autonomous", group = "Autonomous")
 
-public class Bom2specimenauto extends LinearOpMode {
+public class Bom2SpecimenAuto extends LinearOpMode {
 
     BombadilHardware robot = new BombadilHardware();
 
@@ -34,7 +34,6 @@ public class Bom2specimenauto extends LinearOpMode {
         robot.init(hardwareMap);
 
         waitForStart();
-
 
         //come off of the wall slightly
         robot.leftFront.setPower(0.5);
@@ -59,14 +58,32 @@ public class Bom2specimenauto extends LinearOpMode {
         robot.rightBack.setPower(0);
 
         //deploy the tilt
-        encoderTilt(0.3, -25, 3.0);
+        encoderTilt(0.3, -14, 3.0);
 
         //deploy the slide
         encoderSlide(0.3, 25, 3.0);
 
+        //get the wrist in position to pull away from the bar
+        robot.wrist.setPosition(0);
 
+        //expel the specimen
+        robot.intake1.setPower(0.8);
+        robot.intake2.setPower(-0.8);
+        sleep(500);
 
-            while (robot.distance1.getDistance(DistanceUnit.INCH) < DISTANCE_FROM_WALL && robot.distance2.getDistance(DistanceUnit.INCH) < DISTANCE_FROM_WALL){
+        //pull the slide down
+        encoderSlide(-0.3, -25, 3.0);
+
+        //retract the tilt
+        encoderTilt(-0.3,14,3.0);
+
+        //move the robot back
+        robot.leftFront.setPower(-0.5);
+        robot.leftBack.setPower(-0.5);
+        robot.rightFront.setPower(-0.5);
+        robot.rightBack.setPower(-0.5);
+
+        /*    while (robot.distance1.getDistance(DistanceUnit.INCH) < DISTANCE_FROM_WALL && robot.distance2.getDistance(DistanceUnit.INCH) < DISTANCE_FROM_WALL){
                 robot.leftFront.setPower(0.7);
                 robot.leftBack.setPower(0.7);
                 robot.rightFront.setPower(0.7);
@@ -114,13 +131,7 @@ public class Bom2specimenauto extends LinearOpMode {
 //                    robot.rightBack.setPower(0);
 //                }
 //            }
-//        }
-        //get the wrist in position to pull away from the bar
-        robot.wrist.setPosition(0);
-
-        //pull the slide down
-//        encoderSlide(-0.3, 10, 3.0);
-
+//        }*/
     }
 
         //using a negative on the tilt inches will cause it to move towards the rear of the robot, using a positive inches will do the opposite
