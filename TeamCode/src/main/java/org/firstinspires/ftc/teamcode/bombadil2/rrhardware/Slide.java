@@ -70,7 +70,7 @@ public class Slide {
     }
 
     public Action in(double inches) {
-        return new Out(inches);
+        return new In(inches);
     }
 
 
