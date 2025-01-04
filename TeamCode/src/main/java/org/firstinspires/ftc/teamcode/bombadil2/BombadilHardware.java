@@ -15,10 +15,10 @@ import com.qualcomm.robotcore.hardware.TouchSensor;
 
 public class BombadilHardware {
 
-    DcMotorEx leftFront;
-    DcMotorEx leftBack;
-    DcMotorEx rightBack;
-    DcMotorEx rightFront;
+   public DcMotorEx leftFront;
+   public DcMotorEx leftBack;
+   public DcMotorEx rightBack;
+   public DcMotorEx rightFront;
 
     DcMotorEx tilt;
     DcMotorEx slide;
@@ -33,9 +33,9 @@ public class BombadilHardware {
     private static final double SLIDE_PULLY_DIAMETER = 1.504;
 
     private static final double SLIDE_TICKS_PER_REV = 384.5;
-
-    private static final double TILT_TICKS_PER_REV = 1425.1;
+    public static final double TILT_TICKS_PER_REV = 1425.1;
     public static final double SLIDE_TICKS_PER_INCH = SLIDE_TICKS_PER_REV/(Math.PI * SLIDE_PULLY_DIAMETER);
+    public static final double TILT_TICKS_PER_INCH = TILT_TICKS_PER_REV * 5.0/(Math.PI * 1.0);
     public static final int MAX_SLIDE_POSITION = (int) (35 * SLIDE_TICKS_PER_INCH);
 
     public int init(HardwareMap hwMap){
@@ -57,7 +57,6 @@ public class BombadilHardware {
 
             rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
             rightBack.setDirection(DcMotorSimple.Direction.REVERSE);
-            leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
             limit = hwMap.get(TouchSensor.class, "Limit");
 
             rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
