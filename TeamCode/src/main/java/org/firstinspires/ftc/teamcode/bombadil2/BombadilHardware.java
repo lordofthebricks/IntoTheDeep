@@ -15,10 +15,10 @@ import com.qualcomm.robotcore.hardware.TouchSensor;
 
 public class BombadilHardware {
 
-    DcMotorEx leftFront;
-    DcMotorEx leftBack;
-    DcMotorEx rightBack;
-    DcMotorEx rightFront;
+   public DcMotorEx leftFront;
+   public DcMotorEx leftBack;
+   public DcMotorEx rightBack;
+   public DcMotorEx rightFront;
 
     DcMotorEx tilt;
     DcMotorEx slide;
