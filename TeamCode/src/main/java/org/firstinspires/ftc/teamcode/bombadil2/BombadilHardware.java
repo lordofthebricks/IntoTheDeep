@@ -19,6 +19,8 @@ public class BombadilHardware {
    public DcMotorEx leftBack;
    public DcMotorEx rightBack;
    public DcMotorEx rightFront;
+   public TouchSensor LimitHang;
+   public TouchSensor LimitSlide;
 
     DcMotorEx tilt;
     DcMotorEx slide;
@@ -42,6 +44,8 @@ public class BombadilHardware {
 
         try {
 
+            LimitHang = hwMap.get(TouchSensor.class, "LimitHang");
+            LimitSlide = hwMap.get(TouchSensor.class, "LimitSlide");
             leftFront = hwMap.get(DcMotorEx.class, "LeftFront");
             leftBack = hwMap.get(DcMotorEx.class, "LeftBack");
             rightBack = hwMap.get(DcMotorEx.class, "rightBack");

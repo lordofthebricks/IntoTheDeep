@@ -42,6 +42,7 @@ public class BombadilTeleop extends OpMode {
             normal = 1;
         }
 
+       // if ()
 
     if (normal == 1) {
        /* robot.limit = hardwareMap.get(DigitalChannel.class, "digitalTouch");
@@ -274,7 +275,73 @@ public class BombadilTeleop extends OpMode {
             robot.intake2.setPower(0);
         }
 
-    }
+        if (gamepad1.right_bumper) {
+            robot.tilt.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            robot.tilt.setPower(0.4);
+            robot.tilt.setTargetPosition(robot.tilt.getCurrentPosition());
+        } else if (gamepad1.right_trigger == 1) {
+            robot.tilt.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            robot.tilt.setPower(-0.4);
+            robot.tilt.setTargetPosition(robot.tilt.getCurrentPosition());
+        } else {
+            robot.tilt.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.tilt.setPower(0.5);
+        }
+
+//left bumper backup code
+        if (gamepad1.left_bumper) {
+            robot.slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            robot.slide.setPower(0.6);
+            robot.slide.setTargetPosition(robot.slide.getCurrentPosition());
+        } else if (gamepad1.left_trigger == 1) {
+            robot.slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            robot.slide.setPower(-0.6);
+            robot.slide.setTargetPosition(robot.slide.getCurrentPosition());
+        } else {
+//            if (robot.slide.getTargetPosition() > 40 * robot.SLIDE_TICKS_PER_INCH){
+//                robot.slide.setTargetPosition((int) (40 * robot.SLIDE_TICKS_PER_INCH));
+//
+//            }
+
+            robot.slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.slide.setPower(0);
+        }
+
+        if (gamepad1.a) {
+            robot.intake1.setPower(-0.8);
+            robot.intake2.setPower(0.8);
+        } else if (gamepad1.b) {
+            robot.intake1.setPower(0.8);
+            robot.intake2.setPower(-0.8);
+        } else {
+            robot.intake1.setPower(0);
+            robot.intake2.setPower(0);
+        }
+
+        //x = bring
+        if (gamepad1.x) {
+            robot.wrist.setPosition(1);
+        }
+
+        //y = deploy
+        if (gamepad1.y) {
+            robot.wrist.setPosition(0.3);
+        }
+
+        //position for sample scoring and specimen pickup
+        if (gamepad1.left_stick_button) {
+            robot.wrist.setPosition(0.5);
+        }
+
+        //position for scoring specimens
+        if (gamepad1.right_stick_button) {
+            robot.wrist.setPosition(0.8);
+        }
+
+        if (gamepad1.right_stick_button) {
+            robot.tilt.setPower(0.3);
+        }
+        }
     }
 
 
