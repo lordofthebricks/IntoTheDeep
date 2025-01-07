@@ -94,15 +94,15 @@ public class BombadilTeleop extends OpMode {
 
         //dpad precision controls
         if (gamepad1.dpad_up) {
-            robot.leftFront.setPower(0.4);
-            robot.leftBack.setPower(0.4);
-            robot.rightFront.setPower(0.4);
-            robot.rightBack.setPower(0.4);
-        } else if (gamepad1.dpad_down) {
             robot.leftFront.setPower(-0.4);
             robot.leftBack.setPower(-0.4);
             robot.rightFront.setPower(-0.4);
             robot.rightBack.setPower(-0.4);
+        } else if (gamepad1.dpad_down) {
+            robot.leftFront.setPower(0.4);
+            robot.leftBack.setPower(0.4);
+            robot.rightFront.setPower(0.4);
+            robot.rightBack.setPower(0.4);
         }
 
         //dpad strafing controls
