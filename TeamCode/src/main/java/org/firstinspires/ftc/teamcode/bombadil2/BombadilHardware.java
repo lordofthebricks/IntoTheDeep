@@ -29,8 +29,8 @@ public class BombadilHardware {
     CRServo intake2;
     Servo wrist;
     TouchSensor limit;
-    DistanceSensor distance1;
-    DistanceSensor distance2;
+    //DistanceSensor distance1;
+    //DistanceSensor distance2;
 
     private static final double SLIDE_PULLY_DIAMETER = 1.504;
 
@@ -56,8 +56,8 @@ public class BombadilHardware {
             intake1 = hwMap.get(CRServo.class, "Intake1");
             intake2 = hwMap.get(CRServo.class, "Intake2");
 
-            distance1 = hwMap.get(DistanceSensor.class,"distance1");
-            distance2 = hwMap.get(DistanceSensor.class, "distance2");
+            //distance1 = hwMap.get(DistanceSensor.class,"distance1");
+            //distance2 = hwMap.get(DistanceSensor.class, "distance2");
 
             rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
             rightBack.setDirection(DcMotorSimple.Direction.REVERSE);
