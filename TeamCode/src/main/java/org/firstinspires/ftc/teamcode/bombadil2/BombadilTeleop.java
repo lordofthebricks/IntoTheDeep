@@ -93,17 +93,17 @@ public class BombadilTeleop extends OpMode {
         }
 
         //dpad precision controls
-     /*   if (gamepad1.dpad_up) {
-            robot.leftFront.setPower(0.4);
-            robot.leftBack.setPower(0.4);
-            robot.rightFront.setPower(0.4);
-            robot.rightBack.setPower(0.4);
-        } else if (gamepad1.dpad_down) {
+        if (gamepad1.dpad_up) {
             robot.leftFront.setPower(-0.4);
             robot.leftBack.setPower(-0.4);
             robot.rightFront.setPower(-0.4);
             robot.rightBack.setPower(-0.4);
-        } */
+        } else if (gamepad1.dpad_down) {
+            robot.leftFront.setPower(0.4);
+            robot.leftBack.setPower(0.4);
+            robot.rightFront.setPower(0.4);
+            robot.rightBack.setPower(0.4);
+        }
 
         //dpad strafing controls
         if (gamepad1.dpad_right) {
@@ -120,11 +120,11 @@ public class BombadilTeleop extends OpMode {
 
         if (gamepad1.right_bumper) {
             robot.tilt.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            robot.tilt.setPower(0.5);
+            robot.tilt.setPower(0.4);
             robot.tilt.setTargetPosition(robot.tilt.getCurrentPosition());
         } else if (gamepad1.right_trigger == 1) {
             robot.tilt.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            robot.tilt.setPower(-0.5);
+            robot.tilt.setPower(-0.4);
             robot.tilt.setTargetPosition(robot.tilt.getCurrentPosition());
         } else {
             robot.tilt.setMode(DcMotor.RunMode.RUN_TO_POSITION);
