@@ -120,11 +120,11 @@ public class BombadilTeleop extends OpMode {
 
         if (gamepad1.right_bumper) {
             robot.tilt.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            robot.tilt.setPower(0.5);
+            robot.tilt.setPower(0.4);
             robot.tilt.setTargetPosition(robot.tilt.getCurrentPosition());
         } else if (gamepad1.right_trigger == 1) {
             robot.tilt.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            robot.tilt.setPower(-0.5);
+            robot.tilt.setPower(-0.4);
             robot.tilt.setTargetPosition(robot.tilt.getCurrentPosition());
         } else {
             robot.tilt.setMode(DcMotor.RunMode.RUN_TO_POSITION);
