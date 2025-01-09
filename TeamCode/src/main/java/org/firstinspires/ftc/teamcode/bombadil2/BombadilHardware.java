@@ -19,6 +19,8 @@ public class BombadilHardware {
    public DcMotorEx leftBack;
    public DcMotorEx rightBack;
    public DcMotorEx rightFront;
+   public TouchSensor LimitHang;
+   public TouchSensor LimitSlide;
 
     DcMotorEx tilt;
     DcMotorEx slide;
@@ -27,8 +29,8 @@ public class BombadilHardware {
     CRServo intake2;
     Servo wrist;
     TouchSensor limit;
-    DistanceSensor distance1;
-    DistanceSensor distance2;
+    //DistanceSensor distance1;
+    //DistanceSensor distance2;
 
     private static final double SLIDE_PULLY_DIAMETER = 1.504;
 
@@ -42,6 +44,8 @@ public class BombadilHardware {
 
         try {
 
+            LimitHang = hwMap.get(TouchSensor.class, "LimitHang");
+            LimitSlide = hwMap.get(TouchSensor.class, "LimitSlide");
             leftFront = hwMap.get(DcMotorEx.class, "LeftFront");
             leftBack = hwMap.get(DcMotorEx.class, "LeftBack");
             rightBack = hwMap.get(DcMotorEx.class, "rightBack");
@@ -52,8 +56,8 @@ public class BombadilHardware {
             intake1 = hwMap.get(CRServo.class, "Intake1");
             intake2 = hwMap.get(CRServo.class, "Intake2");
 
-            distance1 = hwMap.get(DistanceSensor.class,"distance1");
-            distance2 = hwMap.get(DistanceSensor.class, "distance2");
+            //distance1 = hwMap.get(DistanceSensor.class,"distance1");
+            //distance2 = hwMap.get(DistanceSensor.class, "distance2");
 
             rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
             rightBack.setDirection(DcMotorSimple.Direction.REVERSE);
