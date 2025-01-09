@@ -56,7 +56,7 @@ public class Bom2SpecimenAuto1 extends LinearOpMode {
 
         //deploy the tilt
         robot.tilt.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        encoderTilt(0.3, -7, 3.0);
+        encoderTilt(0.3, -9, 3.0);
         //tilt inches was formerly -14
         robot.tilt.setTargetPosition(robot.tilt.getCurrentPosition());
 
@@ -71,7 +71,7 @@ public class Bom2SpecimenAuto1 extends LinearOpMode {
         sleep(1500);
 
         //pull down the tilt
-        encoderTilt(0.3,5,3.0);
+        encoderTilt(0.3,7,3.0);
 
         //get the wrist in position to pull away from the bar
         encoderSlide(0.3,13,3.0);

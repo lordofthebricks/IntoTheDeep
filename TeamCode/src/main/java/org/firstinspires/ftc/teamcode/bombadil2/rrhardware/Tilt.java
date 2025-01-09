@@ -15,6 +15,7 @@ public class Tilt {
     public Tilt(HardwareMap hardwareMap) {
         motor = hardwareMap.get(DcMotorEx.class, "Tilt");
         motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motor.setTargetPosition(motor.getTargetPosition());
         motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 

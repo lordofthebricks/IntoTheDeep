@@ -16,6 +16,7 @@ public class Slide {
     public Slide(HardwareMap hardwareMap) {
         motor = hardwareMap.get(DcMotorEx.class, "Slide");
         motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motor.setTargetPosition(motor.getCurrentPosition());
         motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
