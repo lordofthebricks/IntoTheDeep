@@ -15,7 +15,7 @@ import org.firstinspires.ftc.teamcode.bombadil2.rrhardware.Intake;
 import org.firstinspires.ftc.teamcode.bombadil2.rrhardware.Slide;
 import org.firstinspires.ftc.teamcode.bombadil2.rrhardware.Tilt;
 
-@Autonomous
+@Autonomous (name = "Bom2_Red_Specimen_Observation")
 public class Bom2RedSpecimenObservation extends LinearOpMode {
 
 
@@ -57,4 +57,5 @@ public class Bom2RedSpecimenObservation extends LinearOpMode {
 
 
     }
+
 }
