@@ -50,6 +50,7 @@ public class Bom2RedSpecimenObservation extends LinearOpMode {
                         slide.out(7),
                         SecondPath,
                         slide.in(7),
+                        intake.putOut(),
                         ThirdPath
                 )
         );
