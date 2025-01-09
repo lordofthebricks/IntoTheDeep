@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.DigitalChannel;
 public class BombadilTeleop extends OpMode {
 
     final double MAX_SPEED = 0.8;
-    final double STRAFE_SPEED = 0.5;
+    final double STRAFE_SPEED = 0.7;
     int slideRestingPos = 0;
     BombadilHardware robot = new BombadilHardware();
     int normal = 1;
@@ -35,12 +35,14 @@ public class BombadilTeleop extends OpMode {
     public void loop() {
 
         if (gamepad1.start) {
+           if (normal == 1){
             normal = 0;
+           }else {
+               normal = 0;
+           }
         }
 
-        if (gamepad1.back) {
-            normal = 1;
-        }
+
 
         // if ()
 
@@ -341,7 +343,30 @@ public class BombadilTeleop extends OpMode {
         if (gamepad1.right_stick_button) {
             robot.tilt.setPower(0.3);
         }
+        if (gamepad1.back){
+            encoderSlide( 0.7, 18);
+        }
     }
+
+    public void encoderSlide ( double speed, double slideInches){
+        int newslideTarget;
+
+            slideInches = Math.abs(slideInches);
+
+
+
+            newslideTarget = slideRestingPos + (int) (slideInches * BombadilHardware.SLIDE_TICKS_PER_INCH);
+            robot.slide.setTargetPosition(newslideTarget);
+
+            robot.slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+
+            robot.slide.setPower(Math.abs(speed));
+
+
+
+    }
+
 }
 
 
