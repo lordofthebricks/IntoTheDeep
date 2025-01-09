@@ -301,7 +301,7 @@ public class BombadilTeleop extends OpMode {
             robot.tilt.setPower(0.3);
         }
         if (gamepad1.back){
-            encoderSlide( 0.7, 18);
+            encoderSlide( 0.7, -18);
         }
     }
 
