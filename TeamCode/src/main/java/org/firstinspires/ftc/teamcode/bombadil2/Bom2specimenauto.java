@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Config
-@Autonomous(name = "B2_Red_Specimen_Observation_Autonomous")
+@Autonomous(name = "B2_Specimen_Observation_Autonomous")
 
 public class Bom2specimenauto extends LinearOpMode {
 
@@ -26,14 +26,13 @@ public class Bom2specimenauto extends LinearOpMode {
     static final double COUNTS_PER_INCH = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
             (WHEEL_DIAMETER_INCHES * Math.PI);
 
-
-
-
     public void runOpMode() {
 
         robot.init(hardwareMap);
 
-        waitForStart();
+        //stop the slide from moving in initialization
+        robot.slide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.slide.setTargetPosition((robot.slide.getCurrentPosition()));
 
         //strafe in front of the top scoring bar
         robot.leftFront.setPower(0.5);
@@ -119,17 +118,6 @@ public class Bom2specimenauto extends LinearOpMode {
         robot.rightFront.setPower(0);
         robot.leftBack.setPower(0);
         robot.rightBack.setPower(0);
-        //pull the slide down
-        //encoderSlide(-0.3, -25, 3.0);
-
-        //retract the tilt
-        //encoderTilt(-0.3,14,3.0);
-
-        //move the robot back
-        //robot.leftFront.setPower(-0.5);
-        //robot.leftBack.setPower(-0.5);
-        //robot.rightFront.setPower(-0.5);
-        //robot.rightBack.setPower(-0.5);
 
         /*    while (robot.distance1.getDistance(DistanceUnit.INCH) < DISTANCE_FROM_WALL && robot.distance2.getDistance(DistanceUnit.INCH) < DISTANCE_FROM_WALL){
                 robot.leftFront.setPower(0.7);

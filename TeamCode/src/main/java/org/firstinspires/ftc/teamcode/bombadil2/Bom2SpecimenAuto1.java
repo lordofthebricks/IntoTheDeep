@@ -81,6 +81,33 @@ public class Bom2SpecimenAuto1 extends LinearOpMode {
         robot.intake2.setPower(-0.8);
         sleep(1000);
 
+        //retract the slide
+        encoderSlide(0.3,-13,3.0);
+
+        //retract the tilt
+        encoderTilt(0.3,2,3.0);
+
+        //reverse onto the wall
+        robot.leftFront.setPower(0.55);
+        robot.rightFront.setPower(0.5);
+        robot.leftBack.setPower(0.5);
+        robot.rightBack.setPower(0.5);
+        sleep(1200);
+        robot.leftFront.setPower(0);
+        robot.rightFront.setPower(0);
+        robot.leftBack.setPower(0);
+        robot.rightBack.setPower(0);
+
+        //strafe to the observation zone
+        robot.leftFront.setPower(-0.5);
+        robot.rightFront.setPower(0.5);
+        robot.leftBack.setPower(0.5);
+        robot.rightBack.setPower(-0.5);
+        sleep(1200);
+        robot.leftFront.setPower(0);
+        robot.rightFront.setPower(0);
+        robot.leftBack.setPower(0);
+        robot.rightBack.setPower(0);
     }
 
     //using a negative on the tilt inches will cause it to move towards the rear of the robot, using a positive inches will do the opposite
