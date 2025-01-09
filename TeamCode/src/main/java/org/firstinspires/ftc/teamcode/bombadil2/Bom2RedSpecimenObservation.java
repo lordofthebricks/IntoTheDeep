@@ -13,7 +13,7 @@ import org.firstinspires.ftc.teamcode.bombadil2.rrhardware.Intake;
 import org.firstinspires.ftc.teamcode.bombadil2.rrhardware.Slide;
 import org.firstinspires.ftc.teamcode.bombadil2.rrhardware.Tilt;
 
-public class Bom2RedSpeciminAscent extends LinearOpMode {
+public class Bom2RedSpecimenObservation extends LinearOpMode {
 
 
 
@@ -21,26 +21,24 @@ public class Bom2RedSpeciminAscent extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
 
         Pose2d beginPose = new Pose2d(12, -65.5, Math.PI);
-        Pose2d scorePose = new Pose2d(0,-34,Math.PI/2);
+        Pose2d scorePose = new Pose2d(0,-40,Math.PI/2);
         MecanumDrive drive = new MecanumDrive(hardwareMap, beginPose);
         Slide slide = new Slide(hardwareMap);
         Tilt tilt = new Tilt(hardwareMap);
         Intake intake = new Intake(hardwareMap);
 
         Action firstPath = drive.actionBuilder(beginPose)
-                .splineTo(new Vector2d(0, -34), Math.PI/2)
+                .splineTo(new Vector2d(0, -40), Math.PI/2)
                 .build();
         Action SecondPath = drive.actionBuilder(scorePose)
-                .strafeTo(new Vector2d(-38, -34))
-                .splineTo(new Vector2d(-38, -12), Math.PI)
-                .strafeTo(new Vector2d(-24, -12))
+                .strafeTo(new Vector2d( 56, -56))
                 .build();
         waitForStart();
 
         Actions.runBlocking(
                 new SequentialAction(
                         firstPath,
-                        new SleepAction(9), //scoring code here
+                        new SleepAction(9), // TODO scoring code here
                         SecondPath
                 )
         );
