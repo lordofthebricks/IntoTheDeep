@@ -28,8 +28,11 @@ public class Bom2SpecimenAuto1 extends LinearOpMode {
 
     public void runOpMode() {
 
-        robot.init(hardwareMap);
-
+        if (robot.init(hardwareMap) != 1) {
+            telemetry.addLine("Issue Initalizing");
+            telemetry.update();
+            stop();
+        }
         waitForStart();
 
         //strafe in front of the top scoring bar

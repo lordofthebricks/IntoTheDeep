@@ -56,36 +56,21 @@ public class BombadilHardware {
             intake1 = hwMap.get(CRServo.class, "Intake1");
             intake2 = hwMap.get(CRServo.class, "Intake2");
 
-            //distance1 = hwMap.get(DistanceSensor.class,"distance1");
-            //distance2 = hwMap.get(DistanceSensor.class, "distance2");
 
             rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
             rightBack.setDirection(DcMotorSimple.Direction.REVERSE);
             leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
-            limit = hwMap.get(TouchSensor.class, "Limit");
 
             rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             rightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             leftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         } catch (Exception e) {
-            return 0;
+            throw e;
+
         }
-//            Limit.setMode(DigitalChannel.Mode.INPUT);
 
         return 1;
     }
-
-    public int initRR(HardwareMap hwMap){
-
-        try {
-            tilt = hwMap.get(DcMotorEx.class, "Arm");
-            slide = hwMap.get(DcMotorEx.class, "Slide");
-        } catch (Exception e) {
-            return 0;
-        }
-        return 1;
-    }
-
 
 }
