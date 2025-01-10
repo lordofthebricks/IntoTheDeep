@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.TouchSensor;
 
 public class Tilt {
-    private DcMotorEx motor;
+    public DcMotorEx motor;
     private TouchSensor limitHang;
     private TouchSensor limitSlide;
 

@@ -20,9 +20,12 @@ import org.firstinspires.ftc.teamcode.bombadil2.rrhardware.Tilt;
 @Autonomous (name = "Bom2_Red_Specimen_ObservationTEST")
 public class Bom2RedSpecimenObservationTEST extends LinearOpMode {
 
-    BombadilHardware robot = new BombadilHardware();
+//    BombadilHardware robot = new BombadilHardware();
 
     private ElapsedTime runtime = new ElapsedTime();
+    Slide slide = new Slide(hardwareMap);
+    Tilt tilt = new Tilt(hardwareMap);
+    Intake intake = new Intake(hardwareMap);
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -72,17 +75,17 @@ public class Bom2RedSpecimenObservationTEST extends LinearOpMode {
         {
 
 
-            newtiltTarget = robot.tilt.getCurrentPosition() + (int) (tiltInches * BombadilHardware.TILT_TICKS_PER_INCH);
-            robot.tilt.setTargetPosition(newtiltTarget);
+            newtiltTarget = tilt.motor.getCurrentPosition() + (int) (tiltInches * BombadilHardware.TILT_TICKS_PER_INCH);
+            tilt.motor.setTargetPosition(newtiltTarget);
 
-            robot.tilt.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            tilt.motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
             runtime.reset();
-            robot.tilt.setPower(Math.abs(speed));
+            tilt.motor.setPower(Math.abs(speed));
 
             while (opModeIsActive() &&
                     (runtime.seconds() < timeout) &&
-                    (robot.tilt.isBusy())
+                    (tilt.motor.isBusy())
             ) ;
         }
     }
@@ -94,17 +97,17 @@ public class Bom2RedSpecimenObservationTEST extends LinearOpMode {
         {
 
 
-            newslideTarget = robot.slide.getCurrentPosition() + (int) (slideInches * BombadilHardware.SLIDE_TICKS_PER_INCH);
-            robot.slide.setTargetPosition(newslideTarget);
+            newslideTarget = slide.motor.getCurrentPosition() + (int) (slideInches * BombadilHardware.SLIDE_TICKS_PER_INCH);
+            slide.motor.setTargetPosition(newslideTarget);
 
-            robot.slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            slide.motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
             runtime.reset();
-            robot.slide.setPower(Math.abs(speed));
+            slide.motor.setPower(Math.abs(speed));
 
             while (opModeIsActive() &&
                     (runtime.seconds() < timeout) &&
-                    (robot.slide.isBusy())
+                    (slide.motor.isBusy())
             ) ;
         }
     }

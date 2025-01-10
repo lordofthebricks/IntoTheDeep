@@ -46,6 +46,8 @@ public class BombadilHardware {
 
             LimitHang = hwMap.get(TouchSensor.class, "LimitHang");
             LimitSlide = hwMap.get(TouchSensor.class, "LimitSlide");
+            //LimitHang = hwMap.get(DigitalChannel.class, "LimitHang");
+            //LimitSlide = hwMap.get(DigitalChannel.class, "LimitSlide");
             leftFront = hwMap.get(DcMotorEx.class, "LeftFront");
             leftBack = hwMap.get(DcMotorEx.class, "LeftBack");
             rightBack = hwMap.get(DcMotorEx.class, "rightBack");
@@ -65,6 +67,8 @@ public class BombadilHardware {
             rightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             leftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+
         } catch (Exception e) {
             throw e;
 

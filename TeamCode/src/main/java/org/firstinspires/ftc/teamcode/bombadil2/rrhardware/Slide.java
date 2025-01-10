@@ -6,13 +6,14 @@ import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.bombadil2.BombadilHardware;
 
 public class Slide {
-    private DcMotorEx motor;
+    public DcMotorEx motor;
     public Servo wrist;
     public Slide(HardwareMap hardwareMap) {
         motor = hardwareMap.get(DcMotorEx.class, "Slide");
@@ -20,6 +21,7 @@ public class Slide {
         motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motor.setTargetPosition(motor.getCurrentPosition());
         motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motor.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
     public class Out implements Action {
@@ -41,7 +43,7 @@ public class Slide {
             }
 
 
-            return true;
+            return false;
         }
     }
 
@@ -68,7 +70,7 @@ public class Slide {
             }
 
 
-            return true;
+            return false;
         }
     }
 
