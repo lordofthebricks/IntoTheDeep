@@ -42,7 +42,7 @@ public class Bom2BlueSpecimenObservation extends LinearOpMode {
                 .build();
         Action ThirdPath = drive.actionBuilder(scorePose)
                 .strafeToConstantHeading(new Vector2d(0,45))
-                .strafeToLinearHeading(new Vector2d( -56, 65), Math.PI/2)
+                .strafeToLinearHeading(new Vector2d( -56, 65), 3*Math.PI/2)
                 .build();
         waitForStart();
 
