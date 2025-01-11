@@ -321,6 +321,7 @@ public class BombadilTeleop extends OpMode {
         if (gamepad1.back){
             encoderSlide( 0.7, -18);
         }
+        
     }
 
     public void encoderSlide ( double speed, double slideInches){
