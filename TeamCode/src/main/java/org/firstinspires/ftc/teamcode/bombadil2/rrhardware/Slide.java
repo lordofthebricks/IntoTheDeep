@@ -43,7 +43,7 @@ public class Slide {
             }
 
 
-            return false;
+            return motor.isBusy();
         }
     }
 
@@ -70,7 +70,7 @@ public class Slide {
             }
 
 
-            return false;
+            return motor.isBusy();
         }
     }
 

@@ -12,6 +12,8 @@ public class BombadilTeleop extends OpMode {
     final double MAX_SPEED = 0.8;
     final double STRAFE_SPEED = 0.9;
     int slideRestingPos = 0;
+    int slideMaxPosition;
+    int slideCurrentPosition;
     BombadilHardware robot = new BombadilHardware();
     int normal = 1;
 
@@ -25,6 +27,7 @@ public class BombadilTeleop extends OpMode {
         robot.slide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         slideRestingPos = robot.slide.getCurrentPosition();
+        slideMaxPosition = slideRestingPos - (BombadilHardware.MAX_SLIDE_POSITION);
         robot.slide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         robot.tilt.setTargetPosition(robot.tilt.getCurrentPosition());
         robot.slide.setTargetPosition(robot.slide.getCurrentPosition());
@@ -33,7 +36,10 @@ public class BombadilTeleop extends OpMode {
 
     @Override
     public void loop() {
-
+        telemetry.clearAll();
+        telemetry.addData("limit switch", robot.LimitHang.isPressed());
+        telemetry.addData("Slide Length", robot.slide.getCurrentPosition() / BombadilHardware.SLIDE_TICKS_PER_INCH);
+        telemetry.update();
         if (gamepad1.start) {
             normal = 0;
            }
@@ -47,19 +53,6 @@ public class BombadilTeleop extends OpMode {
         // if ()
 
         if (normal == 1) {
-       /* robot.limit = hardwareMap.get(DigitalChannel.class, "digitalTouch");
-
-        robot.limit.setMode(DigitalChannel.Mode.INPUT);
-
-        while (opModeIsActive()) {
-            if (robot.limit.getState() == false) {
-                telemetry.addData("Button", "PRESSED");
-                robot.slide.setPower(0);
-            } else {
-                telemetry.addData("Button", "NOT PRESSED");
-            }
-
-            telemetry.update();*/
 
             if (gamepad1.right_stick_y >= 0.2) {
                 robot.rightFront.setPower(gamepad1.right_stick_y * MAX_SPEED);
@@ -121,7 +114,7 @@ public class BombadilTeleop extends OpMode {
                 robot.rightBack.setPower(STRAFE_SPEED);
             }
 
-            if (gamepad1.right_bumper) {
+            /*if (gamepad1.right_bumper) {
                 robot.tilt.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
                 robot.tilt.setPower(0.4);
                 robot.tilt.setTargetPosition(robot.tilt.getCurrentPosition());
@@ -132,10 +125,10 @@ public class BombadilTeleop extends OpMode {
             } else {
                 robot.tilt.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 robot.tilt.setPower(0.5);
-            }
+            }*/
 
 //left bumper backup code
-            if (gamepad1.left_bumper) {
+            /*if (gamepad1.left_bumper) {
                 robot.slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
                 robot.slide.setPower(0.6);
                 robot.slide.setTargetPosition(robot.slide.getCurrentPosition());
@@ -189,7 +182,7 @@ public class BombadilTeleop extends OpMode {
             if (gamepad1.right_stick_button) {
                 robot.tilt.setPower(0.3);
 
-            }
+            }*/
 
         } else if (normal == 0) {
             if (gamepad1.left_stick_y >= 0.2) {
@@ -248,23 +241,48 @@ public class BombadilTeleop extends OpMode {
         }
 
 //left bumper backup code
-        if (gamepad1.left_bumper) {
-            robot.slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            robot.slide.setPower(0.6);
-            robot.slide.setTargetPosition(robot.slide.getCurrentPosition());
-        } else if (gamepad1.left_trigger == 1) {
-            robot.slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            robot.slide.setPower(-0.6);
-            robot.slide.setTargetPosition(robot.slide.getCurrentPosition());
-        } else {
-//            if (robot.slide.getTargetPosition() > 40 * robot.SLIDE_TICKS_PER_INCH){
-//                robot.slide.setTargetPosition((int) (40 * robot.SLIDE_TICKS_PER_INCH));
+        if(robot.LimitHang.isPressed()){
+//            telemetry.clearAll();
 //
-//            }
+//            telemetry.addLine("Length Limit off");
+//            telemetry.update();
+            if (gamepad1.left_bumper) {
+                robot.slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                robot.slide.setPower(0.6);
+                robot.slide.setTargetPosition(robot.slide.getCurrentPosition());
+            } else if (gamepad1.left_trigger == 1) {
+                robot.slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                robot.slide.setPower(-0.6);
+                robot.slide.setTargetPosition(robot.slide.getCurrentPosition());
+            } else {
 
-            robot.slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            robot.slide.setPower(0);
+
+                robot.slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                robot.slide.setPower(0);
+            }
+        }else{
+//            telemetry.clearAll();
+//
+//            telemetry.addLine("Length Limit On");
+//            telemetry.update();
+            if (gamepad1.left_bumper) {
+                robot.slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                robot.slide.setPower(0.6);
+                robot.slide.setTargetPosition(robot.slide.getCurrentPosition());
+            } else if (gamepad1.left_trigger == 1 && robot.slide.getCurrentPosition() > slideMaxPosition) {
+                robot.slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                robot.slide.setPower(-0.6);
+                robot.slide.setTargetPosition(robot.slide.getCurrentPosition());
+            } else {
+                if(robot.slide.getTargetPosition() < slideMaxPosition){
+                    robot.slide.setTargetPosition(slideMaxPosition);
+                }
+
+                robot.slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                robot.slide.setPower(0);
+            }
         }
+
 
         if (gamepad1.a) {
             robot.intake1.setPower(-0.8);

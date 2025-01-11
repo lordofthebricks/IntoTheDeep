@@ -8,6 +8,7 @@ import com.acmerobotics.roadrunner.SleepAction;
 import com.acmerobotics.roadrunner.Vector2d;
 import com.acmerobotics.roadrunner.ftc.Actions;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -16,16 +17,16 @@ import org.firstinspires.ftc.teamcode.MecanumDrive;
 import org.firstinspires.ftc.teamcode.bombadil2.rrhardware.Intake;
 import org.firstinspires.ftc.teamcode.bombadil2.rrhardware.Slide;
 import org.firstinspires.ftc.teamcode.bombadil2.rrhardware.Tilt;
-
+@Disabled
 @Autonomous (name = "Bom2_Red_Specimen_ObservationTEST")
 public class Bom2RedSpecimenObservationTEST extends LinearOpMode {
 
 //    BombadilHardware robot = new BombadilHardware();
 
     private ElapsedTime runtime = new ElapsedTime();
-    Slide slide = new Slide(hardwareMap);
-    Tilt tilt = new Tilt(hardwareMap);
-    Intake intake = new Intake(hardwareMap);
+    Slide slide;
+    Tilt tilt;
+    Intake intake;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -61,6 +62,7 @@ public class Bom2RedSpecimenObservationTEST extends LinearOpMode {
                         //slide.in(7),
                         new InstantAction( () -> encoderSlide(0.3,7,3.0)),
                         intake.putOut(),
+
                         ThirdPath
                 )
         );

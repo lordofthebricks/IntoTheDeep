@@ -38,7 +38,7 @@ public class BombadilHardware {
     public static final double TILT_TICKS_PER_REV = 1425.1;
     public static final double SLIDE_TICKS_PER_INCH = SLIDE_TICKS_PER_REV/(Math.PI * SLIDE_PULLY_DIAMETER);
     public static final double TILT_TICKS_PER_INCH = TILT_TICKS_PER_REV * 0.2/(Math.PI * 1.0);
-    public static final int MAX_SLIDE_POSITION = (int) (35 * SLIDE_TICKS_PER_INCH);
+    public static final int MAX_SLIDE_POSITION = (int) (20 * SLIDE_TICKS_PER_INCH);
 
     public int init(HardwareMap hwMap){
 
@@ -46,8 +46,6 @@ public class BombadilHardware {
 
             LimitHang = hwMap.get(TouchSensor.class, "LimitHang");
             LimitSlide = hwMap.get(TouchSensor.class, "LimitSlide");
-            //LimitHang = hwMap.get(DigitalChannel.class, "LimitHang");
-            //LimitSlide = hwMap.get(DigitalChannel.class, "LimitSlide");
             leftFront = hwMap.get(DcMotorEx.class, "LeftFront");
             leftBack = hwMap.get(DcMotorEx.class, "LeftBack");
             rightBack = hwMap.get(DcMotorEx.class, "rightBack");

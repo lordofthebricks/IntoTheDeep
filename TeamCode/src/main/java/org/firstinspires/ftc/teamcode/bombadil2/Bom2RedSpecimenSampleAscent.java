@@ -16,8 +16,8 @@ import org.firstinspires.ftc.teamcode.bombadil2.rrhardware.Intake;
 import org.firstinspires.ftc.teamcode.bombadil2.rrhardware.Slide;
 import org.firstinspires.ftc.teamcode.bombadil2.rrhardware.Tilt;
 
-@Autonomous (name = "Bom2_Red_Specimen_Observation")
-public class Bom2RedSpecimenObservation extends LinearOpMode {
+@Autonomous (name = "Bom2_Red_Specimen_Sample_Ascent")
+public class Bom2RedSpecimenSampleAscent extends LinearOpMode {
 
 
 
@@ -27,6 +27,7 @@ public class Bom2RedSpecimenObservation extends LinearOpMode {
         Pose2d beginPose = new Pose2d(12, -65.5, Math.PI/2);
         Pose2d scorePose = new Pose2d(0,-45,3*Math.PI/2);
         Pose2d midScorePose = new Pose2d(0, -42, 3*Math.PI/2);
+        Pose2d netScorePose = new Pose2d(-58,-58, Math.PI/4);
         MecanumDrive drive = new MecanumDrive(hardwareMap, beginPose);
         Slide slide = new Slide(hardwareMap);
         Tilt tilt = new Tilt(hardwareMap);
@@ -40,8 +41,14 @@ public class Bom2RedSpecimenObservation extends LinearOpMode {
                 .build();
         Action ThirdPath = drive.actionBuilder(scorePose)
                 .strafeToConstantHeading(new Vector2d(0,-45))
-                .strafeToLinearHeading(new Vector2d( 56, -56), Math.PI/2)
+                .strafeToLinearHeading(new Vector2d( -48, -57.25), Math.PI/2)
                 .build();
+        Action FourthPath = drive.actionBuilder(scorePose)
+                .strafeToLinearHeading(new Vector2d(-56,-56), Math.PI/4)
+                .build();
+        Action FithPath = drive.actionBuilder(netScorePose)
+                        .splineTo( new Vector2d(-24,-12), Math.PI)
+                                .build();
         waitForStart();
 
         Actions.runBlocking(
@@ -57,10 +64,32 @@ public class Bom2RedSpecimenObservation extends LinearOpMode {
                                 ),
                         SecondPath,
                         intake.stop(),
-                        new ParallelAction(tilt.toOutPosition(),
+                        new ParallelAction(
+                                tilt.toOutPosition(),
                                 slide.in(18),
                                 ThirdPath
-                                )
+                        ),
+                        new InstantAction(() -> slide.wrist.setPosition(0.3)),
+                        new ParallelAction(
+                                intake.takeIn(),
+                                slide.out(20)
+                        ),
+                        new SleepAction(1.25),
+                        intake.stop(),
+                        slide.in(20),
+                        new ParallelAction(
+                                FourthPath,
+                                tilt.toUprightPosition()
+                        ),
+                        slide.out(25),
+                        new InstantAction(() -> slide.wrist.setPosition(0.5)),
+                        intake.takeIn(),
+                        new SleepAction(1),
+                        new ParallelAction(
+                                slide.in(25),
+                                tilt.toOutPosition(),
+                                FithPath
+                        )
 
                 )
         );

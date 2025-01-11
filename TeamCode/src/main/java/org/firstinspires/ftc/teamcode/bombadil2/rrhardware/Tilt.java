@@ -90,7 +90,7 @@ public class Tilt {
             if(!limitSlide.isPressed()){
                 return true;
             }
-            motor.setTargetPosition(currentPos);
+            motor.setTargetPosition(currentPos + (1425/360) * 5);
             motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             return false;
         }
