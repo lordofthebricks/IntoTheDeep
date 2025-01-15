@@ -25,22 +25,22 @@ public class Bom2BlueSpecimenObservationLeftStart extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
 
         Pose2d beginPose = new Pose2d(12, 65.5, 3*Math.PI/2);
-        Pose2d scorePose = new Pose2d(0,45,Math.PI/2);
-        Pose2d midScorePose = new Pose2d(0, 42, Math.PI/2);
+        Pose2d scorePose = new Pose2d(0,48,Math.PI/2);
+        Pose2d midScorePose = new Pose2d(0, 43, Math.PI/2);
         MecanumDrive drive = new MecanumDrive(hardwareMap, beginPose);
         Slide slide = new Slide(hardwareMap);
         Tilt tilt = new Tilt(hardwareMap);
         Intake intake = new Intake(hardwareMap);
 
         Action firstPath = drive.actionBuilder(beginPose)
-                .strafeToSplineHeading(new Vector2d(0, 42), Math.PI/2)
+                .strafeToSplineHeading(new Vector2d(0, 43), Math.PI/2)
                 .build();
         Action SecondPath = drive.actionBuilder(midScorePose)
-                .strafeTo(new Vector2d(0, 45))
+                .strafeTo(new Vector2d(0, 48))
                 .build();
         Action ThirdPath = drive.actionBuilder(scorePose)
                 .strafeToConstantHeading(new Vector2d(0,45))
-                .strafeToLinearHeading(new Vector2d( -56, 60), Math.PI/2)
+                .strafeToLinearHeading(new Vector2d( -56, 65), 3*Math.PI/2)
                 .build();
         waitForStart();
 
