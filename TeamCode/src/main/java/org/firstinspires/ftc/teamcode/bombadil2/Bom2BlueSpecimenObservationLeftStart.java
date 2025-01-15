@@ -16,43 +16,37 @@ import org.firstinspires.ftc.teamcode.bombadil2.rrhardware.Intake;
 import org.firstinspires.ftc.teamcode.bombadil2.rrhardware.Slide;
 import org.firstinspires.ftc.teamcode.bombadil2.rrhardware.Tilt;
 
-@Autonomous (name = "Bom2_Red_Specimen_Sample_Ascent")
-public class Bom2RedSpecimenSampleAscent extends LinearOpMode {
+@Autonomous( name = "Bom2 Blue Specimen Observation Left Tile Start", group = "Bombadil 2.0 Road Runner")
+public class Bom2BlueSpecimenObservationLeftStart extends LinearOpMode {
 
 
 
     @Override
     public void runOpMode() throws InterruptedException {
 
-        Pose2d beginPose = new Pose2d(12, -65.5, Math.PI/2);
-        Pose2d scorePose = new Pose2d(0,-45,3*Math.PI/2);
-        Pose2d midScorePose = new Pose2d(0, -42, 3*Math.PI/2);
-        Pose2d netScorePose = new Pose2d(-60,-56, Math.PI/4);
+        Pose2d beginPose = new Pose2d(12, 65.5, 3*Math.PI/2);
+        Pose2d scorePose = new Pose2d(0,45,Math.PI/2);
+        Pose2d midScorePose = new Pose2d(0, 42, Math.PI/2);
         MecanumDrive drive = new MecanumDrive(hardwareMap, beginPose);
         Slide slide = new Slide(hardwareMap);
         Tilt tilt = new Tilt(hardwareMap);
         Intake intake = new Intake(hardwareMap);
 
         Action firstPath = drive.actionBuilder(beginPose)
-                .strafeToSplineHeading(new Vector2d(0, -42), 3*Math.PI/2)
+                .strafeToSplineHeading(new Vector2d(0, 42), Math.PI/2)
                 .build();
         Action SecondPath = drive.actionBuilder(midScorePose)
-                .strafeTo(new Vector2d(0, -45))
+                .strafeTo(new Vector2d(0, 45))
                 .build();
         Action ThirdPath = drive.actionBuilder(scorePose)
-                .strafeToConstantHeading(new Vector2d(0,-45))
-                .strafeToLinearHeading(new Vector2d( -48, -60), Math.PI/2)
+                .strafeToConstantHeading(new Vector2d(0,45))
+                .strafeToLinearHeading(new Vector2d( -56, 60), Math.PI/2)
                 .build();
-        Action FourthPath = drive.actionBuilder(scorePose)
-                .strafeToLinearHeading(new Vector2d(-60,-56), Math.PI/4)
-                .build();
-        Action FithPath = drive.actionBuilder(netScorePose)
-                        .splineTo( new Vector2d(-24,-12), Math.PI)
-                                .build();
         waitForStart();
 
         Actions.runBlocking(
                 new SequentialAction(
+//                        new SleepAction(15),
                         new InstantAction( () -> slide.wrist.setPosition(0.8)),
                         firstPath,
                         tilt.toUprightPosition(),
@@ -61,34 +55,12 @@ public class Bom2RedSpecimenSampleAscent extends LinearOpMode {
                         new ParallelAction(
                                 intake.takeIn(),
                                 slide.out(4)
-                                ),
+                        ),
                         SecondPath,
                         intake.stop(),
-                        new ParallelAction(
-                                tilt.toOutPosition(),
+                        new ParallelAction(tilt.toOutPosition(),
                                 slide.in(18),
                                 ThirdPath
-                        ),
-                        new InstantAction(() -> slide.wrist.setPosition(0.3)),
-                        new ParallelAction(
-                                intake.takeIn(),
-                                slide.out(18)
-                        ),
-                        new SleepAction(1.25),
-                        intake.stop(),
-                        slide.in(20),
-                        new ParallelAction(
-                                FourthPath,
-                                tilt.toUprightPosition()
-                        ),
-                        slide.out(25),
-                        new InstantAction(() -> slide.wrist.setPosition(0.5)),
-                        intake.takeIn(),
-                        new SleepAction(1),
-                        new ParallelAction(
-                                slide.in(25),
-                                tilt.toOutPosition(),
-                                FithPath
                         )
 
                 )
@@ -96,5 +68,4 @@ public class Bom2RedSpecimenSampleAscent extends LinearOpMode {
 
 
     }
-
 }

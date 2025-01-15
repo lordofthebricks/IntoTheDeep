@@ -1,7 +1,5 @@
 package org.firstinspires.ftc.teamcode.bombadil2;
 
-import static java.lang.Math.PI;
-
 import com.acmerobotics.roadrunner.Action;
 import com.acmerobotics.roadrunner.InstantAction;
 import com.acmerobotics.roadrunner.ParallelAction;
@@ -18,15 +16,15 @@ import org.firstinspires.ftc.teamcode.bombadil2.rrhardware.Intake;
 import org.firstinspires.ftc.teamcode.bombadil2.rrhardware.Slide;
 import org.firstinspires.ftc.teamcode.bombadil2.rrhardware.Tilt;
 
-@Autonomous( name = "Bom2 Blue Specimen Observation")
-public class Bom2BlueSpecimenObservation extends LinearOpMode {
+@Autonomous( name = "Bom2 Blue Specimen Observation right tile start", group = "Bombadil 2.0 Road Runner")
+public class Bom2BlueSpecimenObservationRightStart extends LinearOpMode {
 
 
 
     @Override
     public void runOpMode() throws InterruptedException {
 
-        Pose2d beginPose = new Pose2d(12, 65.5, 3*Math.PI/2);
+        Pose2d beginPose = new Pose2d(-12, 65.5, 3*Math.PI/2);
         Pose2d scorePose = new Pose2d(0,45,Math.PI/2);
         Pose2d midScorePose = new Pose2d(0, 42, Math.PI/2);
         MecanumDrive drive = new MecanumDrive(hardwareMap, beginPose);
@@ -48,6 +46,7 @@ public class Bom2BlueSpecimenObservation extends LinearOpMode {
 
         Actions.runBlocking(
                 new SequentialAction(
+//                        new SleepAction(15),
                         new InstantAction( () -> slide.wrist.setPosition(0.8)),
                         firstPath,
                         tilt.toUprightPosition(),

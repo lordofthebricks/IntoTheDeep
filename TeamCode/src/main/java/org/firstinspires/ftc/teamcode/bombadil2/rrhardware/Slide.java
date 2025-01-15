@@ -15,6 +15,7 @@ import org.firstinspires.ftc.teamcode.bombadil2.BombadilHardware;
 public class Slide {
     public DcMotorEx motor;
     public Servo wrist;
+    private final double MAX_SLIDE_SPEED = 0.7;
     public Slide(HardwareMap hardwareMap) {
         motor = hardwareMap.get(DcMotorEx.class, "Slide");
         wrist = hardwareMap.get(Servo.class, "Wrist");
@@ -38,7 +39,7 @@ public class Slide {
                 currentPos = motor.getCurrentPosition();
                 motor.setTargetPosition( currentPos + (int) (BombadilHardware.SLIDE_TICKS_PER_INCH * inches));
                 motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                motor.setPower(0.6);
+                motor.setPower(MAX_SLIDE_SPEED);
                 initialized = true;
             }
 
@@ -65,7 +66,7 @@ public class Slide {
                 currentPos = motor.getCurrentPosition();
                 motor.setTargetPosition( currentPos + (int) (BombadilHardware.SLIDE_TICKS_PER_INCH * inches));
                 motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                motor.setPower(0.6);
+                motor.setPower(MAX_SLIDE_SPEED);
                 initialized = true;
             }
 
